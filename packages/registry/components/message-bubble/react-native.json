@@ -1,0 +1,21 @@
+{
+  "name": "message-bubble",
+  "type": "registry:ui",
+  "description": "Healthcare chat message bubble with status indicators for React Native",
+  "dependencies": [
+    "date-fns",
+    "react-native-reanimated"
+  ],
+  "devDependencies": [],
+  "registryDependencies": [
+    "user-avatar",
+    "message-status"
+  ],
+  "files": [
+    {
+      "name": "message-bubble.tsx",
+      "content": "import * as React from 'react'\nimport { View, Text, StyleSheet } from 'react-native'\nimport { format } from 'date-fns'\nimport Animated from 'react-native-reanimated'\n\nexport interface MessageBubbleProps {\n  message: string\n  timestamp: Date\n  isOwnMessage?: boolean\n  status?: 'sent' | 'delivered' | 'read'\n  style?: any\n}\n\nexport function MessageBubble({\n  message,\n  timestamp,\n  isOwnMessage = false,\n  status,\n  style,\n}: MessageBubbleProps) {\n  return (\n    <View style={[\n      styles.container,\n      isOwnMessage ? styles.ownContainer : styles.otherContainer,\n      style\n    ]}>\n      <View style={[\n        styles.bubble,\n        isOwnMessage ? styles.ownBubble : styles.otherBubble\n      ]}>\n        <Text style={[\n          styles.messageText,\n          isOwnMessage ? styles.ownMessageText : styles.otherMessageText\n        ]}>\n          {message}\n        </Text>\n        <View style={styles.footer}>\n          <Text style={styles.timestamp}>\n            {format(timestamp, 'HH:mm')}\n          </Text>\n          {isOwnMessage && status && (\n            <Text style={styles.status}>{status}</Text>\n          )}\n        </View>\n      </View>\n    </View>\n  )\n}\n\nconst styles = StyleSheet.create({\n  container: {\n    padding: 8,\n    maxWidth: '80%',\n  },\n  ownContainer: {\n    alignSelf: 'flex-end',\n  },\n  otherContainer: {\n    alignSelf: 'flex-start',\n  },\n  bubble: {\n    borderRadius: 16,\n    padding: 12,\n  },\n  ownBubble: {\n    backgroundColor: '#2563eb',\n  },\n  otherBubble: {\n    backgroundColor: '#f0f8ff',\n  },\n  messageText: {\n    fontSize: 14,\n    lineHeight: 20,\n  },\n  ownMessageText: {\n    color: '#ffffff',\n  },\n  otherMessageText: {\n    color: '#1e3a8a',\n  },\n  footer: {\n    flexDirection: 'row',\n    alignItems: 'center',\n    marginTop: 4,\n    gap: 4,\n  },\n  timestamp: {\n    fontSize: 12,\n    opacity: 0.7,\n  },\n  status: {\n    fontSize: 12,\n    opacity: 0.7,\n  },\n})",
+      "type": "registry:ui"
+    }
+  ]
+} 
