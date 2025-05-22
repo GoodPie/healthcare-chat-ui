@@ -101,6 +101,29 @@
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 
+  /* Text shadows - New in Tailwind v4 */
+  --text-shadow-none: none;
+  --text-shadow-2xs: 0 1px 1px rgb(0 0 0 / 0.05);
+  --text-shadow-xs: 0 1px 2px rgb(0 0 0 / 0.1);
+  --text-shadow-sm: 0 2px 4px rgb(0 0 0 / 0.1);
+  --text-shadow-md: 0 4px 8px rgb(0 0 0 / 0.1);
+  --text-shadow-lg: 0 8px 16px rgb(0 0 0 / 0.1);
+
+  /* Drop shadows - New in Tailwind v4 */
+  --drop-shadow-none: none;
+  --drop-shadow-sm: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+  --drop-shadow-md: drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+  --drop-shadow-lg: drop-shadow(0 10px 8px rgb(0 0 0 / 0.1));
+  --drop-shadow-xl: drop-shadow(0 20px 13px rgb(0 0 0 / 0.1));
+  --drop-shadow-2xl: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+
+  /* Colored shadows - New in Tailwind v4 */
+  --shadow-medical: 0 4px 6px -1px var(--color-medical-500 / 0.1);
+  --shadow-urgent: 0 4px 6px -1px var(--color-urgent-500 / 0.1);
+  --shadow-success: 0 4px 6px -1px var(--color-success-500 / 0.1);
+  --shadow-warning: 0 4px 6px -1px var(--color-warning-500 / 0.1);
+  --shadow-neutral: 0 4px 6px -1px var(--color-neutral-500 / 0.1);
+
   /* Transitions */
   --transition-duration-75: 75ms;
   --transition-duration-100: 100ms;
