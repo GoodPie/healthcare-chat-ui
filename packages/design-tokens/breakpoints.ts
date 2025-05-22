@@ -1,16 +1,13 @@
 /**
- * Breakpoint tokens for the Healthcare Chat UI Kit.
+ * Breakpoint tokens for the Healthcare Chat UI Kit (Tailwind v4.1).
  *
- * Defines responsive breakpoints for consistent layout across different screen sizes.
- *
- * @remarks
- * - All breakpoints are in pixels (px).
- * - Follows WCAG 2.1 guidelines for responsive design.
- * - Designed for use with both React (Tailwind) and React Native (NativeWind).
+ * Uses CSS variables for all breakpoints, matching styles.css and Tailwind v4.1 best practices.
  *
  * @example
- * import { breakpoints } from '@healthcare-chat-ui/design-tokens/breakpoints';
- * const isMobile = window.innerWidth < breakpoints.sm; // true if width < 640px
+ * // In a React component or style
+ * const md = breakpoints.md; // 'var(--breakpoint-md)'
+ *
+ * @see https://tailwindcss.com/docs/responsive-design
  */
 
 export type BreakpointKey = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
@@ -19,36 +16,35 @@ export type BreakpointKey = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
  * Breakpoint values (in px)
  */
 export const breakpoints: Record<BreakpointKey, string> = {
-  sm: '640px',   // Small devices (phones)
-  md: '768px',   // Medium devices (tablets)
-  lg: '1024px',  // Large devices (laptops)
-  xl: '1280px',  // Extra large devices (desktops)
-  '2xl': '1536px', // 2x extra large devices (large desktops)
+  sm: 'var(--breakpoint-sm)',   // 40rem (640px)
+  md: 'var(--breakpoint-md)',   // 48rem (768px)
+  lg: 'var(--breakpoint-lg)',   // 64rem (1024px)
+  xl: 'var(--breakpoint-xl)',   // 80rem (1280px)
+  '2xl': 'var(--breakpoint-2xl)', // 96rem (1536px)
 };
 
 /**
- * Utility: Get breakpoint value by key
- * @param key - The breakpoint key
- * @returns The breakpoint value in px
- * @example
- * getBreakpoint('lg') // '1024px'
+ * Utility: Get CSS variable for a breakpoint
+ * @param key - BreakpointKey
+ * @returns CSS variable string
+ * @throws {Error} If an invalid breakpoint key is provided
+ * @example getBreakpoint('lg') // 'var(--breakpoint-lg)'
  */
 export function getBreakpoint(key: BreakpointKey): string {
+  if (!(key in breakpoints)) {
+    throw new Error(`Invalid breakpoint key: ${key}. Valid keys are: ${Object.keys(breakpoints).join(', ')}`);
+  }
   return breakpoints[key];
 }
 
 /**
- * Tailwind-compatible breakpoint scale (for web)
- *
- * @remarks
- * Use these values in your Tailwind config for consistent breakpoints.
+ * Tailwind-compatible breakpoints (for web)
+ * Use these values in your Tailwind v4.1 classes or with style attributes.
  */
 export const tailwindBreakpoints = breakpoints;
 
 /**
- * NativeWind-compatible breakpoint scale (for React Native)
- *
- * @remarks
+ * NativeWind-compatible breakpoints (for React Native)
  * Use these values in your NativeWind config for consistent breakpoints.
  */
 export const nativewindBreakpoints = breakpoints;
