@@ -1,4 +1,4 @@
-import { transitions, startingStyles, transitionUtilities } from '../transitions'
+import { transitions, startingStyles, transitionUtilities } from '../src/transitions'
 
 describe('Transition Tokens', () => {
   describe('Duration', () => {

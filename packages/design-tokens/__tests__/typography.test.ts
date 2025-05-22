@@ -1,4 +1,4 @@
-import { typography, getFontSize, getFontWeight, getLineHeight, getLetterSpacing, type FontFamily, type FontSizeKey, type FontWeightKey, type LineHeightKey, type LetterSpacingKey } from '../typography'
+import { typography, getFontSize, getFontWeight, getLineHeight, getLetterSpacing, type FontFamily, type FontSizeKey, type FontWeightKey, type LineHeightKey, type LetterSpacingKey } from '../src/typography'
 
 describe('Typography Tokens', () => {
   describe('Font Families', () => {

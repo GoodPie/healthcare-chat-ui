@@ -1,4 +1,4 @@
-import { zIndex } from '../zIndex'
+import { zIndex } from '../src/zIndex'
 
 describe('Z-Index Tokens', () => {
   it('should have all required z-index values', () => {

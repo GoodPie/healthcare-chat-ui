@@ -1,4 +1,4 @@
-import { borderRadius } from '../borderRadius'
+import { borderRadius } from '../src/borderRadius'
 
 describe('Border Radius Tokens', () => {
   it('should have all required border radius values', () => {

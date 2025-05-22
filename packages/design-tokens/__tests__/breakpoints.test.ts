@@ -1,4 +1,4 @@
-import { breakpoints, getBreakpoint, mediaQueries, type BreakpointKey } from '../breakpoints'
+import { breakpoints, getBreakpoint, mediaQueries, type BreakpointKey } from '../src/breakpoints'
 
 describe('Breakpoint Tokens', () => {
   it('should have all required breakpoint values', () => {

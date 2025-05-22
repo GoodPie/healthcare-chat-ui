@@ -1,4 +1,4 @@
-import { shadows, textShadows, dropShadows, shadowUtilities } from '../shadows'
+import { shadows, textShadows, dropShadows, shadowUtilities } from '../src/shadows'
 
 describe('Shadow Tokens', () => {
   describe('Box Shadows', () => {

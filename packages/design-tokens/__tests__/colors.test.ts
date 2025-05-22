@@ -1,4 +1,4 @@
-import { getColor, getSemanticColor, colorScales, semanticColors, type ColorScale, type ColorShade, type SemanticColor } from '../colors'
+import { getColor, getSemanticColor, colorScales, semanticColors, type ColorScale, type ColorShade, type SemanticColor } from '../src/colors'
 
 describe('Color Tokens', () => {
   describe('Color Scales', () => {
