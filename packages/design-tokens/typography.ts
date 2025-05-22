@@ -1,26 +1,23 @@
 /**
- * Typography tokens for the Healthcare Chat UI Kit.
+ * Typography tokens for the Healthcare Chat UI Kit (Tailwind v4.1).
  *
- * Defines font families, sizes, line heights, weights, and letter spacing for consistent typography across the application.
- *
- * @remarks
- * - Font families: 'Inter' for body text, 'Roboto Mono' for monospace.
- * - Font sizes are in rem units for better accessibility and scaling.
- * - Line heights are unitless for better inheritance.
- * - Font weights range from 400 (regular) to 700 (bold).
- * - Letter spacing is in em units for relative scaling.
+ * Uses CSS variables for all typography values, matching styles.css and Tailwind v4.1 best practices.
  *
  * @example
- * import { typography } from '@healthcare-chat-ui/design-tokens/typography';
- * const fontSize = typography.fontSize.md; // 1rem
+ * // In a React component
+ * <div className="font-sans text-base font-bold">Hello</div>
+ * // Or with style attribute
+ * <div style={{ fontFamily: 'var(--font-sans)' }}>Hello</div>
+ *
+ * @see https://tailwindcss.com/docs/font-family
  */
 
-export type FontFamily = 'sans' | 'mono';
+export type FontFamily = 'sans' | 'serif' | 'mono';
 
 export type FontSizeKey =
   | 'xs'
   | 'sm'
-  | 'md'
+  | 'base'
   | 'lg'
   | 'xl'
   | '2xl'
@@ -46,85 +43,91 @@ export type LetterSpacingKey =
   | 'normal'
   | 'wide';
 
-export const fontFamily: Record<FontFamily, string> = {
-  sans: 'Inter, sans-serif',
-  mono: 'Roboto Mono, monospace',
-};
-
-export const fontSize: Record<FontSizeKey, string> = {
-  xs: '0.75rem',   // 12px
-  sm: '0.875rem',  // 14px
-  md: '1rem',      // 16px
-  lg: '1.125rem',  // 18px
-  xl: '1.25rem',   // 20px
-  '2xl': '1.5rem', // 24px
-  '3xl': '1.875rem', // 30px
-  '4xl': '2.25rem',  // 36px
-  '5xl': '3rem',     // 48px
-};
-
-export const fontWeight: Record<FontWeightKey, number> = {
-  regular: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
-};
-
-export const lineHeight: Record<LineHeightKey, number> = {
-  none: 1,
-  tight: 1.25,
-  normal: 1.5,
-  relaxed: 1.75,
-  loose: 2,
-};
-
-export const letterSpacing: Record<LetterSpacingKey, string> = {
-  tight: '-0.025em',
-  normal: '0',
-  wide: '0.025em',
+export const typography = {
+  fontFamily: {
+    sans: 'var(--font-sans)',
+    serif: 'var(--font-serif)',
+    mono: 'var(--font-mono)',
+  },
+  fontSize: {
+    xs: 'var(--font-size-xs)',
+    sm: 'var(--font-size-sm)',
+    base: 'var(--font-size-base)',
+    lg: 'var(--font-size-lg)',
+    xl: 'var(--font-size-xl)',
+    '2xl': 'var(--font-size-2xl)',
+    '3xl': 'var(--font-size-3xl)',
+    '4xl': 'var(--font-size-4xl)',
+    '5xl': 'var(--font-size-5xl)',
+  },
+  fontWeight: {
+    regular: 'var(--font-weight-regular)',
+    medium: 'var(--font-weight-medium)',
+    semibold: 'var(--font-weight-semibold)',
+    bold: 'var(--font-weight-bold)',
+  },
+  lineHeight: {
+    none: 'var(--line-height-none)',
+    tight: 'var(--line-height-tight)',
+    normal: 'var(--line-height-normal)',
+    relaxed: 'var(--line-height-relaxed)',
+    loose: 'var(--line-height-loose)',
+  },
+  letterSpacing: {
+    tight: 'var(--tracking-tight)',
+    normal: 'var(--tracking-normal)',
+    wide: 'var(--tracking-wide)',
+  },
 };
 
 /**
- * Utility: Get typography value by key
- * @param key - The typography key
- * @returns The typography value
- * @example
- * getFontSize('lg') // '1.125rem'
+ * Utility: Get CSS variable for font size
+ * @param key - FontSizeKey
+ * @returns CSS variable string
+ * @example getFontSize('lg') // 'var(--font-size-lg)'
  */
 export function getFontSize(key: FontSizeKey): string {
-  return fontSize[key];
+  return typography.fontSize[key];
 }
 
-export function getFontWeight(key: FontWeightKey): number {
-  return fontWeight[key];
+/**
+ * Utility: Get CSS variable for font weight
+ * @param key - FontWeightKey
+ * @returns CSS variable string
+ * @example getFontWeight('bold') // 'var(--font-weight-bold)'
+ */
+export function getFontWeight(key: FontWeightKey): string {
+  return typography.fontWeight[key];
 }
 
-export function getLineHeight(key: LineHeightKey): number {
-  return lineHeight[key];
+/**
+ * Utility: Get CSS variable for line height
+ * @param key - LineHeightKey
+ * @returns CSS variable string
+ * @example getLineHeight('relaxed') // 'var(--line-height-relaxed)'
+ */
+export function getLineHeight(key: LineHeightKey): string {
+  return typography.lineHeight[key];
 }
 
+/**
+ * Utility: Get CSS variable for letter spacing
+ * @param key - LetterSpacingKey
+ * @returns CSS variable string
+ * @example getLetterSpacing('wide') // 'var(--tracking-wide)'
+ */
 export function getLetterSpacing(key: LetterSpacingKey): string {
-  return letterSpacing[key];
+  return typography.letterSpacing[key];
 }
 
 /**
  * Tailwind-compatible typography scale (for web)
- *
- * @remarks
- * Use these values in your Tailwind config for consistent typography.
+ * Use these values in your Tailwind v4.1 classes or with style attributes.
  */
-export const tailwindTypography = {
-  fontFamily,
-  fontSize,
-  fontWeight,
-  lineHeight,
-  letterSpacing,
-};
+export const tailwindTypography = typography;
 
 /**
  * NativeWind-compatible typography scale (for React Native)
- *
- * @remarks
  * Use these values in your NativeWind config for consistent typography.
  */
-export const nativewindTypography = tailwindTypography;
+export const nativewindTypography = typography;

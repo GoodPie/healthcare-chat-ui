@@ -3,51 +3,45 @@
  * Following WCAG 2.1 guidelines for focus management and modal dialogs
  */
 
-export type ZIndexKey = 'auto' | 'base' | 'dropdown' | 'sticky' | 'fixed' | 'modal' | 'popover' | 'tooltip' | 'toast';
+export type ZIndexKey = '0' | '10' | '20' | '30' | '40' | '50' | 'auto';
 
-export const zIndex: Record<ZIndexKey, number> = {
-  auto: 0,          // Default stacking context
-  base: 1,          // Base layer
-  dropdown: 1000,   // Dropdown menus
-  sticky: 1020,     // Sticky headers
-  fixed: 1030,      // Fixed elements
-  modal: 1040,      // Modal dialogs
-  popover: 1050,    // Popovers
-  tooltip: 1060,    // Tooltips
-  toast: 1070,      // Toast notifications
+export const zIndex: Record<ZIndexKey, string> = {
+  '0': '0',
+  '10': '10',
+  '20': '20',
+  '30': '30',
+  '40': '40',
+  '50': '50',
+  auto: 'auto',
 };
 
 /**
  * Get z-index value by key
  */
-export const getZIndex = (key: ZIndexKey): number => zIndex[key];
+export const getZIndex = (key: ZIndexKey): string => zIndex[key];
 
 /**
  * Tailwind-compatible z-index scale
  */
 export const zIndexScale = {
+  '0': 'z-0',
+  '10': 'z-10',
+  '20': 'z-20',
+  '30': 'z-30',
+  '40': 'z-40',
+  '50': 'z-50',
   auto: 'z-auto',
-  base: 'z-base',
-  dropdown: 'z-dropdown',
-  sticky: 'z-sticky',
-  fixed: 'z-fixed',
-  modal: 'z-modal',
-  popover: 'z-popover',
-  tooltip: 'z-tooltip',
-  toast: 'z-toast',
 };
 
 /**
  * NativeWind-compatible z-index scale
  */
 export const zIndexScaleNative = {
+  '0': 'z-0',
+  '10': 'z-10',
+  '20': 'z-20',
+  '30': 'z-30',
+  '40': 'z-40',
+  '50': 'z-50',
   auto: 'z-auto',
-  base: 'z-base',
-  dropdown: 'z-dropdown',
-  sticky: 'z-sticky',
-  fixed: 'z-fixed',
-  modal: 'z-modal',
-  popover: 'z-popover',
-  tooltip: 'z-tooltip',
-  toast: 'z-toast',
 }; 

@@ -1,53 +1,62 @@
 /**
- * Breakpoint tokens for the Healthcare Chat UI Kit
- * Following WCAG 2.1 guidelines for responsive design and accessibility
+ * Breakpoint tokens for the Healthcare Chat UI Kit.
+ *
+ * Defines responsive breakpoints for consistent layout across different screen sizes.
+ *
+ * @remarks
+ * - All breakpoints are in pixels (px).
+ * - Follows WCAG 2.1 guidelines for responsive design.
+ * - Designed for use with both React (Tailwind) and React Native (NativeWind).
+ *
+ * @example
+ * import { breakpoints } from '@healthcare-chat-ui/design-tokens/breakpoints';
+ * const isMobile = window.innerWidth < breakpoints.sm; // true if width < 640px
  */
 
-export type BreakpointKey = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type BreakpointKey = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
+/**
+ * Breakpoint values (in px)
+ */
 export const breakpoints: Record<BreakpointKey, string> = {
-  xs: '320px',   // Small mobile devices
-  sm: '640px',   // Large mobile devices
-  md: '768px',   // Tablets
-  lg: '1024px',  // Small laptops
-  xl: '1280px',  // Large laptops
-  '2xl': '1536px', // Desktop monitors
+  sm: '640px',   // Small devices (phones)
+  md: '768px',   // Medium devices (tablets)
+  lg: '1024px',  // Large devices (laptops)
+  xl: '1280px',  // Extra large devices (desktops)
+  '2xl': '1536px', // 2x extra large devices (large desktops)
 };
 
 /**
- * Get breakpoint value by key
+ * Utility: Get breakpoint value by key
+ * @param key - The breakpoint key
+ * @returns The breakpoint value in px
+ * @example
+ * getBreakpoint('lg') // '1024px'
  */
-export const getBreakpoint = (key: BreakpointKey): string => breakpoints[key];
+export function getBreakpoint(key: BreakpointKey): string {
+  return breakpoints[key];
+}
 
 /**
- * Tailwind-compatible breakpoint scale
+ * Tailwind-compatible breakpoint scale (for web)
+ *
+ * @remarks
+ * Use these values in your Tailwind config for consistent breakpoints.
  */
-export const breakpointScale = {
-  xs: 'xs',
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg',
-  xl: 'xl',
-  '2xl': '2xl',
-};
+export const tailwindBreakpoints = breakpoints;
 
 /**
- * NativeWind-compatible breakpoint scale
+ * NativeWind-compatible breakpoint scale (for React Native)
+ *
+ * @remarks
+ * Use these values in your NativeWind config for consistent breakpoints.
  */
-export const breakpointScaleNative = {
-  xs: 'xs',
-  sm: 'sm',
-  md: 'md',
-  lg: 'lg',
-  xl: 'xl',
-  '2xl': '2xl',
-};
+export const nativewindBreakpoints = breakpoints;
 
 /**
  * Media query helpers
  */
 export const mediaQueries = {
-  xs: `@media (min-width: ${breakpoints.xs})`,
   sm: `@media (min-width: ${breakpoints.sm})`,
   md: `@media (min-width: ${breakpoints.md})`,
   lg: `@media (min-width: ${breakpoints.lg})`,
