@@ -1,0 +1,578 @@
+/**
+ * Healthcare Design Tokens - Typography
+ * Medical-grade typography system optimized for healthcare interfaces
+ *
+ * @package @healthcare-chat-ui/design-tokens
+ * @version 1.0.0
+ */
+
+@layer tokens {
+  :root {
+    /* =============================================
+     * FONT FAMILIES
+     * Healthcare-optimized font stacks for maximum readability
+     * ============================================= */
+
+    /* Primary font family - Sans-serif for UI */
+    --font-family-sans:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol";
+
+    /* Secondary font family - High readability for medical content */
+    --font-family-medical:
+      "Source Sans Pro",
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+
+    /* Monospace font family - For codes, timestamps, data */
+    --font-family-mono:
+      "JetBrains Mono",
+      "Fira Code",
+      "Source Code Pro",
+      Menlo,
+      Monaco,
+      Consolas,
+      "Liberation Mono",
+      "Courier New",
+      monospace;
+
+    /* Display font family - For headings and emphasis */
+    --font-family-display:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+
+    /* =============================================
+     * FONT SIZES
+     * WCAG 2.1 AA compliant sizing scale
+     * ============================================= */
+
+    /* Base font sizes */
+    --font-size-xs: 12px;     /* 0.75rem - Small text, timestamps, captions */
+    --font-size-sm: 14px;     /* 0.875rem - Secondary text, metadata */
+    --font-size-base: 16px;   /* 1rem - Body text (WCAG AA baseline) */
+    --font-size-lg: 18px;     /* 1.125rem - Emphasized text */
+    --font-size-xl: 20px;     /* 1.25rem - Small headings */
+    --font-size-2xl: 24px;    /* 1.5rem - Medium headings */
+    --font-size-3xl: 30px;    /* 1.875rem - Large headings */
+    --font-size-4xl: 36px;    /* 2.25rem - Display headings */
+    --font-size-5xl: 48px;    /* 3rem - Hero headings */
+    --font-size-6xl: 60px;    /* 3.75rem - Marketing headings */
+    --font-size-7xl: 72px;    /* 4.5rem - Display text */
+    --font-size-8xl: 96px;    /* 6rem - Large display */
+    --font-size-9xl: 128px;   /* 8rem - Extra large display */
+
+    /* Healthcare-specific semantic sizes */
+    --font-size-caption: var(--font-size-xs);       /* Captions, fine print */
+    --font-size-body-sm: var(--font-size-sm);       /* Small body text */
+    --font-size-body: var(--font-size-base);        /* Primary body text */
+    --font-size-body-lg: var(--font-size-lg);       /* Large body text */
+    --font-size-heading-sm: var(--font-size-xl);    /* Small headings */
+    --font-size-heading: var(--font-size-2xl);      /* Standard headings */
+    --font-size-heading-lg: var(--font-size-3xl);   /* Large headings */
+    --font-size-display: var(--font-size-4xl);      /* Display text */
+
+    /* Medical content specific sizes */
+    --font-size-patient-id: var(--font-size-sm);    /* Patient identifiers */
+    --font-size-vital-signs: var(--font-size-lg);   /* Vital signs display */
+    --font-size-alert-text: var(--font-size-xl);    /* Alert messages */
+    --font-size-emergency: var(--font-size-2xl);    /* Emergency text */
+
+    /* =============================================
+     * LINE HEIGHTS
+     * Optimized for medical content readability
+     * ============================================= */
+
+    /* Proportional line heights */
+    --line-height-none: 1;        /* Tight spacing for headings */
+    --line-height-tight: 1.25;    /* Compact text blocks */
+    --line-height-snug: 1.375;    /* Slightly relaxed */
+    --line-height-normal: 1.5;    /* Standard reading (WCAG recommended) */
+    --line-height-relaxed: 1.625; /* Comfortable reading */
+    --line-height-loose: 2;       /* Maximum spacing for accessibility */
+
+    /* Fixed line heights for precise control */
+    --line-height-3: 12px;
+    --line-height-4: 16px;
+    --line-height-5: 20px;
+    --line-height-6: 24px;
+    --line-height-7: 28px;
+    --line-height-8: 32px;
+    --line-height-9: 36px;
+    --line-height-10: 40px;
+
+    /* Semantic line heights */
+    --line-height-heading: var(--line-height-tight);   /* Headings */
+    --line-height-body: var(--line-height-normal);     /* Body text */
+    --line-height-caption: var(--line-height-snug);    /* Captions */
+    --line-height-medical: var(--line-height-relaxed); /* Medical content */
+
+    /* =============================================
+     * FONT WEIGHTS
+     * Professional hierarchy for healthcare interfaces
+     * ============================================= */
+
+    --font-weight-thin: 100;
+    --font-weight-extralight: 200;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;      /* Body text */
+    --font-weight-medium: 500;      /* Emphasized text */
+    --font-weight-semibold: 600;    /* Subheadings */
+    --font-weight-bold: 700;        /* Headings */
+    --font-weight-extrabold: 800;   /* Strong emphasis */
+    --font-weight-black: 900;       /* Maximum emphasis */
+
+    /* Semantic font weights */
+    --font-weight-body: var(--font-weight-normal);     /* Body text */
+    --font-weight-emphasis: var(--font-weight-medium); /* Emphasized text */
+    --font-weight-heading: var(--font-weight-semibold); /* Headings */
+    --font-weight-strong: var(--font-weight-bold);     /* Strong text */
+    --font-weight-display: var(--font-weight-bold);    /* Display text */
+
+    /* Medical content weights */
+    --font-weight-patient-data: var(--font-weight-medium); /* Patient data */
+    --font-weight-vital-signs: var(--font-weight-semibold); /* Vital signs */
+    --font-weight-alert: var(--font-weight-bold);      /* Alert text */
+    --font-weight-emergency: var(--font-weight-extrabold); /* Emergency */
+
+    /* =============================================
+     * LETTER SPACING (TRACKING)
+     * Enhanced readability for medical terminology
+     * ============================================= */
+
+    --letter-spacing-tighter: -0.05em;  /* -0.8px at 16px */
+    --letter-spacing-tight: -0.025em;   /* -0.4px at 16px */
+    --letter-spacing-normal: 0em;       /* 0px */
+    --letter-spacing-wide: 0.025em;     /* 0.4px at 16px */
+    --letter-spacing-wider: 0.05em;     /* 0.8px at 16px */
+    --letter-spacing-widest: 0.1em;     /* 1.6px at 16px */
+
+    /* Semantic letter spacing */
+    --letter-spacing-body: var(--letter-spacing-normal);    /* Body text */
+    --letter-spacing-heading: var(--letter-spacing-tight);  /* Headings */
+    --letter-spacing-caption: var(--letter-spacing-wide);   /* Small text */
+    --letter-spacing-display: var(--letter-spacing-tight);  /* Display text */
+    --letter-spacing-medical: var(--letter-spacing-wide);   /* Medical terms */
+
+    /* =============================================
+     * TEXT COLORS
+     * Healthcare-optimized color hierarchy
+     * ============================================= */
+
+    /* Primary text colors */
+    --text-color-primary: var(--color-foreground);      /* Main text */
+    --text-color-secondary: var(--color-muted-foreground); /* Secondary text */
+    --text-color-tertiary: var(--color-neutral-400);    /* Tertiary text */
+    --text-color-disabled: var(--color-neutral-300);    /* Disabled text */
+    --text-color-inverse: var(--color-background);      /* Inverse text */
+
+    /* Semantic text colors */
+    --text-color-success: var(--color-success-600);     /* Success messages */
+    --text-color-warning: var(--color-warning-600);     /* Warning messages */
+    --text-color-error: var(--color-urgent-600);        /* Error messages */
+    --text-color-info: var(--color-medical-600);        /* Info messages */
+
+    /* Medical context colors */
+    --text-color-patient: var(--color-neutral-700);     /* Patient data */
+    --text-color-doctor: var(--color-medical-700);      /* Doctor notes */
+    --text-color-nurse: var(--color-success-700);       /* Nurse notes */
+    --text-color-admin: var(--color-warning-700);       /* Admin messages */
+    --text-color-emergency: var(--color-urgent-700);    /* Emergency text */
+
+    /* =============================================
+     * TEXT DECORATION
+     * Professional link and emphasis styling
+     * ============================================= */
+
+    --text-decoration-thickness: 1px;
+    --text-decoration-offset: 2px;
+    --text-underline-offset: 0.125em;
+
+    /* Link colors */
+    --link-color: var(--color-medical-600);
+    --link-color-hover: var(--color-medical-700);
+    --link-color-visited: var(--color-medical-800);
+    --link-color-active: var(--color-medical-900);
+  }
+}
+
+/* =============================================
+ * RESPONSIVE TYPOGRAPHY
+ * Fluid scaling for different screen sizes
+ * ============================================= */
+
+/* Mobile typography adjustments */
+@media (max-width: 640px) {
+  :root {
+    /* Slightly larger base size for mobile readability */
+    --font-size-base: 16px;
+    --font-size-sm: 15px;
+    --font-size-lg: 19px;
+    --font-size-xl: 21px;
+    --font-size-2xl: 25px;
+    --font-size-3xl: 31px;
+
+    /* Adjust line heights for mobile */
+    --line-height-body: 1.6;
+    --line-height-medical: 1.7;
+  }
+}
+
+/* Tablet typography adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  :root {
+    /* Standard sizing for tablets */
+    --font-size-base: 16px;
+    --line-height-body: 1.5;
+  }
+}
+
+/* Desktop typography adjustments */
+@media (min-width: 1025px) {
+  :root {
+    /* Optimize for desktop reading */
+    --font-size-base: 16px;
+    --line-height-body: 1.5;
+    --letter-spacing-body: 0.01em; /* Slight tracking for screen clarity */
+  }
+}
+
+/* Large display adjustments */
+@media (min-width: 1440px) {
+  :root {
+    /* Scale up for large displays */
+    --font-size-base: 17px;
+    --font-size-lg: 20px;
+    --font-size-xl: 22px;
+    --font-size-2xl: 26px;
+    --font-size-3xl: 32px;
+  }
+}
+
+/* =============================================
+ * HIGH CONTRAST ADJUSTMENTS
+ * Enhanced typography for accessibility
+ * ============================================= */
+
+@media (prefers-contrast: high) {
+  :root {
+    /* Increase font weights for high contrast */
+    --font-weight-body: var(--font-weight-medium);
+    --font-weight-heading: var(--font-weight-bold);
+    --font-weight-emphasis: var(--font-weight-semibold);
+
+    /* Enhance letter spacing */
+    --letter-spacing-body: 0.02em;
+    --letter-spacing-medical: 0.03em;
+
+    /* Stronger text colors */
+    --text-color-primary: var(--color-neutral-900);
+    --text-color-secondary: var(--color-neutral-700);
+  }
+}
+
+/* =============================================
+ * PRINT TYPOGRAPHY
+ * Optimized for medical document printing
+ * ============================================= */
+
+@media print {
+  :root {
+    /* Print-optimized sizes (pt units) */
+    --font-size-base: 12pt;
+    --font-size-sm: 10pt;
+    --font-size-lg: 14pt;
+    --font-size-xl: 16pt;
+    --font-size-2xl: 18pt;
+    --font-size-3xl: 24pt;
+
+    /* Print line heights */
+    --line-height-body: 1.4;
+    --line-height-heading: 1.2;
+
+    /* Print colors */
+    --text-color-primary: black;
+    --text-color-secondary: #333;
+    --link-color: black;
+  }
+}
+
+/* =============================================
+ * TYPOGRAPHY UTILITY CLASSES
+ * Pre-built text styling utilities
+ * ============================================= */
+
+@layer utilities {
+  /* Font family utilities */
+  .font-sans { font-family: var(--font-family-sans); }
+  .font-medical { font-family: var(--font-family-medical); }
+  .font-mono { font-family: var(--font-family-mono); }
+  .font-display { font-family: var(--font-family-display); }
+
+  /* Font size utilities */
+  .text-xs { font-size: var(--font-size-xs); }
+  .text-sm { font-size: var(--font-size-sm); }
+  .text-base { font-size: var(--font-size-base); }
+  .text-lg { font-size: var(--font-size-lg); }
+  .text-xl { font-size: var(--font-size-xl); }
+  .text-2xl { font-size: var(--font-size-2xl); }
+  .text-3xl { font-size: var(--font-size-3xl); }
+  .text-4xl { font-size: var(--font-size-4xl); }
+  .text-5xl { font-size: var(--font-size-5xl); }
+
+  /* Healthcare semantic sizes */
+  .text-caption { font-size: var(--font-size-caption); }
+  .text-body { font-size: var(--font-size-body); }
+  .text-heading { font-size: var(--font-size-heading); }
+  .text-display { font-size: var(--font-size-display); }
+  .text-patient-id { font-size: var(--font-size-patient-id); }
+  .text-vital-signs { font-size: var(--font-size-vital-signs); }
+  .text-alert { font-size: var(--font-size-alert-text); }
+  .text-emergency { font-size: var(--font-size-emergency); }
+
+  /* Font weight utilities */
+  .font-thin { font-weight: var(--font-weight-thin); }
+  .font-light { font-weight: var(--font-weight-light); }
+  .font-normal { font-weight: var(--font-weight-normal); }
+  .font-medium { font-weight: var(--font-weight-medium); }
+  .font-semibold { font-weight: var(--font-weight-semibold); }
+  .font-bold { font-weight: var(--font-weight-bold); }
+  .font-extrabold { font-weight: var(--font-weight-extrabold); }
+
+  /* Line height utilities */
+  .leading-none { line-height: var(--line-height-none); }
+  .leading-tight { line-height: var(--line-height-tight); }
+  .leading-normal { line-height: var(--line-height-normal); }
+  .leading-relaxed { line-height: var(--line-height-relaxed); }
+  .leading-loose { line-height: var(--line-height-loose); }
+  .leading-medical { line-height: var(--line-height-medical); }
+
+  /* Letter spacing utilities */
+  .tracking-tighter { letter-spacing: var(--letter-spacing-tighter); }
+  .tracking-tight { letter-spacing: var(--letter-spacing-tight); }
+  .tracking-normal { letter-spacing: var(--letter-spacing-normal); }
+  .tracking-wide { letter-spacing: var(--letter-spacing-wide); }
+  .tracking-wider { letter-spacing: var(--letter-spacing-wider); }
+  .tracking-widest { letter-spacing: var(--letter-spacing-widest); }
+  .tracking-medical { letter-spacing: var(--letter-spacing-medical); }
+
+  /* Text color utilities */
+  .text-primary { color: var(--text-color-primary); }
+  .text-secondary { color: var(--text-color-secondary); }
+  .text-tertiary { color: var(--text-color-tertiary); }
+  .text-disabled { color: var(--text-color-disabled); }
+  .text-inverse { color: var(--text-color-inverse); }
+  .text-success { color: var(--text-color-success); }
+  .text-warning { color: var(--text-color-warning); }
+  .text-error { color: var(--text-color-error); }
+  .text-info { color: var(--text-color-info); }
+
+  /* Medical role colors */
+  .text-patient { color: var(--text-color-patient); }
+  .text-doctor { color: var(--text-color-doctor); }
+  .text-nurse { color: var(--text-color-nurse); }
+  .text-admin { color: var(--text-color-admin); }
+  .text-emergency { color: var(--text-color-emergency); }
+
+  /* Text alignment */
+  .text-left { text-align: left; }
+  .text-center { text-align: center; }
+  .text-right { text-align: right; }
+  .text-justify { text-align: justify; }
+
+  /* Text transform */
+  .uppercase { text-transform: uppercase; }
+  .lowercase { text-transform: lowercase; }
+  .capitalize { text-transform: capitalize; }
+  .normal-case { text-transform: none; }
+
+  /* Text decoration */
+  .underline {
+    text-decoration: underline;
+    text-decoration-thickness: var(--text-decoration-thickness);
+    text-underline-offset: var(--text-underline-offset);
+  }
+  .no-underline { text-decoration: none; }
+  .line-through { text-decoration: line-through; }
+
+  /* Text overflow */
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .text-ellipsis { text-overflow: ellipsis; }
+  .text-clip { text-overflow: clip; }
+
+  /* Word break */
+  .break-normal {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .break-words { overflow-wrap: break-word; }
+  .break-all { word-break: break-all; }
+
+  /* White space */
+  .whitespace-normal { white-space: normal; }
+  .whitespace-nowrap { white-space: nowrap; }
+  .whitespace-pre { white-space: pre; }
+  .whitespace-pre-line { white-space: pre-line; }
+  .whitespace-pre-wrap { white-space: pre-wrap; }
+}
+
+/* =============================================
+ * HEALTHCARE TYPOGRAPHY PATTERNS
+ * Pre-built patterns for medical content
+ * ============================================= */
+
+@layer components {
+  /* Patient information styling */
+  .patient-info {
+    font-family: var(--font-family-medical);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-medical);
+    color: var(--text-color-patient);
+  }
+
+  .patient-id {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-patient-id);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--text-color-secondary);
+  }
+
+  /* Vital signs display */
+  .vital-signs {
+    font-family: var(--font-family-medical);
+    font-size: var(--font-size-vital-signs);
+    font-weight: var(--font-weight-vital-signs);
+    line-height: var(--line-height-tight);
+    color: var(--text-color-primary);
+  }
+
+  .vital-value {
+    font-family: var(--font-family-mono);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-medical-700);
+  }
+
+  /* Medical notes styling */
+  .medical-note {
+    font-family: var(--font-family-medical);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-relaxed);
+    color: var(--text-color-primary);
+  }
+
+  .medical-timestamp {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    color: var(--text-color-secondary);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  /* Alert and emergency text */
+  .alert-text {
+    font-family: var(--font-family-medical);
+    font-size: var(--font-size-alert-text);
+    font-weight: var(--font-weight-alert);
+    line-height: var(--line-height-tight);
+    color: var(--text-color-warning);
+  }
+
+  .emergency-text {
+    font-family: var(--font-family-medical);
+    font-size: var(--font-size-emergency);
+    font-weight: var(--font-weight-emergency);
+    line-height: var(--line-height-tight);
+    color: var(--text-color-emergency);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+  }
+
+  /* Links in medical context */
+  .medical-link {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-thickness: var(--text-decoration-thickness);
+    text-underline-offset: var(--text-underline-offset);
+    transition: color 150ms ease-in-out;
+  }
+
+  .medical-link:hover {
+    color: var(--link-color-hover);
+  }
+
+  .medical-link:visited {
+    color: var(--link-color-visited);
+  }
+
+  /* Readable paragraphs for medical content */
+  .medical-paragraph {
+    font-family: var(--font-family-medical);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-medical);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color-primary);
+  }
+
+  .medical-paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Code and technical content */
+  .medical-code {
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    background-color: var(--color-muted);
+    padding: 2px 4px;
+    border-radius: var(--radius-sm);
+    color: var(--text-color-primary);
+  }
+
+  /* Headings hierarchy */
+  .medical-heading-1 {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--text-color-primary);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .medical-heading-2 {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-tight);
+    color: var(--text-color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .medical-heading-3 {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+    color: var(--text-color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+}

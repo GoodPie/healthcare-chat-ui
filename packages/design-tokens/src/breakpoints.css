@@ -1,0 +1,518 @@
+/**
+ * Healthcare Design Tokens - Breakpoints & Responsive Design
+ * Responsive breakpoints optimized for healthcare workflows and devices
+ *
+ * @package @healthcare-chat-ui/design-tokens
+ * @version 1.0.0
+ */
+
+@layer tokens {
+  :root {
+    /* =============================================
+     * BREAKPOINT VALUES
+     * Mobile-first responsive design system
+     * ============================================= */
+
+    /* Core breakpoint values */
+    --breakpoint-xs: 320px;    /* Small phones (iPhone SE) */
+    --breakpoint-sm: 640px;    /* Large phones, small tablets */
+    --breakpoint-md: 768px;    /* Tablets, small laptops */
+    --breakpoint-lg: 1024px;   /* Laptops, desktop monitors */
+    --breakpoint-xl: 1280px;   /* Large desktops */
+    --breakpoint-2xl: 1536px;  /* Extra large monitors */
+    --breakpoint-3xl: 1920px;  /* Ultra-wide monitors */
+    --breakpoint-4xl: 2560px;  /* 4K monitors */
+
+    /* =============================================
+     * HEALTHCARE-SPECIFIC BREAKPOINTS
+     * Optimized for medical device usage patterns
+     * ============================================= */
+
+    /* Mobile devices - Nurses, EMTs, mobile care */
+    --breakpoint-mobile: var(--breakpoint-sm);        /* 640px */
+    --breakpoint-mobile-lg: var(--breakpoint-md);     /* 768px */
+
+    /* Tablet devices - Bedside terminals, portable workstations */
+    --breakpoint-tablet: var(--breakpoint-md);        /* 768px */
+    --breakpoint-tablet-lg: var(--breakpoint-lg);     /* 1024px */
+
+    /* Desktop workstations - Doctor terminals, admin dashboards */
+    --breakpoint-desktop: var(--breakpoint-lg);       /* 1024px */
+    --breakpoint-desktop-lg: var(--breakpoint-xl);    /* 1280px */
+
+    /* Large displays - Medical imaging, multi-monitor setups */
+    --breakpoint-workstation: var(--breakpoint-xl);   /* 1280px */
+    --breakpoint-workstation-lg: var(--breakpoint-2xl); /* 1536px */
+
+    /* Ultra-wide displays - Command centers, surgical displays */
+    --breakpoint-command: var(--breakpoint-2xl);      /* 1536px */
+    --breakpoint-command-lg: var(--breakpoint-3xl);   /* 1920px */
+
+    /* =============================================
+     * CONTAINER QUERY BREAKPOINTS
+     * Component-level responsive design
+     * ============================================= */
+
+    /* Chat interface containers */
+    --container-chat-sm: 320px;   /* Compact chat */
+    --container-chat-md: 480px;   /* Standard chat */
+    --container-chat-lg: 640px;   /* Wide chat with sidebar */
+    --container-chat-xl: 800px;   /* Full-featured chat */
+
+    /* Dashboard containers */
+    --container-dashboard-sm: 640px;   /* Mobile dashboard */
+    --container-dashboard-md: 960px;   /* Tablet dashboard */
+    --container-dashboard-lg: 1200px;  /* Desktop dashboard */
+    --container-dashboard-xl: 1440px;  /* Large dashboard */
+
+    /* Card components */
+    --container-card-sm: 280px;   /* Compact card */
+    --container-card-md: 320px;   /* Standard card */
+    --container-card-lg: 400px;   /* Wide card */
+    --container-card-xl: 480px;   /* Extra wide card */
+
+    /* Modal dialogs */
+    --container-modal-sm: 320px;  /* Alert modals */
+    --container-modal-md: 480px;  /* Standard forms */
+    --container-modal-lg: 640px;  /* Complex forms */
+    --container-modal-xl: 800px;  /* Data entry modals */
+
+    /* =============================================
+     * RESPONSIVE SCALING FACTORS
+     * Proportional scaling for different screen sizes
+     * ============================================= */
+
+    /* Font scaling factors */
+    --scale-mobile: 0.875;    /* 87.5% on mobile */
+    --scale-tablet: 1;        /* 100% on tablet */
+    --scale-desktop: 1;       /* 100% on desktop */
+    --scale-workstation: 1.125; /* 112.5% on large displays */
+
+    /* Spacing scaling factors */
+    --spacing-scale-mobile: 0.875;
+    --spacing-scale-tablet: 1;
+    --spacing-scale-desktop: 1;
+    --spacing-scale-workstation: 1.25;
+
+    /* Component scaling factors */
+    --component-scale-mobile: 0.9;
+    --component-scale-tablet: 1;
+    --component-scale-desktop: 1;
+    --component-scale-workstation: 1.1;
+  }
+}
+
+/* =============================================
+ * RESPONSIVE MEDIA QUERIES
+ * Healthcare workflow optimized breakpoints
+ * ============================================= */
+
+/* Extra small devices (phones in portrait) */
+@media (max-width: calc(var(--breakpoint-sm) - 1px)) {
+  :root {
+    /* Compact spacing for small screens */
+    --spacing-section: var(--spacing-md);
+    --spacing-section-lg: var(--spacing-lg);
+
+    /* Larger touch targets for mobile */
+    --min-touch-target: 48px;
+    --min-touch-target-lg: 52px;
+
+    /* Adjust component sizes */
+    --height-button: 44px;
+    --height-input: 44px;
+    --height-navbar: 56px;
+  }
+}
+
+/* Small devices (large phones, small tablets) */
+@media (min-width: var(--breakpoint-sm)) {
+  :root {
+    /* Standard spacing */
+    --spacing-section: var(--spacing-lg);
+    --spacing-section-lg: var(--spacing-xl);
+
+    /* Standard touch targets */
+    --min-touch-target: 44px;
+    --min-touch-target-lg: 48px;
+  }
+}
+
+/* Medium devices (tablets, small laptops) */
+@media (min-width: var(--breakpoint-md)) {
+  :root {
+    /* Comfortable spacing for tablets */
+    --spacing-section: var(--spacing-xl);
+    --spacing-section-lg: var(--spacing-2xl);
+
+    /* Precise targeting for tablets */
+    --min-touch-target: 40px;
+    --min-touch-target-lg: 44px;
+  }
+}
+
+/* Large devices (laptops, desktops) */
+@media (min-width: var(--breakpoint-lg)) {
+  :root {
+    /* Generous spacing for desktop */
+    --spacing-section: var(--spacing-2xl);
+    --spacing-section-lg: var(--spacing-3xl);
+
+    /* Mouse/trackpad precision */
+    --min-touch-target: 32px;
+    --min-touch-target-lg: 40px;
+
+    /* Desktop component heights */
+    --height-button: 40px;
+    --height-input: 40px;
+    --height-navbar: 64px;
+  }
+}
+
+/* Extra large devices (large desktops, workstations) */
+@media (min-width: var(--breakpoint-xl)) {
+  :root {
+    /* Maximum spacing for large displays */
+    --spacing-section: var(--spacing-3xl);
+    --spacing-section-lg: calc(var(--spacing-3xl) * 1.5);
+  }
+}
+
+/* Ultra-wide displays (medical imaging stations) */
+@media (min-width: var(--breakpoint-2xl)) {
+  :root {
+    /* Scale up for ultra-wide displays */
+    --font-size-base: 17px;
+    --font-size-lg: 20px;
+    --font-size-xl: 22px;
+  }
+}
+
+/* =============================================
+ * HEALTHCARE DEVICE-SPECIFIC BREAKPOINTS
+ * Optimized for medical device usage patterns
+ * ============================================= */
+
+/* Mobile healthcare devices (nurses, EMTs) */
+@media (max-width: var(--breakpoint-mobile)) {
+  .healthcare-mobile {
+    /* Single column layout */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .healthcare-sidebar {
+    /* Hidden on mobile, use bottom nav instead */
+    display: none;
+  }
+
+  .healthcare-bottom-nav {
+    display: flex;
+  }
+
+  /* Larger buttons for gloved hands */
+  .btn {
+    min-height: 48px;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  /* Simplified message layout */
+  .message {
+    max-width: 100%;
+    margin: var(--spacing-xs) 0;
+  }
+}
+
+/* Tablet devices (bedside terminals) */
+@media (min-width: var(--breakpoint-tablet)) and (max-width: var(--breakpoint-desktop)) {
+  .healthcare-tablet {
+    /* Two-column layout for tablets */
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: var(--spacing-md);
+  }
+
+  /* Compact sidebar for tablets */
+  .healthcare-sidebar {
+    width: 240px;
+  }
+
+  /* Optimized for touch with stylus */
+  .btn {
+    min-height: 44px;
+  }
+
+  .input {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* Desktop workstations (doctor terminals) */
+@media (min-width: var(--breakpoint-desktop)) {
+  .healthcare-desktop {
+    /* Multi-column layout for desktop */
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: var(--spacing-lg);
+  }
+
+  /* Full sidebar for desktop */
+  .healthcare-sidebar {
+    width: 280px;
+  }
+
+  .healthcare-secondary-sidebar {
+    display: block;
+    width: 320px;
+  }
+
+  /* Hover effects for desktop */
+  .btn:hover,
+  .card-interactive:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Large workstations (multi-monitor setups) */
+@media (min-width: var(--breakpoint-workstation)) {
+  .healthcare-workstation {
+    /* Three-column layout for large displays */
+    display: grid;
+    grid-template-columns: 320px 1fr 400px;
+    gap: var(--spacing-xl);
+  }
+
+  /* Scale up components for large displays */
+  .card {
+    padding: var(--spacing-lg);
+  }
+
+  .btn-lg {
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    font-size: 18px;
+  }
+}
+
+/* =============================================
+ * CONTAINER QUERIES
+ * Component-level responsive design
+ * ============================================= */
+
+/* Chat container responsiveness */
+@container (min-width: 320px) {
+  .chat-compact {
+    /* Minimal chat layout */
+    .message {
+      padding: var(--spacing-sm);
+      font-size: 14px;
+    }
+
+    .avatar-sm {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+@container (min-width: 480px) {
+  .chat-standard {
+    /* Standard chat layout */
+    .message {
+      padding: var(--spacing-md);
+      font-size: 16px;
+    }
+
+    .message-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+@container (min-width: 640px) {
+  .chat-wide {
+    /* Wide chat with side panels */
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: var(--spacing-md);
+
+    .chat-sidebar {
+      display: block;
+    }
+  }
+}
+
+/* Dashboard container responsiveness */
+@container (min-width: 640px) {
+  .dashboard-mobile {
+    /* Single column dashboard */
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+  }
+}
+
+@container (min-width: 960px) {
+  .dashboard-tablet {
+    /* Two column dashboard */
+    .dashboard-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+}
+
+@container (min-width: 1200px) {
+  .dashboard-desktop {
+    /* Three column dashboard */
+    .dashboard-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--spacing-xl);
+    }
+  }
+}
+
+/* =============================================
+ * ORIENTATION-BASED BREAKPOINTS
+ * Handle device rotation in healthcare settings
+ * ============================================= */
+
+/* Portrait orientation (mobile, tablets) */
+@media (orientation: portrait) {
+  .healthcare-layout {
+    /* Stack vertically in portrait */
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .healthcare-sidebar {
+    /* Convert to bottom navigation */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    width: auto;
+  }
+}
+
+/* Landscape orientation (tablets, laptops) */
+@media (orientation: landscape) {
+  .healthcare-layout {
+    /* Use horizontal layout in landscape */
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "footer footer";
+    grid-template-columns: 280px 1fr;
+  }
+
+  .healthcare-sidebar {
+    /* Show full sidebar in landscape */
+    position: static;
+    height: auto;
+    width: 280px;
+  }
+}
+
+/* =============================================
+ * PRINT BREAKPOINTS
+ * Medical document printing
+ * ============================================= */
+
+@media print {
+  /* Reset to single column for printing */
+  .healthcare-layout {
+    display: block !important;
+  }
+
+  .healthcare-sidebar,
+  .healthcare-secondary-sidebar {
+    display: none !important;
+  }
+
+  /* Adjust spacing for print */
+  :root {
+    --spacing-section: 12pt;
+    --spacing-section-lg: 18pt;
+  }
+
+  /* Page break controls */
+  .card,
+  .message-group {
+    page-break-inside: avoid;
+  }
+
+  .priority-emergency,
+  .priority-critical {
+    page-break-before: always;
+  }
+}
+
+/* =============================================
+ * UTILITY CLASSES FOR BREAKPOINTS
+ * Responsive visibility and layout utilities
+ * ============================================= */
+
+@layer utilities {
+  /* Responsive visibility */
+  .show-mobile { display: none; }
+  .show-tablet { display: none; }
+  .show-desktop { display: none; }
+  .show-workstation { display: none; }
+
+  @media (max-width: var(--breakpoint-mobile)) {
+    .hide-mobile { display: none !important; }
+    .show-mobile { display: block; }
+  }
+
+  @media (min-width: var(--breakpoint-tablet)) and (max-width: var(--breakpoint-desktop)) {
+    .hide-tablet { display: none !important; }
+    .show-tablet { display: block; }
+  }
+
+  @media (min-width: var(--breakpoint-desktop)) {
+    .hide-desktop { display: none !important; }
+    .show-desktop { display: block; }
+  }
+
+  @media (min-width: var(--breakpoint-workstation)) {
+    .hide-workstation { display: none !important; }
+    .show-workstation { display: block; }
+  }
+
+  /* Responsive text sizes */
+  .text-responsive {
+    font-size: calc(var(--font-size-base) * var(--scale-mobile));
+  }
+
+  @media (min-width: var(--breakpoint-tablet)) {
+    .text-responsive {
+      font-size: calc(var(--font-size-base) * var(--scale-tablet));
+    }
+  }
+
+  @media (min-width: var(--breakpoint-desktop)) {
+    .text-responsive {
+      font-size: calc(var(--font-size-base) * var(--scale-desktop));
+    }
+  }
+
+  @media (min-width: var(--breakpoint-workstation)) {
+    .text-responsive {
+      font-size: calc(var(--font-size-base) * var(--scale-workstation));
+    }
+  }
+
+  /* Container type utilities */
+  .container-chat { container-type: inline-size; }
+  .container-dashboard { container-type: inline-size; }
+  .container-card { container-type: inline-size; }
+  .container-modal { container-type: inline-size; }
+}

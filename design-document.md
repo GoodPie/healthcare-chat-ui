@@ -71,7 +71,7 @@ healthcare-chat-ui/
 │   │   └── hooks/               # Platform-agnostic logic
 │   │
 │   └── design-tokens/           # Healthcare design system
-│       ├── colors.ts            # Medical-grade color palette
+│       ├── index.ts            # Medical-grade color palette
 │       ├── typography.ts        # Accessible fonts & sizes
 │       ├── spacing.ts           # Consistent spacing scale
 │       └── themes/              # Light/dark/high-contrast

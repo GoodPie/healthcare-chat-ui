@@ -1,0 +1,578 @@
+/**
+ * Healthcare Design Tokens - Component Utilities
+ * Pre-built component styles and patterns for healthcare interfaces
+ *
+ * @package @healthcare-chat-ui/design-tokens
+ * @version 1.0.0
+ */
+
+@layer components {
+  /* =============================================
+   * SURFACE COMPONENTS
+   * Base surface patterns for healthcare interfaces
+   * ============================================= */
+
+  .surface {
+    background-color: var(--color-card);
+    color: var(--color-card-foreground);
+    border: 1px solid var(--color-border);
+  }
+
+  .surface-elevated {
+    background-color: var(--color-card);
+    color: var(--color-card-foreground);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .surface-overlay {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    color: var(--color-card-foreground);
+  }
+
+  .surface-flat {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  /* =============================================
+   * BUTTON COMPONENTS
+   * Healthcare-optimized button styles
+   * ============================================= */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    transition: all 150ms ease-in-out;
+    border-radius: var(--radius-button);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    position: relative;
+    min-height: var(--min-touch-target);
+  }
+
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  /* Button sizes */
+  .btn-sm {
+    padding: var(--spacing-button-sm);
+    font-size: 14px;
+    min-height: 32px;
+  }
+
+  .btn-md {
+    padding: var(--spacing-button-md);
+    font-size: 16px;
+    min-height: var(--min-touch-target);
+  }
+
+  .btn-lg {
+    padding: var(--spacing-button-lg);
+    font-size: 18px;
+    min-height: var(--min-touch-target-lg);
+  }
+
+  /* Button variants */
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-secondary-hover);
+  }
+
+  .btn-destructive {
+    background-color: var(--color-destructive);
+    color: var(--color-destructive-foreground);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    color: var(--color-foreground);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-muted);
+  }
+
+  .btn-ghost {
+    background-color: transparent;
+    color: var(--color-foreground);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-muted);
+  }
+
+  /* =============================================
+   * INPUT COMPONENTS
+   * Form inputs optimized for healthcare data entry
+   * ============================================= */
+
+  .input {
+    display: flex;
+    width: 100%;
+    border-radius: var(--radius-input);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-input);
+    padding: var(--spacing-input-md);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-foreground);
+    transition: all 150ms ease-in-out;
+  }
+
+  .input::placeholder {
+    color: var(--color-muted-foreground);
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: var(--color-ring);
+    box-shadow: 0 0 0 1px var(--color-ring);
+  }
+
+  .input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Input sizes */
+  .input-sm {
+    padding: var(--spacing-input-sm);
+    font-size: 14px;
+  }
+
+  .input-lg {
+    padding: var(--spacing-input-lg);
+    font-size: 18px;
+  }
+
+  /* Input states */
+  .input-error {
+    border-color: var(--color-destructive);
+  }
+
+  .input-error:focus {
+    border-color: var(--color-destructive);
+    box-shadow: 0 0 0 1px var(--color-destructive);
+  }
+
+  .input-success {
+    border-color: var(--color-safe);
+  }
+
+  .input-success:focus {
+    border-color: var(--color-safe);
+    box-shadow: 0 0 0 1px var(--color-safe);
+  }
+
+  /* =============================================
+   * CARD COMPONENTS
+   * Healthcare information containers
+   * ============================================= */
+
+  .card {
+    border-radius: var(--radius-card);
+    background-color: var(--color-card);
+    color: var(--color-card-foreground);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: var(--spacing-card);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .card-content {
+    padding: var(--spacing-card);
+  }
+
+  .card-footer {
+    padding: var(--spacing-card);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-muted);
+  }
+
+  /* Card variants */
+  .card-elevated {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-interactive {
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+  }
+
+  .card-interactive:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+  }
+
+  /* =============================================
+   * BADGE COMPONENTS
+   * Status indicators and labels
+   * ============================================= */
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-badge);
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-default {
+    background-color: var(--color-muted);
+    color: var(--color-muted-foreground);
+  }
+
+  .badge-primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
+
+  .badge-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-secondary-foreground);
+  }
+
+  .badge-destructive {
+    background-color: var(--color-destructive);
+    color: var(--color-destructive-foreground);
+  }
+
+  .badge-outline {
+    border: 1px solid var(--color-border);
+    background-color: transparent;
+    color: var(--color-foreground);
+  }
+
+  /* =============================================
+   * AVATAR COMPONENTS
+   * User representation in healthcare interfaces
+   * ============================================= */
+
+  .avatar {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-avatar);
+    background-color: var(--color-muted);
+    color: var(--color-muted-foreground);
+    font-weight: 500;
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Avatar sizes */
+  .avatar-sm {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .avatar-md {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .avatar-lg {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .avatar-xl {
+    width: 64px;
+    height: 64px;
+    font-size: 20px;
+  }
+
+  /* Avatar status indicator */
+  .avatar-status {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--color-background);
+  }
+
+  /* =============================================
+   * MESSAGE COMPONENTS
+   * Healthcare communication message styles
+   * ============================================= */
+
+  .message {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    max-width: var(--max-width-message);
+    word-wrap: break-word;
+  }
+
+  .message-sent {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+    margin-left: auto;
+  }
+
+  .message-received {
+    background-color: var(--color-muted);
+    color: var(--color-muted-foreground);
+  }
+
+  .message-system {
+    background-color: var(--color-card);
+    color: var(--color-card-foreground);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Message priority variants */
+  .message-routine {
+    border-left: 4px solid var(--color-priority-routine);
+  }
+
+  .message-urgent {
+    border-left: 4px solid var(--color-priority-urgent);
+    background-color: var(--color-warning-50);
+    color: var(--color-warning-900);
+  }
+
+  .message-emergency {
+    background-color: var(--color-priority-emergency);
+    color: white;
+    animation: pulse 2s infinite;
+  }
+
+  .message-critical {
+    background-color: var(--color-priority-critical);
+    color: white;
+    animation: pulse 1.5s infinite;
+  }
+
+  /* =============================================
+   * ALERT COMPONENTS
+   * System notifications and status messages
+   * ============================================= */
+
+  .alert {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    margin: var(--spacing-md) 0;
+  }
+
+  .alert-default {
+    background-color: var(--color-card);
+    color: var(--color-card-foreground);
+  }
+
+  .alert-info {
+    background-color: var(--color-medical-50);
+    color: var(--color-medical-900);
+    border-color: var(--color-medical-200);
+  }
+
+  .alert-success {
+    background-color: var(--color-success-50);
+    color: var(--color-success-900);
+    border-color: var(--color-success-200);
+  }
+
+  .alert-warning {
+    background-color: var(--color-warning-50);
+    color: var(--color-warning-900);
+    border-color: var(--color-warning-200);
+  }
+
+  .alert-destructive {
+    background-color: var(--color-urgent-50);
+    color: var(--color-urgent-900);
+    border-color: var(--color-urgent-200);
+  }
+
+  /* =============================================
+   * LOADING COMPONENTS
+   * Loading states and progress indicators
+   * ============================================= */
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-muted);
+    border-top: 2px solid var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  .skeleton {
+    background-color: var(--color-muted);
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    border-radius: var(--radius-md);
+    animation: skeleton 1.5s infinite;
+  }
+
+  .skeleton-text {
+    height: 1em;
+    margin: 0.5em 0;
+  }
+
+  .skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-avatar);
+  }
+}
+
+/* =============================================
+ * ANIMATIONS
+ * Healthcare-appropriate animations
+ * ============================================= */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* =============================================
+ * RESPONSIVE COMPONENTS
+ * Mobile-first responsive adjustments
+ * ============================================= */
+
+@media (max-width: 768px) {
+  .message {
+    max-width: calc(100vw - var(--spacing-lg));
+  }
+
+  .card {
+    margin: var(--spacing-sm);
+  }
+
+  .btn-lg {
+    padding: var(--spacing-button-md);
+    font-size: 16px;
+  }
+}
+
+/* =============================================
+ * PRINT STYLES
+ * Healthcare document printing
+ * ============================================= */
+
+@media print {
+  .btn,
+  .spinner,
+  .skeleton {
+    display: none !important;
+  }
+
+  .card {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+  }
+
+  .message-emergency,
+  .message-critical,
+  .alert-destructive {
+    border: 2px solid #000 !important;
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+
+  .message-emergency::before {
+    content: "⚠ EMERGENCY: ";
+    font-weight: bold;
+  }
+
+  .message-critical::before {
+    content: "🚨 CRITICAL: ";
+    font-weight: bold;
+  }
+}

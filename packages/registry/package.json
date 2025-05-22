@@ -1,5 +1,5 @@
 {
-  "name": "@healthcare-chat-ui/registry",
+  "name": "@healthcare-chat/registry",
   "version": "0.1.0",
   "private": true,
   "main": "./index.js",

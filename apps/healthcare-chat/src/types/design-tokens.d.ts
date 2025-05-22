@@ -1,4 +1,4 @@
-declare module '@healthcare-chat-ui/design-tokens/colors' {
+declare module '@healthcare-chat/design-tokens/src/colors/colors.ts' {
   export const colors: {
     medicalBlue: {
       50: string
@@ -15,7 +15,7 @@ declare module '@healthcare-chat-ui/design-tokens/colors' {
   }
 }
 
-declare module '@healthcare-chat-ui/design-tokens/typography' {
+declare module '@healthcare-chat/design-tokens/typography' {
   export const typography: {
     fontFamily: {
       sans: string[]
