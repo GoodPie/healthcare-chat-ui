@@ -2,66 +2,130 @@ import { Command } from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { ComponentMetadataSchema, REGISTRY_PATH, getComponentPath } from '@healthcare-chat/registry';
+import { getComponentPath, type ComponentMetadata } from '@healthcare-chat/registry';
+import { loadConfig } from '@/utils/config';
+import { validateComponentMetadata } from '@/utils/validation';
+import { fetchComponentFromUrl, loadComponentFromLocal } from '@/registry/client';
 
-// Get the directory name of the current module
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// Main add function
+async function addComponent(componentName: string, options: any = {}) {
+  try {
+    console.log(`Adding ${componentName} component to your project...`);
+
+    // Load configuration
+    const config = loadConfig();
+
+    // Override config with command line options
+    const targetDir = options.targetDir || config.targetDir || 'src/components/ui';
+    const framework = options.framework || config.framework || 'react';
+
+    let componentData: ComponentMetadata;
+
+    // Determine how to fetch the component
+    if (config.registryUrl) {
+      // Fetch from remote registry
+      componentData = await fetchComponentFromUrl(config.registryUrl, componentName, framework);
+    } else if (config.registryPath) {
+      // Load from local registry
+      const resolvedRegistryPath = path.resolve(process.cwd(), config.registryPath);
+      componentData = loadComponentFromLocal(resolvedRegistryPath, componentName, framework);
+    } else {
+      // Fallback: try to find registry in common locations
+      const __dirname = path.dirname(fileURLToPath(import.meta.url));
+      const commonRegistryPaths = [
+        path.join(__dirname, '../../../registry/components'),
+        path.join(process.cwd(), 'registry'),
+        path.join(process.cwd(), 'components'),
+        path.join(process.cwd(), 'src/registry')
+      ];
+
+      let found = false;
+      for (const registryPath of commonRegistryPaths) {
+        try {
+          componentData = loadComponentFromLocal(registryPath, componentName, framework);
+          found = true;
+          break;
+        } catch (error) {
+          // Continue to next path
+        }
+      }
+
+      if (!found) {
+        throw new Error(
+          `Component "${componentName}" not found. Please configure a registry URL or path in your config file.\n` +
+          `Create a component-registry.config.json file with:\n` +
+          `{\n` +
+          `  "registryUrl": "https://your-registry.com/api/components",\n` +
+          `  "registryPath": "./path/to/local/registry"\n` +
+          `}`
+        );
+      }
+    }
+
+    // Validate component data
+    componentData = validateComponentMetadata(componentData);
+
+    // Resolve target directory
+    const resolvedTargetDir = path.resolve(process.cwd(), targetDir);
+
+    // Create the target directory if it doesn't exist
+    if (!fs.existsSync(resolvedTargetDir)) {
+      fs.mkdirSync(resolvedTargetDir, { recursive: true });
+    }
+
+    // Create a directory for the component
+    const componentTargetDir = path.join(resolvedTargetDir, componentName);
+
+    // Check if component already exists
+    if (fs.existsSync(componentTargetDir)) {
+      if (!options.force) {
+        console.error(`Component "${componentName}" already exists at ${componentTargetDir}`);
+        console.log('Use --force to overwrite existing component');
+        process.exit(1);
+      } else {
+        console.log(`Overwriting existing component at ${componentTargetDir}`);
+      }
+    } else {
+      fs.mkdirSync(componentTargetDir, { recursive: true });
+    }
+
+    // Copy each file from the component
+    for (const file of componentData.files) {
+      const filePath = path.join(componentTargetDir, file.name);
+
+      // Create subdirectories if needed
+      const fileDir = path.dirname(filePath);
+      if (!fs.existsSync(fileDir)) {
+        fs.mkdirSync(fileDir, { recursive: true });
+      }
+
+      fs.writeFileSync(filePath, file.content);
+      console.log(`Created ${path.relative(process.cwd(), filePath)}`);
+    }
+
+    // Display dependency information if available
+    if (componentData.dependencies && componentData.dependencies.length > 0) {
+      console.log('\n📦 Dependencies required:');
+      for (const dep of componentData.dependencies) {
+        console.log(`  - ${dep}`);
+      }
+      console.log('\nInstall them with: npm install ' + componentData.dependencies.join(' '));
+    }
+
+    console.log(`\n✅ Added ${componentName} component to ${path.relative(process.cwd(), componentTargetDir)}`);
+    console.log(`You can now import it from "${targetDir}/${componentName}"`);
+
+  } catch (error) {
+    console.error('Error adding component:', error instanceof Error ? error.message : error);
+    process.exit(1);
+  }
+}
 
 // Define the add command
 export const addCommand = new Command('add')
   .description('Add a component to your project')
   .argument('<component>', 'The component to add')
-  .action(async (componentName: string) => {
-    try {
-      console.log(`Adding ${componentName} component to your project...`);
-
-      // Define paths
-      const registryBasePath = path.resolve(__dirname, '../../../registry');
-      const targetDir = path.resolve(process.cwd(), 'src/components/ui');
-
-      // Get the component path using the registry helper function
-      const componentRelativePath = getComponentPath(componentName, 'react');
-      const componentJsonPath = path.join(registryBasePath, componentRelativePath);
-
-      // Check if the component exists in the registry
-      if (!fs.existsSync(componentJsonPath)) {
-        console.error(`Component "${componentName}" not found in the registry.`);
-        process.exit(1);
-      }
-
-      // Read the component metadata
-      const componentDataRaw = fs.readJsonSync(componentJsonPath);
-
-      // Validate the component data using the schema
-      const parseResult = ComponentMetadataSchema.safeParse(componentDataRaw);
-      if (!parseResult.success) {
-        console.error(`Invalid component metadata for "${componentName}":`, parseResult.error);
-        process.exit(1);
-      }
-
-      const componentData = parseResult.data;
-
-      // Create the target directory if it doesn't exist
-      if (!fs.existsSync(targetDir)) {
-        fs.mkdirpSync(targetDir);
-      }
-
-      // Create a directory for the component
-      const componentTargetDir = path.join(targetDir, componentName);
-      fs.mkdirpSync(componentTargetDir);
-
-      // Copy each file from the component
-      for (const file of componentData.files) {
-        const filePath = path.join(componentTargetDir, file.name);
-        fs.writeFileSync(filePath, file.content);
-        console.log(`Created ${filePath}`);
-      }
-
-      console.log(`✅ Added ${componentName} component to src/components/ui/${componentName}`);
-      console.log(`You can now import it from "src/components/ui/${componentName}"`);
-
-    } catch (error) {
-      console.error('Error adding component:', error);
-      process.exit(1);
-    }
-  });
+  .option('-t, --target-dir <dir>', 'Target directory for components')
+  .option('-f, --framework <framework>', 'Framework (react, vue, svelte)')
+  .option('--force', 'Overwrite existing component')
+  .action(addComponent);

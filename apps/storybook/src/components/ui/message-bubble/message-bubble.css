@@ -1,0 +1,11 @@
+@custom-variant default {
+  &:where(.message-bubble) {
+    background-color: var(--color-medical-50);
+    color: var(--color-medical-900);
+  }
+
+  &:where(.message-bubble.own) {
+    background-color: var(--color-medical-500);
+    color: var(--color-white);
+  }
+}

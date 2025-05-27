@@ -1,4 +1,8 @@
-import {MessageBubble} from "@healthcare-chat/ui";
+import "./App.css"
+// import "./components/ui/styles/index.css"
+import {MessageBubble} from "./components/ui/message-bubble/message-bubble";
+
+
 
 function App() {
 

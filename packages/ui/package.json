@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "build": "tsup src/index.ts --format esm,cjs --external react --external react-dom --inject-style",
+    "build": "tsup src/index.ts --format esm,cjs --dts --external react --external react-dom --inject-style",
     "dev": "tsup src/index.ts --format esm,cjs --external react --external react-dom --inject-style --watch"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "vite": "^6.3.5"
   },
   "devDependencies": {
+    "@healthcare-chat/cli": "workspace:*",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.27.0",

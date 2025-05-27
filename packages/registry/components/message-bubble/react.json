@@ -1,37 +1,30 @@
 {
   "name": "message-bubble",
   "type": "registry:ui",
-  "description": "Healthcare chat message bubble with status indicators",
+  "description": "message-bubble component",
   "dependencies": [
-    "clsx",
-    "class-variance-authority",
-    "date-fns"
+    "date-fns",
+    "@sglara/cn"
   ],
   "devDependencies": [],
-  "registryDependencies": [
-    "user-avatar",
-    "message-status"
-  ],
+  "registryDependencies": [],
   "files": [
     {
+      "name": "message-bubble.css",
+      "content": "@custom-variant default {\n  &:where(.message-bubble.default) {\n    background-color: var(--color-medical-50);\n    color: var(--color-medical-900);\n  }\n\n  &:where(.message-bubble.own) {\n    background-color: var(--color-medical-500);\n    color: var(--color-white);\n  }\n}\n",
+      "type": "registry:ui"
+    },
+    {
       "name": "message-bubble.tsx",
-      "content": "import * as React from 'react'\nimport { cva, type VariantProps } from 'class-variance-authority'\nimport { cn } from '@/lib/utils'\nimport { format } from 'date-fns'\nimport { MessageStatus } from '../message-status/message-status'\nimport type { MessageStatus as MessageStatusType } from '../message-status/types'\n\nexport interface MessageBubbleProps extends VariantProps<typeof messageBubbleVariants> {\n  /** The message content to display */\n  message: string\n  /** The timestamp of the message */\n  timestamp: Date\n  /** Whether this message was sent by the current user */\n  isOwnMessage?: boolean\n  /** The delivery status of the message (only shown for own messages) */\n  status?: MessageStatusType\n  /** Additional CSS classes to apply */\n  className?: string\n}\n\nexport const messageBubbleVariants = cva(\n  'rounded-lg p-4 max-w-[80%] relative',\n  {\n    variants: {\n      variant: {\n        default: 'bg-medical-blue-50 text-medical-blue-900',\n        own: 'bg-medical-blue-500 text-white',\n      },\n    },\n    defaultVariants: {\n      variant: 'default',\n    },\n  }\n)\n\nexport function MessageBubble({\n  message,\n  timestamp,\n  isOwnMessage = false,\n  status,\n  className,\n}: MessageBubbleProps) {\n  const formattedTime = format(timestamp, 'HH:mm');\n  const messageType = isOwnMessage ? 'sent' : 'received';\n  \n  return (\n    <div \n      className={cn('flex', isOwnMessage ? 'justify-end' : 'justify-start', className)}\n      role=\"listitem\"\n      aria-label={`${messageType} message at ${formattedTime}`}\n    >\n      <div \n        className={cn(messageBubbleVariants({variant: isOwnMessage ? 'own' : 'default'}))}\n        aria-live={isOwnMessage ? 'polite' : 'off'}\n      >\n        <p className=\"text-sm\">{message}</p>\n        <div className=\"flex items-center gap-2 mt-2 text-xs opacity-70\">\n          <time dateTime={timestamp.toISOString()} aria-label={`Sent at ${formattedTime}`}>\n            {formattedTime}\n          </time>\n          {isOwnMessage && status && (\n            <MessageStatus status={status as MessageStatusType}/>\n          )}\n        </div>\n      </div>\n    </div>\n  )\n}",
+      "content": "import {format} from 'date-fns'\nimport {MessageStatus} from '../message-status/message-status'\nimport { cn } from '@sglara/cn'\nimport type { MessageBubbleProps } from './types'\nimport type { MessageStatus as MessageStatusType } from '../message-status/types'\nimport \"./message-bubble.css\";\n\nexport function MessageBubble({\n                                message,\n                                timestamp,\n                                isOwnMessage = false,\n                                status,\n                                className,\n                              }: MessageBubbleProps) {\n  const formattedTime = format(timestamp, 'HH:mm');\n  const messageType = isOwnMessage ? 'sent' : 'received';\n\n  return (\n    <div\n      className={cn('flex', isOwnMessage ? 'justify-end' : 'justify-start', className)}\n      role=\"listitem\"\n      aria-label={`${messageType} message at ${formattedTime}`}\n    >\n      <div\n        className={`rounded-lg p-4 max-w-[80%] relative message-bubble ${isOwnMessage ? \"own\" : \"default\"}`}\n        aria-live={isOwnMessage ? 'polite' : 'off'}\n      >\n        <p className=\"text-sm\">{message}</p>\n        <div className=\"flex items-center gap-2 mt-2 text-xs opacity-70\">\n          <time dateTime={timestamp.toISOString()} aria-label={`Sent at ${formattedTime}`}>\n            {formattedTime}\n          </time>\n          {isOwnMessage && status && (\n            <MessageStatus status={status as MessageStatusType}/>\n          )}\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "name": "types.ts",
+      "content": "import { type MessageStatus } from '../message-status/types'\n\nexport interface MessageBubbleProps {\n  /** The message content to display */\n  message: string\n  /** The timestamp of the message */\n  timestamp: Date\n  /** Whether this message was sent by the current user */\n  isOwnMessage?: boolean\n  /** The delivery status of the message (only shown for own messages) */\n  status?: MessageStatus\n  /** Additional CSS classes to apply */\n  className?: string\n} \n",
       "type": "registry:ui"
     }
   ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "colors": {
-            "medical-blue": {
-              "50": "hsl(var(--medical-blue-50))",
-              "500": "hsl(var(--medical-blue-500))",
-              "900": "hsl(var(--medical-blue-900))"
-            }
-          }
-        }
-      }
-    }
-  }
-} 
+  "version": "1.0.0",
+  "tags": []
+}

@@ -14,13 +14,16 @@
   "dependencies": {
     "@healthcare-chat/design-tokens": "workspace:*",
     "@healthcare-chat/ui": "workspace:*",
+    "@sglara/cn": "^1.0.0",
     "@tailwindcss/vite": "^4.1.7",
+    "date-fns": "^4.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3",
     "@eslint/js": "^9.27.0",
+    "@healthcare-chat/cli": "workspace:*",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-onboarding": "^8.6.14",
     "@storybook/blocks": "^8.6.14",

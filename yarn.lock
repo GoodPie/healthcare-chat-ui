@@ -792,7 +792,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@healthcare-chat/cli@workspace:packages/cli":
+"@healthcare-chat/cli@workspace:*, @healthcare-chat/cli@workspace:packages/cli":
   version: 0.0.0-use.local
   resolution: "@healthcare-chat/cli@workspace:packages/cli"
   dependencies:
@@ -808,6 +808,8 @@ __metadata:
     tsup: "npm:^8.0.1"
     typescript: "npm:^5.8.3"
     zod: "npm:^3.25.28"
+  bin:
+    healthcare-chat-ui: ./dist/index.js
   languageName: unknown
   linkType: soft
 
@@ -864,8 +866,10 @@ __metadata:
   dependencies:
     "@chromatic-com/storybook": "npm:^3"
     "@eslint/js": "npm:^9.27.0"
+    "@healthcare-chat/cli": "workspace:*"
     "@healthcare-chat/design-tokens": "workspace:*"
     "@healthcare-chat/ui": "workspace:*"
+    "@sglara/cn": "npm:^1.0.0"
     "@storybook/addon-essentials": "npm:^8.6.14"
     "@storybook/addon-onboarding": "npm:^8.6.14"
     "@storybook/blocks": "npm:^8.6.14"
@@ -877,6 +881,7 @@ __metadata:
     "@types/react": "npm:^19.1.2"
     "@types/react-dom": "npm:^19.1.2"
     "@vitejs/plugin-react": "npm:^4.4.1"
+    date-fns: "npm:^4.1.0"
     eslint: "npm:^9.27.0"
     eslint-plugin-react-hooks: "npm:^5.2.0"
     eslint-plugin-react-refresh: "npm:^0.4.19"
@@ -896,6 +901,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@healthcare-chat/ui@workspace:packages/ui"
   dependencies:
+    "@healthcare-chat/cli": "workspace:*"
     "@healthcare-chat/core": "workspace:*"
     "@healthcare-chat/design-tokens": "workspace:*"
     "@sglara/cn": "npm:^1.0.0"
