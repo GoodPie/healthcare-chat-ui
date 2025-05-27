@@ -1,25 +1,9 @@
-import * as React from 'react'
-import {cva} from 'class-variance-authority'
 import {format} from 'date-fns'
 import {MessageStatus} from '../message-status/message-status'
 import { cn } from '@sglara/cn'
 import type { MessageBubbleProps } from './types'
 import type { MessageStatus as MessageStatusType } from '../message-status/types'
-
-export const messageBubbleVariants = cva(
-  'rounded-lg p-4 max-w-[80%] relative',
-  {
-    variants: {
-      variant: {
-        default: 'bg-medical-blue-50 text-medical-blue-900',
-        own: 'bg-medical-blue-500 text-white',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  }
-)
+import "./message-bubble.css";
 
 export function MessageBubble({
                                 message,
@@ -28,12 +12,24 @@ export function MessageBubble({
                                 status,
                                 className,
                               }: MessageBubbleProps) {
+  const formattedTime = format(timestamp, 'HH:mm');
+  const messageType = isOwnMessage ? 'sent' : 'received';
+
   return (
-    <div className={cn('flex', isOwnMessage ? 'justify-end' : 'justify-start', className)}>
-      <div className={cn(messageBubbleVariants({variant: isOwnMessage ? 'own' : 'default'}))}>
+    <div
+      className={cn('flex', isOwnMessage ? 'justify-end' : 'justify-start', className)}
+      role="listitem"
+      aria-label={`${messageType} message at ${formattedTime}`}
+    >
+      <div
+        className={`rounded-lg p-4 max-w-[80%] relative message-bubble ${isOwnMessage ? "own" : "default"}`}
+        aria-live={isOwnMessage ? 'polite' : 'off'}
+      >
         <p className="text-sm">{message}</p>
         <div className="flex items-center gap-2 mt-2 text-xs opacity-70">
-          <span>{format(timestamp, 'HH:mm')}</span>
+          <time dateTime={timestamp.toISOString()} aria-label={`Sent at ${formattedTime}`}>
+            {formattedTime}
+          </time>
           {isOwnMessage && status && (
             <MessageStatus status={status as MessageStatusType}/>
           )}
@@ -41,4 +37,4 @@ export function MessageBubble({
       </div>
     </div>
   )
-} 
+}

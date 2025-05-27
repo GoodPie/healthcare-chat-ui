@@ -1,6 +1,6 @@
 import { type VariantProps } from 'class-variance-authority'
 import { type messageBubbleVariants } from './message-bubble'
-import { MessageStatus } from '../message-status/types'
+import { type MessageStatus } from '../message-status/types'
 
 
 export interface MessageBubbleProps extends VariantProps<typeof messageBubbleVariants> {

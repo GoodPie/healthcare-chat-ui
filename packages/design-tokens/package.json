@@ -2,33 +2,30 @@
   "name": "@healthcare-chat/design-tokens",
   "version": "0.1.0",
   "private": true,
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "index.js",
+  "exports": {
+    "./index.css": "./dist/index.css",
+    "./colors.css": "./dist/colors.css",
+    "./animations.css": "./dist/animations.css",
+    "./breakpoints.css": "./dist/breakpoints.css",
+    "./spacing.css": "./dist/spacing.css",
+    "./components.css": "./dist/components.css",
+    "./typography.css": "./dist/typography.css"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "eslint .",
-    "clean": "rimraf .turbo node_modules dist",
-    "typecheck": "tsc --noEmit",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "build": "tsx build.ts"
+  },
+  "dependencies": {
+    "@healthcare-chat/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.14",
-    "@types/node": "^20.11.0",
-    "@types/react": "^19.1.5",
-    "@types/react-native": "^0.73.0",
-    "eslint": "^8.56.0",
-    "jest": "^29.7.0",
-    "rimraf": "^5.0.5",
-    "ts-jest": "^29.3.4",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
-  },
-  "peerDependencies": {
-    "react": "^19.1.0",
-    "react-native": "^0.79.2",
-    "tailwindcss": "^4.1.7"
+    "@types/node": "^22.15.21",
+    "eslint": "^9.27.0",
+    "tailwindcss": "^4.1.7",
+    "tsx": "^4.19.4"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "name": "message-status",
+  "type": "registry:ui",
+  "description": "Healthcare chat message status indicator for React Native",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "message-status.tsx",
+      "content": "import * as React from 'react'\nimport { Text, StyleSheet } from 'react-native'\nimport { type MessageStatus as MessageStatusType } from './types'\n\nconst statusIcons: Record<string, string> = {\n  sending: '◌',\n  sent: '✓',\n  delivered: '✓✓',\n  read: '✓✓',\n  failed: '✗',\n}\n\nconst statusColors: Record<string, string> = {\n  sending: '#6b7280', // --color-message-sending\n  sent: '#2563eb',    // --color-message-sent\n  delivered: '#1d4ed8', // --color-message-delivered\n  read: '#16a34a',    // --color-message-read\n  failed: '#dc2626',  // --color-message-failed\n}\n\nexport function MessageStatus({ status }: { status: MessageStatusType }) {\n  return (\n    <Text \n      style={[styles.status, { color: statusColors[status] }]}\n      accessibilityLabel={`Message ${status}`}\n    >\n      {statusIcons[status]}\n    </Text>\n  )\n}\n\nconst styles = StyleSheet.create({\n  status: {\n    fontSize: 12,\n  },\n})",
+      "type": "registry:ui"
+    },
+    {
+      "name": "types.ts",
+      "content": "export type MessageStatus = 'sending' | 'sent' | 'delivered' | 'read' | 'failed'",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -6,152 +6,142 @@
  * @version 1.0.0
  */
 
-@layer tokens {
-  :root {
-    /* =============================================
-     * ANIMATION DURATIONS
-     * Healthcare-appropriate timing for professional interfaces
-     * ============================================= */
+@layer theme {
 
-    /* Base durations */
-    --duration-instant: 0ms;        /* Immediate changes */
-    --duration-fast: 150ms;         /* Quick interactions */
-    --duration-normal: 250ms;       /* Standard transitions */
-    --duration-slow: 350ms;         /* Deliberate animations */
-    --duration-slower: 500ms;       /* Emphasis animations */
-    --duration-slowest: 750ms;      /* Maximum duration */
+  /* =============================================
+   * ANIMATION DURATIONS
+   * Healthcare-appropriate timing for professional interfaces
+   * ============================================= */
+  /* Base durations */
+  --duration-instant: 0ms;        /* Immediate changes */
+  --duration-fast: 150ms;         /* Quick interactions */
+  --duration-normal: 250ms;       /* Standard transitions */
+  --duration-slow: 350ms;         /* Deliberate animations */
+  --duration-slower: 500ms;       /* Emphasis animations */
+  --duration-slowest: 750ms;      /* Maximum duration */
+  /* Semantic durations */
+  --duration-micro: var(--duration-fast);     /* Micro-interactions */
+  --duration-interaction: var(--duration-normal); /* User interactions */
+  --duration-feedback: var(--duration-slow);  /* User feedback */
+  --duration-emphasis: var(--duration-slower); /* Emphasis animations */
+  --duration-loading: var(--duration-slowest); /* Loading states */
+  /* Healthcare-specific durations */
+  --duration-alert: 300ms;        /* Alert animations */
+  --duration-emergency: 1500ms;   /* Emergency pulse cycle */
+  --duration-status-change: 400ms; /* Status transitions */
+  --duration-notification: 350ms;  /* Notification slides */
+  /* =============================================
+   * EASING FUNCTIONS
+   * Professional curves for smooth healthcare interfaces
+   * ============================================= */
+  /* Standard easing */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* Semantic durations */
-    --duration-micro: var(--duration-fast);     /* Micro-interactions */
-    --duration-interaction: var(--duration-normal); /* User interactions */
-    --duration-feedback: var(--duration-slow);  /* User feedback */
-    --duration-emphasis: var(--duration-slower); /* Emphasis animations */
-    --duration-loading: var(--duration-slowest); /* Loading states */
+  /* Custom healthcare easing */
+  --ease-medical: cubic-bezier(0.25, 0.46, 0.45, 0.94);     /* Smooth, professional */
+  --ease-emergency: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Attention-grabbing */
+  --ease-gentle: cubic-bezier(0.25, 0.8, 0.25, 1);          /* Subtle, calming */
+  --ease-precise: cubic-bezier(0.4, 0, 0.6, 1);             /* Precise, controlled */
+  /* Semantic easing */
+  --ease-ui: var(--ease-out);              /* UI element animations */
+  --ease-interaction: var(--ease-in-out);  /* User interactions */
+  --ease-feedback: var(--ease-medical);    /* User feedback */
+  --ease-alert: var(--ease-emergency);     /* Alert animations */
+  --ease-status: var(--ease-gentle);       /* Status changes */
+  /* =============================================
+   * TRANSITION PRESETS
+   * Pre-configured transitions for common patterns
+   * ============================================= */
+  /* Base transitions */
+  --transition-none: none;
+  --transition-all: all var(--duration-normal) var(--ease-ui);
+  --transition-colors: color var(--duration-fast) var(--ease-ui),
+  background-color var(--duration-fast) var(--ease-ui),
+  border-color var(--duration-fast) var(--ease-ui);
+  --transition-opacity: opacity var(--duration-normal) var(--ease-ui);
+  --transition-shadow: box-shadow var(--duration-normal) var(--ease-ui);
+  --transition-transform: transform var(--duration-normal) var(--ease-ui);
 
-    /* Healthcare-specific durations */
-    --duration-alert: 300ms;        /* Alert animations */
-    --duration-emergency: 1500ms;   /* Emergency pulse cycle */
-    --duration-status-change: 400ms; /* Status transitions */
-    --duration-notification: 350ms;  /* Notification slides */
+  /* Component-specific transitions */
+  --transition-button: background-color var(--duration-fast) var(--ease-ui),
+  border-color var(--duration-fast) var(--ease-ui),
+  color var(--duration-fast) var(--ease-ui),
+  box-shadow var(--duration-fast) var(--ease-ui),
+  transform var(--duration-fast) var(--ease-ui);
 
-    /* =============================================
-     * EASING FUNCTIONS
-     * Professional curves for smooth healthcare interfaces
-     * ============================================= */
+  --transition-card: box-shadow var(--duration-normal) var(--ease-ui),
+  transform var(--duration-normal) var(--ease-ui);
 
-    /* Standard easing */
-    --ease-linear: linear;
-    --ease-in: cubic-bezier(0.4, 0, 1, 1);
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
-    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-modal: opacity var(--duration-normal) var(--ease-ui),
+  transform var(--duration-normal) var(--ease-ui);
 
-    /* Custom healthcare easing */
-    --ease-medical: cubic-bezier(0.25, 0.46, 0.45, 0.94);     /* Smooth, professional */
-    --ease-emergency: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Attention-grabbing */
-    --ease-gentle: cubic-bezier(0.25, 0.8, 0.25, 1);          /* Subtle, calming */
-    --ease-precise: cubic-bezier(0.4, 0, 0.6, 1);             /* Precise, controlled */
+  --transition-alert: opacity var(--duration-alert) var(--ease-alert),
+  transform var(--duration-alert) var(--ease-alert);
 
-    /* Semantic easing */
-    --ease-ui: var(--ease-out);              /* UI element animations */
-    --ease-interaction: var(--ease-in-out);  /* User interactions */
-    --ease-feedback: var(--ease-medical);    /* User feedback */
-    --ease-alert: var(--ease-emergency);     /* Alert animations */
-    --ease-status: var(--ease-gentle);       /* Status changes */
+  /* Healthcare-specific transitions */
+  --transition-status: background-color var(--duration-status-change) var(--ease-status),
+  color var(--duration-status-change) var(--ease-status);
 
-    /* =============================================
-     * TRANSITION PRESETS
-     * Pre-configured transitions for common patterns
-     * ============================================= */
+  --transition-priority: background-color var(--duration-fast) var(--ease-emergency),
+  border-color var(--duration-fast) var(--ease-emergency),
+  box-shadow var(--duration-fast) var(--ease-emergency);
 
-    /* Base transitions */
-    --transition-none: none;
-    --transition-all: all var(--duration-normal) var(--ease-ui);
-    --transition-colors: color var(--duration-fast) var(--ease-ui),
-    background-color var(--duration-fast) var(--ease-ui),
-    border-color var(--duration-fast) var(--ease-ui);
-    --transition-opacity: opacity var(--duration-normal) var(--ease-ui);
-    --transition-shadow: box-shadow var(--duration-normal) var(--ease-ui);
-    --transition-transform: transform var(--duration-normal) var(--ease-ui);
+  /* =============================================
+   * ANIMATION TIMING FUNCTIONS
+   * For keyframe animations
+   * ============================================= */
+  --animation-timing-linear: linear;
+  --animation-timing-ease: ease;
+  --animation-timing-ease-in: ease-in;
+  --animation-timing-ease-out: ease-out;
+  --animation-timing-ease-in-out: ease-in-out;
+  --animation-timing-medical: var(--ease-medical);
+  --animation-timing-emergency: var(--ease-emergency);
 
-    /* Component-specific transitions */
-    --transition-button: background-color var(--duration-fast) var(--ease-ui),
-    border-color var(--duration-fast) var(--ease-ui),
-    color var(--duration-fast) var(--ease-ui),
-    box-shadow var(--duration-fast) var(--ease-ui),
-    transform var(--duration-fast) var(--ease-ui);
+  /* =============================================
+   * TRANSFORM VALUES
+   * Common transform values for animations
+   * ============================================= */
+  /* Scale transforms */
+  --scale-0: 0;
+  --scale-50: 0.5;
+  --scale-75: 0.75;
+  --scale-90: 0.9;
+  --scale-95: 0.95;
+  --scale-100: 1;
+  --scale-105: 1.05;
+  --scale-110: 1.1;
+  --scale-125: 1.25;
+  --scale-150: 1.5;
 
-    --transition-card: box-shadow var(--duration-normal) var(--ease-ui),
-    transform var(--duration-normal) var(--ease-ui);
+  /* Translate transforms */
+  --translate-x-0: 0;
+  --translate-x-1: 4px;
+  --translate-x-2: 8px;
+  --translate-x-4: 16px;
+  --translate-x-full: 100%;
+  --translate-y-0: 0;
+  --translate-y-1: 4px;
+  --translate-y-2: 8px;
+  --translate-y-4: 16px;
+  --translate-y-full: 100%;
 
-    --transition-modal: opacity var(--duration-normal) var(--ease-ui),
-    transform var(--duration-normal) var(--ease-ui);
-
-    --transition-alert: opacity var(--duration-alert) var(--ease-alert),
-    transform var(--duration-alert) var(--ease-alert);
-
-    /* Healthcare-specific transitions */
-    --transition-status: background-color var(--duration-status-change) var(--ease-status),
-    color var(--duration-status-change) var(--ease-status);
-
-    --transition-priority: background-color var(--duration-fast) var(--ease-emergency),
-    border-color var(--duration-fast) var(--ease-emergency),
-    box-shadow var(--duration-fast) var(--ease-emergency);
-
-    /* =============================================
-     * ANIMATION TIMING FUNCTIONS
-     * For keyframe animations
-     * ============================================= */
-
-    --animation-timing-linear: linear;
-    --animation-timing-ease: ease;
-    --animation-timing-ease-in: ease-in;
-    --animation-timing-ease-out: ease-out;
-    --animation-timing-ease-in-out: ease-in-out;
-    --animation-timing-medical: var(--ease-medical);
-    --animation-timing-emergency: var(--ease-emergency);
-
-    /* =============================================
-     * TRANSFORM VALUES
-     * Common transform values for animations
-     * ============================================= */
-
-    /* Scale transforms */
-    --scale-0: 0;
-    --scale-50: 0.5;
-    --scale-75: 0.75;
-    --scale-90: 0.9;
-    --scale-95: 0.95;
-    --scale-100: 1;
-    --scale-105: 1.05;
-    --scale-110: 1.1;
-    --scale-125: 1.25;
-    --scale-150: 1.5;
-
-    /* Translate transforms */
-    --translate-x-0: 0;
-    --translate-x-1: 4px;
-    --translate-x-2: 8px;
-    --translate-x-4: 16px;
-    --translate-x-full: 100%;
-    --translate-y-0: 0;
-    --translate-y-1: 4px;
-    --translate-y-2: 8px;
-    --translate-y-4: 16px;
-    --translate-y-full: 100%;
-
-    /* Rotate transforms */
-    --rotate-0: 0deg;
-    --rotate-1: 1deg;
-    --rotate-2: 2deg;
-    --rotate-3: 3deg;
-    --rotate-6: 6deg;
-    --rotate-12: 12deg;
-    --rotate-45: 45deg;
-    --rotate-90: 90deg;
-    --rotate-180: 180deg;
-    --rotate-360: 360deg;
-  }
+  /* Rotate transforms */
+  --rotate-0: 0deg;
+  --rotate-1: 1deg;
+  --rotate-2: 2deg;
+  --rotate-3: 3deg;
+  --rotate-6: 6deg;
+  --rotate-12: 12deg;
+  --rotate-45: 45deg;
+  --rotate-90: 90deg;
+  --rotate-180: 180deg;
+  --rotate-360: 360deg;
 }
+
 
 /* =============================================
  * KEYFRAME ANIMATIONS
@@ -415,16 +405,22 @@
 
 @layer utilities {
   /* Animation control */
-  .animate-none { animation: none; }
+  .animate-none {
+    animation: none;
+  }
+
   .animate-spin {
     animation: spin 1s linear infinite;
   }
+
   .animate-ping {
     animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
+
   .animate-pulse {
     animation: pulse var(--duration-slower) var(--animation-timing-ease-in-out) infinite;
   }
+
   .animate-bounce {
     animation: bounce 1s infinite;
   }
@@ -478,79 +474,246 @@
     animation: skeleton-loading 1.5s infinite;
   }
 
-  .animate-dots:nth-child(1) { animation: dots-loading 1.4s ease-in-out infinite; }
-  .animate-dots:nth-child(2) { animation: dots-loading 1.4s ease-in-out 0.2s infinite; }
-  .animate-dots:nth-child(3) { animation: dots-loading 1.4s ease-in-out 0.4s infinite; }
+  .animate-dots:nth-child(1) {
+    animation: dots-loading 1.4s ease-in-out infinite;
+  }
+
+  .animate-dots:nth-child(2) {
+    animation: dots-loading 1.4s ease-in-out 0.2s infinite;
+  }
+
+  .animate-dots:nth-child(3) {
+    animation: dots-loading 1.4s ease-in-out 0.4s infinite;
+  }
 
   /* Transition utilities */
-  .transition-none { transition: none; }
-  .transition-all { transition: var(--transition-all); }
-  .transition-colors { transition: var(--transition-colors); }
-  .transition-opacity { transition: var(--transition-opacity); }
-  .transition-shadow { transition: var(--transition-shadow); }
-  .transition-transform { transition: var(--transition-transform); }
-  .transition-button { transition: var(--transition-button); }
-  .transition-card { transition: var(--transition-card); }
-  .transition-status { transition: var(--transition-status); }
-  .transition-priority { transition: var(--transition-priority); }
+  .transition-none {
+    transition: none;
+  }
+
+  .transition-all {
+    transition: var(--transition-all);
+  }
+
+  .transition-colors {
+    transition: var(--transition-colors);
+  }
+
+  .transition-opacity {
+    transition: var(--transition-opacity);
+  }
+
+  .transition-shadow {
+    transition: var(--transition-shadow);
+  }
+
+  .transition-transform {
+    transition: var(--transition-transform);
+  }
+
+  .transition-button {
+    transition: var(--transition-button);
+  }
+
+  .transition-card {
+    transition: var(--transition-card);
+  }
+
+  .transition-status {
+    transition: var(--transition-status);
+  }
+
+  .transition-priority {
+    transition: var(--transition-priority);
+  }
 
   /* Duration utilities */
-  .duration-instant { transition-duration: var(--duration-instant); }
-  .duration-fast { transition-duration: var(--duration-fast); }
-  .duration-normal { transition-duration: var(--duration-normal); }
-  .duration-slow { transition-duration: var(--duration-slow); }
-  .duration-slower { transition-duration: var(--duration-slower); }
-  .duration-slowest { transition-duration: var(--duration-slowest); }
+  .duration-instant {
+    transition-duration: var(--duration-instant);
+  }
+
+  .duration-fast {
+    transition-duration: var(--duration-fast);
+  }
+
+  .duration-normal {
+    transition-duration: var(--duration-normal);
+  }
+
+  .duration-slow {
+    transition-duration: var(--duration-slow);
+  }
+
+  .duration-slower {
+    transition-duration: var(--duration-slower);
+  }
+
+  .duration-slowest {
+    transition-duration: var(--duration-slowest);
+  }
 
   /* Easing utilities */
-  .ease-linear { transition-timing-function: var(--ease-linear); }
-  .ease-in { transition-timing-function: var(--ease-in); }
-  .ease-out { transition-timing-function: var(--ease-out); }
-  .ease-in-out { transition-timing-function: var(--ease-in-out); }
-  .ease-medical { transition-timing-function: var(--ease-medical); }
-  .ease-emergency { transition-timing-function: var(--ease-emergency); }
-  .ease-gentle { transition-timing-function: var(--ease-gentle); }
+  .ease-linear {
+    transition-timing-function: var(--ease-linear);
+  }
+
+  .ease-in {
+    transition-timing-function: var(--ease-in);
+  }
+
+  .ease-out {
+    transition-timing-function: var(--ease-out);
+  }
+
+  .ease-in-out {
+    transition-timing-function: var(--ease-in-out);
+  }
+
+  .ease-medical {
+    transition-timing-function: var(--ease-medical);
+  }
+
+  .ease-emergency {
+    transition-timing-function: var(--ease-emergency);
+  }
+
+  .ease-gentle {
+    transition-timing-function: var(--ease-gentle);
+  }
 
   /* Transform utilities */
-  .scale-0 { transform: scale(var(--scale-0)); }
-  .scale-50 { transform: scale(var(--scale-50)); }
-  .scale-75 { transform: scale(var(--scale-75)); }
-  .scale-90 { transform: scale(var(--scale-90)); }
-  .scale-95 { transform: scale(var(--scale-95)); }
-  .scale-100 { transform: scale(var(--scale-100)); }
-  .scale-105 { transform: scale(var(--scale-105)); }
-  .scale-110 { transform: scale(var(--scale-110)); }
-  .scale-125 { transform: scale(var(--scale-125)); }
+  .scale-0 {
+    transform: scale(var(--scale-0));
+  }
 
-  .translate-x-0 { transform: translateX(var(--translate-x-0)); }
-  .translate-x-1 { transform: translateX(var(--translate-x-1)); }
-  .translate-x-2 { transform: translateX(var(--translate-x-2)); }
-  .translate-x-4 { transform: translateX(var(--translate-x-4)); }
-  .translate-y-0 { transform: translateY(var(--translate-y-0)); }
-  .translate-y-1 { transform: translateY(var(--translate-y-1)); }
-  .translate-y-2 { transform: translateY(var(--translate-y-2)); }
-  .translate-y-4 { transform: translateY(var(--translate-y-4)); }
+  .scale-50 {
+    transform: scale(var(--scale-50));
+  }
 
-  .rotate-0 { transform: rotate(var(--rotate-0)); }
-  .rotate-1 { transform: rotate(var(--rotate-1)); }
-  .rotate-2 { transform: rotate(var(--rotate-2)); }
-  .rotate-3 { transform: rotate(var(--rotate-3)); }
-  .rotate-6 { transform: rotate(var(--rotate-6)); }
-  .rotate-12 { transform: rotate(var(--rotate-12)); }
-  .rotate-45 { transform: rotate(var(--rotate-45)); }
-  .rotate-90 { transform: rotate(var(--rotate-90)); }
-  .rotate-180 { transform: rotate(var(--rotate-180)); }
+  .scale-75 {
+    transform: scale(var(--scale-75));
+  }
+
+  .scale-90 {
+    transform: scale(var(--scale-90));
+  }
+
+  .scale-95 {
+    transform: scale(var(--scale-95));
+  }
+
+  .scale-100 {
+    transform: scale(var(--scale-100));
+  }
+
+  .scale-105 {
+    transform: scale(var(--scale-105));
+  }
+
+  .scale-110 {
+    transform: scale(var(--scale-110));
+  }
+
+  .scale-125 {
+    transform: scale(var(--scale-125));
+  }
+
+  .translate-x-0 {
+    transform: translateX(var(--translate-x-0));
+  }
+
+  .translate-x-1 {
+    transform: translateX(var(--translate-x-1));
+  }
+
+  .translate-x-2 {
+    transform: translateX(var(--translate-x-2));
+  }
+
+  .translate-x-4 {
+    transform: translateX(var(--translate-x-4));
+  }
+
+  .translate-y-0 {
+    transform: translateY(var(--translate-y-0));
+  }
+
+  .translate-y-1 {
+    transform: translateY(var(--translate-y-1));
+  }
+
+  .translate-y-2 {
+    transform: translateY(var(--translate-y-2));
+  }
+
+  .translate-y-4 {
+    transform: translateY(var(--translate-y-4));
+  }
+
+  .rotate-0 {
+    transform: rotate(var(--rotate-0));
+  }
+
+  .rotate-1 {
+    transform: rotate(var(--rotate-1));
+  }
+
+  .rotate-2 {
+    transform: rotate(var(--rotate-2));
+  }
+
+  .rotate-3 {
+    transform: rotate(var(--rotate-3));
+  }
+
+  .rotate-6 {
+    transform: rotate(var(--rotate-6));
+  }
+
+  .rotate-12 {
+    transform: rotate(var(--rotate-12));
+  }
+
+  .rotate-45 {
+    transform: rotate(var(--rotate-45));
+  }
+
+  .rotate-90 {
+    transform: rotate(var(--rotate-90));
+  }
+
+  .rotate-180 {
+    transform: rotate(var(--rotate-180));
+  }
 
   /* Hover and interaction states */
-  .hover\:scale-105:hover { transform: scale(var(--scale-105)); }
-  .hover\:scale-110:hover { transform: scale(var(--scale-110)); }
-  .hover\:-translate-y-1:hover { transform: translateY(calc(var(--translate-y-1) * -1)); }
-  .hover\:rotate-6:hover { transform: rotate(var(--rotate-6)); }
+  .hover\:scale-105:hover {
+    transform: scale(var(--scale-105));
+  }
 
-  .active\:scale-95:active { transform: scale(var(--scale-95)); }
-  .active\:translate-y-0:active { transform: translateY(var(--translate-y-0)); }
+  .hover\:scale-110:hover {
+    transform: scale(var(--scale-110));
+  }
 
-  .focus\:scale-105:focus { transform: scale(var(--scale-105)); }
+  .hover\:-translate-y-1:hover {
+    transform: translateY(calc(var(--translate-y-1) * -1));
+  }
+
+  .hover\:rotate-6:hover {
+    transform: rotate(var(--rotate-6));
+  }
+
+  .active\:scale-95:active {
+    transform: scale(var(--scale-95));
+  }
+
+  .active\:translate-y-0:active {
+    transform: translateY(var(--translate-y-0));
+  }
+
+  .focus\:scale-105:focus {
+    transform: scale(var(--scale-105));
+  }
 }
 
 /* =============================================

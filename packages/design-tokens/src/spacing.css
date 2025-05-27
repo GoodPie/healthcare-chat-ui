@@ -6,8 +6,8 @@
  * @version 1.0.0
  */
 
-@layer tokens {
-  :root {
+@layer theme {
+
     /* =============================================
      * SPACING SCALE
      * Based on 4px grid system for accessibility
@@ -174,7 +174,7 @@
     --gap-2xl: var(--gap-12);
     --gap-3xl: var(--gap-16);
   }
-}
+
 
 /* =============================================
  * RESPONSIVE SPACING ADJUSTMENTS

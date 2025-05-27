@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 @custom-variant default {
   &:where(.message-bubble.default) {
     background-color: var(--color-medical-50);

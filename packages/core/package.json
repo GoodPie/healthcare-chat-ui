@@ -6,20 +6,24 @@
   "types": "./src/index.ts",
   "scripts": {
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsup src/index.ts --format esm,cjs",
+    "dev": "tsup src/index.ts --format esm,cjs --watch"
   },
   "dependencies": {
-    "@healthcare-chat/design-tokens": "workspace:*",
     "@sglara/cn": "^1.0.0",
-    "class-variance-authority": "^0.7.1",
-    "date-fns": "^4.1.0",
-    "react": "^19.1.0"
+    "class-variance-authority": "^0.7.0",
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.3",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
+    "eslint": "^9.27.0",
+    "jest": "^29.7.0",
+    "react": "^19.1.0",
     "tailwindcss": "^4.1.7",
-    "typescript": "^5.0.0"
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.3"
   }
 }

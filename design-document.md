@@ -275,7 +275,6 @@ npx healthcare-chat-ui@latest update message-bubble
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.js",
     "css": "app/globals.css",
     "baseColor": "medical-blue",
     "cssVariables": true

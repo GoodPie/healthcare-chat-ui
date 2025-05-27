@@ -6,8 +6,8 @@
  * @version 1.0.0
  */
 
-@layer tokens {
-  :root {
+@layer theme {
+
     /* =============================================
      * BREAKPOINT VALUES
      * Mobile-first responsive design system
@@ -100,7 +100,7 @@
     --component-scale-desktop: 1;
     --component-scale-workstation: 1.1;
   }
-}
+
 
 /* =============================================
  * RESPONSIVE MEDIA QUERIES

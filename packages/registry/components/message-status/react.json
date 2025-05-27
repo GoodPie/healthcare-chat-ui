@@ -1,0 +1,27 @@
+{
+  "name": "message-status",
+  "type": "registry:ui",
+  "description": "Healthcare chat message status indicator",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "message-status.tsx",
+      "content": "import * as React from 'react'\nimport { type MessageStatus as MessageStatusType } from './types'\nimport { cn } from '@/lib/utils'\n\nconst statusIcons: Record<string, string> = {\n  sending: '◌',\n  sent: '✓',\n  delivered: '✓✓',\n  read: '✓✓',\n  failed: '✗',\n}\n\nexport function MessageStatus({ status }: { status: MessageStatusType }) {\n  return (\n    <span \n      className={cn(\n        \"text-xs\", \n        `message-${status}`\n      )} \n      title={status}\n      aria-label={`Message ${status}`}\n    >\n      {statusIcons[status]}\n    </span>\n  )\n}",
+      "type": "registry:ui"
+    },
+    {
+      "name": "types.ts",
+      "content": "export type MessageStatus = 'sending' | 'sent' | 'delivered' | 'read' | 'failed'",
+      "type": "registry:ui"
+    }
+  ],
+  "tailwind": {
+    "config": {
+      "theme": {
+        "extend": {}
+      }
+    }
+  }
+}

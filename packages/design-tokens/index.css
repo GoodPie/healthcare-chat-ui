@@ -7,7 +7,7 @@
  * @description CSS-first design tokens following Shadcn patterns for healthcare applications
  *
  * Usage:
- * import '@healthcare-chat-ui/design-tokens/styles.css'
+ * import '@healthcare-chat-ui/design-tokens/index.css'
  *
  * Or import individual modules:
  * import '@healthcare-chat-ui/design-tokens/colors'

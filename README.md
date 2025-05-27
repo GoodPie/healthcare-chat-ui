@@ -47,17 +47,93 @@ Healthcare Chat UI Kit
 ├── React (Web)
 └── React Native (Mobile)
 
-## 🚀 Getting Started (For Users of the Library - Future)
+## 🚀 Getting Started
 
-Once the CLI and initial components are ready, you'll be able to integrate them into your project like this:
+The CLI tool is now available for adding components to your project. Here's how to use it:
+
+### How the CLI Works with the Registry
+
+The CLI interacts with the component registry to fetch and install components:
+
+1. **Component Registry**: The registry (`packages/registry`) contains:
+   - Component metadata (name, description, dependencies)
+   - Component file templates with the actual code
+   - Platform-specific implementations (React, React Native)
+
+2. **CLI Process**:
+   - When you run the `add` command, the CLI locates the component in the registry
+   - It reads the component's metadata and file templates from JSON files
+   - It copies the component files to your project's `src/components/ui` directory
+   - All dependencies and types are preserved
+
+This "components as code" approach gives you full ownership of the components in your project.
+
+### Installation
+
+You can use the CLI directly with npx:
 
 ```bash
-# Initialize healthcare-chat-ui in your project
-npx healthcare-chat-ui@latest init
+npx @healthcare-chat/cli@latest <command>
+```
 
-# Add a specific component
-npx healthcare-chat-ui@latest add message-bubble
+Or install it globally:
 
-# Add a complete chat template
-npx healthcare-chat-ui@latest add chat-room
+```bash
+npm install -g @healthcare-chat/cli
+healthcare-chat-ui <command>
+```
 
+### Available Commands
+
+Currently, the following commands are supported:
+
+```bash
+# Add a component to your project
+npx healthcare-chat-ui add <component-name>
+
+# Example: Add the message-bubble component
+npx healthcare-chat-ui add message-bubble
+```
+
+This will copy the component files to your project's `src/components/ui/<component-name>` directory.
+
+### Available Components
+
+Currently, the following components are available:
+
+- `message-bubble`: A chat message bubble with status indicators
+- `message-status`: Status indicators for message delivery (sent, delivered, read)
+
+More components will be added in future releases.
+
+## 🤝 Contributing
+
+We welcome contributions to the Healthcare Chat UI Kit! Here's how you can help:
+
+### Development Setup
+
+1. Clone the repository
+2. Install dependencies with `yarn install`
+3. Build the packages with `yarn build`
+
+### Project Structure
+
+- `packages/cli`: The CLI tool for adding components
+- `packages/registry`: Component templates and metadata
+- `packages/ui`: React implementations of components
+- `packages/design-tokens`: Healthcare-specific design tokens
+- `apps/storybook`: Component documentation and examples
+
+### Adding New Components
+
+1. Create a new component in `packages/ui/src/components`
+2. Add the component to the registry in `packages/registry/components`
+3. Update the documentation in Storybook
+4. Submit a pull request
+
+### Coding Standards
+
+- Follow TypeScript best practices
+- Ensure components are accessible (WCAG 2.1 AA)
+- Write tests for new components
+- Document your code with JSDoc comments
