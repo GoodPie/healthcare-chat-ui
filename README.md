@@ -19,8 +19,7 @@ This library provides unstyled, fully customizable components that developers ca
 * **"Components as Code":** We distribute source code, not compiled packages. You own and can customize everything.
 
 ## ⚠️ Project Status
-
-This project is currently in its **initial development and bootstrapping phase**, based on the [Chat UI Library Design Document](./DESIGN_DOCUMENT.md) (assuming you'll place the design doc here or link to it). We are actively working on Phase 1: Foundation, which includes setting up the monorepo, core utilities, design tokens, and the basic CLI.
+This project is currently in its **initial development and bootstrapping phase**, based on the [Chat UI Library Design Document](./DESIGN_DOCUMENT.md). I am actively working on Phase 1: Foundation, which includes setting up the monorepo, core utilities, design tokens, and the basic CLI.
 
 ## ✨ Features (Planned)
 
