@@ -112,6 +112,12 @@ We welcome contributions to the Healthcare Chat UI Kit! Here's how you can help:
 
 ### Development Setup
 
+For detailed development guidelines, please refer to our [Development Guidelines](./docs/development-guidelines.md) documentation.
+
+We also maintain specific guidelines for:
+- [TypeScript Configuration](./docs/typescript-configuration.md)
+- [Git Branching Strategy](./docs/git-branching-strategy.md)
+
 1. Clone the repository
 2. Install dependencies with `yarn install`
 3. Build the packages with `yarn build`
