@@ -161,18 +161,7 @@ Each component follows this registry pattern:
       "content": "...",
       "type": "registry:ui"
     }
-  ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "colors": {
-            "medical-blue": "hsl(var(--medical-blue))"
-          }
-        }
-      }
-    }
-  }
+  ]
 }
 ```
 
