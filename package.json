@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "yarn@4.9.1",
+  "engines": {
+    "node": ">=22.0.0",
+    "yarn": ">=4.9.1"
+  },
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "scripts": {
-    "build": "yarn workspace @healthcare-chat/design-tokens run build && yarn workspace @healthcare-chat/ui run build && yarn workspace @healthcare-chat/registry run build",
+    "build": "yarn workspace @healthcare-chat/design-tokens run build && yarn workspace @healthcare-chat/core run build && yarn workspace @healthcare-chat/ui run build && yarn workspace @healthcare-chat/registry run build && yarn workspace @healthcare-chat/cli run build",
     "dev": "yarn workspaces foreach --all -p run dev",
     "lint": "yarn workspaces foreach --all -p run lint",
     "test": "yarn workspaces foreach --all -p run test"
