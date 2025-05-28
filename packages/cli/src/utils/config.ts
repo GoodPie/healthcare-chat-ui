@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import {defaultConfig, RegistryConfig} from "@/types/config";
+import {defaultConfig, RegistryConfig} from "@healthcare-chat/registry";
 
 // Helper function to load config from package.json or config file
 export function loadConfig(): RegistryConfig {
@@ -14,7 +14,7 @@ export function loadConfig(): RegistryConfig {
       try {
         const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'));
         return {...defaultConfig, ...configData};
-      } catch (error) {
+      } catch (error: unknown) {
         console.warn(`Warning: Could not parse config file ${configPath}`);
       }
     }
@@ -28,7 +28,7 @@ export function loadConfig(): RegistryConfig {
       if (packageJson.componentRegistry) {
         return {...defaultConfig, ...packageJson.componentRegistry};
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.warn('Warning: Could not parse package.json');
     }
   }

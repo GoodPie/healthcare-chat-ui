@@ -7,8 +7,15 @@ import { loadConfig } from '@/utils/config';
 import { validateComponentMetadata } from '@/utils/validation';
 import { fetchComponentFromUrl, loadComponentFromLocal } from '@/registry/client';
 
+interface AddComponentOptions {
+  targetDir?: string;
+  framework?: 'react' | 'react-native';
+  force?: boolean;
+  [key: string]: unknown;
+}
+
 // Main add function
-async function addComponent(componentName: string, options: any = {}) {
+async function addComponent(componentName: string, options: AddComponentOptions = {}) {
   try {
     console.log(`Adding ${componentName} component to your project...`);
 
@@ -19,7 +26,7 @@ async function addComponent(componentName: string, options: any = {}) {
     const targetDir = options.targetDir || config.targetDir || 'src/components/ui';
     const framework = options.framework || config.framework || 'react';
 
-    let componentData: ComponentMetadata;
+    let componentData: ComponentMetadata | undefined = undefined;
 
     // Determine how to fetch the component
     if (config.registryUrl) {
@@ -45,7 +52,7 @@ async function addComponent(componentName: string, options: any = {}) {
           componentData = loadComponentFromLocal(registryPath, componentName, framework);
           found = true;
           break;
-        } catch (error) {
+        } catch (error: unknown) {
           // Continue to next path
         }
       }
@@ -60,6 +67,10 @@ async function addComponent(componentName: string, options: any = {}) {
           `}`
         );
       }
+    }
+
+    if (!componentData) {
+      throw new Error(`Component "${componentName}" not found in the registry.`);
     }
 
     // Validate component data
@@ -115,7 +126,7 @@ async function addComponent(componentName: string, options: any = {}) {
     console.log(`\n✅ Added ${componentName} component to ${path.relative(process.cwd(), componentTargetDir)}`);
     console.log(`You can now import it from "${targetDir}/${componentName}"`);
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error adding component:', error instanceof Error ? error.message : error);
     process.exit(1);
   }

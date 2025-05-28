@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
-import {defaultConfig, RegistryConfig} from "@/types/config";
+import {defaultConfig, RegistryConfig} from "@healthcare-chat/registry";
 
 const copyStyles = (targetDir: string) => {
   try {
@@ -22,14 +22,23 @@ const copyStyles = (targetDir: string) => {
     fs.copySync(stylesSource, stylesTarget);
     console.log(`✅ Copied design tokens to ${stylesTarget}`);
     return true;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error copying styles:', error instanceof Error ? error.message : error);
     return false;
   }
 }
 
+interface InitOptions {
+  registryUrl?: string;
+  registryPath?: string;
+  targetDir?: string;
+  framework?: 'react' | 'react-native';
+  force?: boolean;
+  [key: string]: unknown;
+}
+
 // Main init function
-async function initializeConfig(options: any = {}) {
+async function initializeConfig(options: InitOptions = {}) {
   try {
     console.log('Initializing Healthcare Chat UI configuration...');
 
@@ -73,7 +82,7 @@ async function initializeConfig(options: any = {}) {
     console.log('You can now use the Healthcare Chat UI CLI to add components to your project.');
     console.log('Try running: healthcare-chat-ui add message-bubble');
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error initializing configuration:', error instanceof Error ? error.message : error);
     process.exit(1);
   }
