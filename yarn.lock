@@ -817,6 +817,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@healthcare-chat/core@workspace:packages/core"
   dependencies:
+    "@healthcare-chat/design-tokens": "workspace:*"
     "@sglara/cn": "npm:^1.0.0"
     "@types/date-fns": "npm:^2.6.3"
     "@types/react": "npm:^19.1.5"
@@ -826,6 +827,7 @@ __metadata:
     eslint: "npm:^9.27.0"
     jest: "npm:^29.7.0"
     react: "npm:^19.1.0"
+    react-dom: "npm:^19.1.0"
     tailwindcss: "npm:^4.1.7"
     tsup: "npm:^8.0.1"
     typescript: "npm:^5.8.3"
@@ -917,11 +919,15 @@ __metadata:
     jest: "npm:^29.7.0"
     react: "npm:^19.1.0"
     react-dom: "npm:^19.1.0"
+    supports-color: "npm:^8.1.1"
     tailwind-merge: "npm:^2.2.1"
     tailwindcss: "npm:^4.1.7"
     tsup: "npm:^8.0.1"
     typescript: "npm:^5.8.3"
     vite: "npm:^6.3.5"
+  peerDependencies:
+    react: ^18.0.0 || ^19.0.0
+    react-dom: ^18.0.0 || ^19.0.0
   languageName: unknown
   linkType: soft
 
@@ -4048,7 +4054,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esprima@npm:^4.0.0, esprima@npm:~4.0.0":
+"esprima@npm:^4.0.0, esprima@npm:^4.0.1, esprima@npm:~4.0.0":
   version: 4.0.1
   resolution: "esprima@npm:4.0.1"
   bin:
@@ -4639,9 +4645,12 @@ __metadata:
     "@tailwindcss/postcss": "npm:^4.1.7"
     eslint: "npm:^9.27.0"
     eslint-plugin-react: "npm:^7.37.5"
+    esprima: "npm:^4.0.1"
     globals: "npm:^16.2.0"
     jest: "npm:^29.7.0"
     postcss: "npm:^8.5.3"
+    react: "npm:^19.1.0"
+    supports-color: "npm:^8.1.1"
     tailwindcss: "npm:^4.1.7"
     ts-jest: "npm:^29.3.4"
     typescript: "npm:^5.8.3"
@@ -7676,7 +7685,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:^8.0.0":
+"supports-color@npm:^8.0.0, supports-color@npm:^8.1.1":
   version: 8.1.1
   resolution: "supports-color@npm:8.1.1"
   dependencies:

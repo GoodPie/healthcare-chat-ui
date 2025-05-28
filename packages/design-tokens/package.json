@@ -20,7 +20,6 @@
     "build": "tsx build.ts"
   },
   "dependencies": {
-    "@healthcare-chat/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",

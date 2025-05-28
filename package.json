@@ -32,7 +32,10 @@
   "license": "MIT",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.7",
+    "esprima": "^4.0.1",
     "postcss": "^8.5.3",
+    "react": "^19.1.0",
+    "supports-color": "^8.1.1",
     "tailwindcss": "^4.1.7"
   }
 }
