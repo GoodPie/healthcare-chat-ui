@@ -2,19 +2,18 @@
   "name": "@healthcare-chat/registry",
   "version": "0.1.0",
   "private": true,
-  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "bin": {
-    "registry": "./dist/bin/registry.js"
-  },
+  "main": "./dist/index.js",
+  "bin": "./dist/bin/index.js",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts && tsup bin/registry.ts --format cjs --no-dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts && tsup bin/registration.ts --format cjs --no-dts --out-dir dist/bin",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "lint": "eslint .",
-    "clean": "rimraf .turbo node_modules dist",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
+    "@healthcare-chat/core": "workspace:*",
+    "@healthcare-chat/tools": "workspace:*",
     "commander": "^12.0.0",
     "fs-extra": "^11.2.0",
     "zod": "^3.25.28"
@@ -24,7 +23,6 @@
     "@types/node": "^22.15.21",
     "eslint": "^9.27.0",
     "jest": "^29.7.0",
-    "rimraf": "^5.0.5",
     "ts-jest": "^29.3.4",
     "tsup": "^8.0.1",
     "typescript": "^5.8.3"

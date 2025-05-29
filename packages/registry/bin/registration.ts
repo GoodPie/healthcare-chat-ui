@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { registerCommand } from '../src/commands/register';
-import { createComponentCommand } from '../src/commands/create-component';
-import { validateCommand } from '../src/commands/validate';
-import { docsCommand } from '../src/commands/docs';
+import { registerCommand } from '../src';
+import { 
+  createComponentCommand,
+  validateCommand,
+  docsCommand 
+} from '@healthcare-chat/tools';
 
 // Create the root command
 const program = new Command()

@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { createComponent } from '@/tools/component-creator';
+import {createComponent} from "@/tools/component-creator";
 
 /**
  * Command to create a new component
@@ -15,7 +15,16 @@ export const createComponentCommand = new Command('create-component')
   .option('--no-css', 'Skip CSS file creation')
   .option('--tests', 'Create test files')
   .option('--stories', 'Create story files')
-  .action(async (name: string, options: any) => {
+  .action(async (name: string, options: {
+    outputDir?: string;
+    description?: string;
+    platform?: 'react' | 'react-native';
+    type?: string;
+    typescript?: boolean;
+    css?: boolean;
+    tests?: boolean;
+    stories?: boolean;
+  }) => {
     try {
       const componentDir = await createComponent({
         name,
@@ -28,11 +37,11 @@ export const createComponentCommand = new Command('create-component')
         tests: options.tests || false,
         stories: options.stories || false
       });
-      
+
       console.log(`\n✅ Component created successfully at ${componentDir}`);
       console.log('\nNext steps:');
       console.log('1. Implement your component logic');
-      console.log('2. Register your component with: registry register ' + componentDir);
+      console.log('2. Register your component with: healthcare-chat-tools register ' + componentDir);
     } catch (error) {
       console.error('Error creating component:', error instanceof Error ? error.message : error);
       process.exit(1);

@@ -17,14 +17,8 @@ export function getTemplatePath(name: string): string {
 // Export schemas and types
 export {
   ComponentMetadataSchema,
-  type ComponentMetadata
 } from "./schemas";
 
-// Export config types
-export {
-  type RegistryConfig,
-  defaultConfig
-} from "./types/config";
 
 // Export utility functions
 export {
@@ -35,6 +29,12 @@ export {
   validateComponentMetadata
 } from "./utils/validation";
 
+// Export client functions
+export {
+  fetchComponentFromUrl,
+  loadComponentFromLocal
+} from "./utils/client";
+
 // Export register functionality
 export {
   registerComponent
@@ -42,31 +42,12 @@ export {
 
 export {
   registerComponent as registerComponentFromDir,
-  type RegisterComponentOptions
 } from "./commands/register";
 
-// Export component creation functionality
 export {
-  createComponent,
-  type CreateComponentOptions
-} from "./tools/component-creator";
+  type RegisterComponentOptions
+} from "./types/register-component-options";
 
-// Export metadata generation functionality
-export {
-  generateMetadata,
-  type GenerateMetadataOptions
-} from "./tools/metadata-generator";
 
-// Export dependency analysis functionality
-export {
-  analyzeDependencies,
-  analyzeRegistryDependencies,
-  type FileWithContent,
-  type DetectedDependencies
-} from "./tools/dependency-analyzer";
-
-// Export commands
+// Export register command
 export { registerCommand } from "./commands/register";
-export { createComponentCommand } from "./commands/create-component";
-export { validateCommand } from "./commands/validate";
-export { docsCommand } from "./commands/docs";

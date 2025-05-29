@@ -5,7 +5,6 @@ import { addCommand } from './commands/add';
 import { registerCommand } from './commands/register';
 import { initCommand } from './commands/init';
 
-
 // Create the root command
 const program = new Command()
   .name('healthcare-chat-ui')

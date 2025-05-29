@@ -1,8 +1,8 @@
 import {format} from 'date-fns'
 import {MessageStatus} from '../message-status/message-status'
-import { cn } from '@sglara/cn'
-import type { MessageBubbleProps } from './types'
-import type { MessageStatus as MessageStatusType } from '../message-status/types'
+import {cn} from '@sglara/cn'
+import type {MessageBubbleProps} from './types'
+import type {MessageStatus as MessageStatusType} from '../message-status/types'
 import "./message-bubble.css";
 
 export function MessageBubble({

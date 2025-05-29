@@ -1,13 +1,23 @@
 import fs from 'fs-extra';
 import path from 'path';
-import { ComponentMetadata, validateComponentMetadata } from '@healthcare-chat/registry';
+import { validateComponentMetadata } from './validation';
+import { ComponentMetadata } from '@healthcare-chat/core';
 
-// Helper function to fetch component from remote registry
-export async function fetchComponentFromUrl(url: string, componentName: string, framework: 'react' | 'react-native'): Promise<ComponentMetadata> {
+/**
+ * Fetches component metadata from a remote registry URL
+ * @param url The base URL of the registry
+ * @param componentName The name of the component to fetch
+ * @param framework The framework of the component (react, react-native)
+ * @returns The validated component metadata
+ */
+export async function fetchComponentFromUrl(
+  url: string, 
+  componentName: string, 
+  framework: 'react' | 'react-native'
+): Promise<ComponentMetadata> {
   const fullUrl = `${url}/${framework}/${componentName}/${framework}.json`;
 
   try {
-    // For Node.js environments, you might want to use node-fetch or similar
     const response = await fetch(fullUrl);
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -20,8 +30,18 @@ export async function fetchComponentFromUrl(url: string, componentName: string, 
   }
 }
 
-// Helper function to load component from local registry
-export function loadComponentFromLocal(registryPath: string, componentName: string, framework: 'react' | 'react-native'): ComponentMetadata {
+/**
+ * Loads component metadata from a local registry path
+ * @param registryPath The path to the local registry
+ * @param componentName The name of the component to load
+ * @param framework The framework of the component (react, react-native)
+ * @returns The validated component metadata
+ */
+export function loadComponentFromLocal(
+  registryPath: string, 
+  componentName: string, 
+  framework: 'react' | 'react-native'
+): ComponentMetadata {
   const componentPath = path.join(registryPath, componentName, `${framework}.json`);
 
   if (!fs.existsSync(componentPath)) {

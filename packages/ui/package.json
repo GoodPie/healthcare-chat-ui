@@ -2,9 +2,9 @@
   "name": "@healthcare-chat/ui",
   "version": "0.1.0",
   "private": true,
+  "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -14,14 +14,16 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react --external react-dom --inject-style",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --external react --external react-dom --inject-style --watch"
+    "dev": "tsup src/index.ts --format esm,cjs --dts --external react --external react-dom --inject-style --watch",
+    "dev-tools": "tools"
   },
   "dependencies": {
+    "@healthcare-chat/cli": "workspace:*",
     "@healthcare-chat/core": "workspace:*",
     "@healthcare-chat/design-tokens": "workspace:*",
-    "@sglara/cn": "^1.0.0",
+    "@healthcare-chat/tools": "workspace:*",
     "@tailwindcss/vite": "^4.1.7",
     "@vitejs/plugin-react": "^4.5.0",
     "class-variance-authority": "^0.7.0",

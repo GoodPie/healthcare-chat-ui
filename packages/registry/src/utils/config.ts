@@ -1,6 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
-import {defaultConfig, RegistryConfig} from "@/types/config";
+import {defaultConfig, type RegistryConfig } from '@healthcare-chat/core';
+
 
 // Helper function to load config from package.json or config file
 export function loadConfig(): RegistryConfig {

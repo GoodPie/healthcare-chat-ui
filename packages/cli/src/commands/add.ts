@@ -2,10 +2,13 @@ import { Command } from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { getComponentPath, type ComponentMetadata } from '@healthcare-chat/registry';
+import { 
+  type ComponentMetadata, 
+  fetchComponentFromUrl, 
+  loadComponentFromLocal,
+  validateComponentMetadata 
+} from '@healthcare-chat/registry';
 import { loadConfig } from '@/utils/config';
-import { validateComponentMetadata } from '@/utils/validation';
-import { fetchComponentFromUrl, loadComponentFromLocal } from '@/registry/client';
 
 interface AddComponentOptions {
   targetDir?: string;
@@ -24,18 +27,18 @@ async function addComponent(componentName: string, options: AddComponentOptions 
 
     // Override config with command line options
     const targetDir = options.targetDir || config.targetDir || 'src/components/ui';
-    const framework = options.framework || config.framework || 'react';
+    const platform = options.framework || config.framework || 'react';
 
     let componentData: ComponentMetadata | undefined = undefined;
 
     // Determine how to fetch the component
     if (config.registryUrl) {
       // Fetch from remote registry
-      componentData = await fetchComponentFromUrl(config.registryUrl, componentName, framework);
+      componentData = await fetchComponentFromUrl(config.registryUrl, componentName, platform);
     } else if (config.registryPath) {
       // Load from local registry
       const resolvedRegistryPath = path.resolve(process.cwd(), config.registryPath);
-      componentData = loadComponentFromLocal(resolvedRegistryPath, componentName, framework);
+      componentData = loadComponentFromLocal(resolvedRegistryPath, componentName, platform);
     } else {
       // Fallback: try to find registry in common locations
       const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -49,7 +52,7 @@ async function addComponent(componentName: string, options: AddComponentOptions 
       let found = false;
       for (const registryPath of commonRegistryPaths) {
         try {
-          componentData = loadComponentFromLocal(registryPath, componentName, framework);
+          componentData = loadComponentFromLocal(registryPath, componentName, platform);
           found = true;
           break;
         } catch (error: unknown) {
@@ -137,6 +140,6 @@ export const addCommand = new Command('add')
   .description('Add a component to your project')
   .argument('<component>', 'The component to add')
   .option('-t, --target-dir <dir>', 'Target directory for components')
-  .option('-f, --framework <framework>', 'Framework (react, vue, svelte)')
+  .option('-p, --platform <platform>', 'Platform (react, react-native) (default: \'react\')')
   .option('--force', 'Overwrite existing component')
   .action(addComponent);

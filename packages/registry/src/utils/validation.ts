@@ -1,4 +1,5 @@
-import {ComponentMetadataSchema, ComponentMetadata} from '@/schemas';
+import {ComponentMetadataSchema} from '@/schemas';
+import { ComponentMetadata } from '@healthcare-chat/core';
 
 export function validateComponentMetadata(data: any): ComponentMetadata {
   try {

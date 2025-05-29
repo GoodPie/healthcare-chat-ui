@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { ComponentMetadata } from '@/schemas';
-import { FileWithContent, analyzeDependencies, DetectedDependencies } from './dependency-analyzer';
+import { ComponentMetadata, FileWithContent } from '@healthcare-chat/core';
+import { analyzeDependencies, DetectedDependencies } from './dependency-analyzer';
 
 /**
  * Options for generating component metadata
@@ -59,7 +59,7 @@ export async function generateMetadata(options: GenerateMetadataOptions): Promis
     type = 'registry:ui',
     platform = 'react',
     // Ensure file extensions have dots for consistency
-    fileExtensions = (options.fileExtensions || ['tsx', 'jsx', 'ts', 'js', 'css']).map(ext => 
+    fileExtensions = (options.fileExtensions || ['tsx', 'jsx', 'ts', 'js', 'css']).map(ext =>
       ext.startsWith('.') ? ext : `.${ext}`
     ),
     excludePatterns = [],
@@ -145,7 +145,7 @@ export async function generateMetadata(options: GenerateMetadataOptions): Promis
   }
 
   // Prepare the component data
-  const componentData: ComponentMetadata = {
+  return {
     name: componentName,
     type: metadata.type || type,
     description: description || metadata.description || `${componentName} component`,
@@ -162,8 +162,6 @@ export async function generateMetadata(options: GenerateMetadataOptions): Promis
     license: metadata.license,
     tags: metadata.tags || []
   };
-
-  return componentData;
 }
 
 /**
@@ -175,5 +173,3 @@ function shouldExcludeFile(fileName: string, excludePatterns: string[]): boolean
     return regex.test(fileName);
   });
 }
-
-// Use analyzeDependencies from dependency-analyzer.ts

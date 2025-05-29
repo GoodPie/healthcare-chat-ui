@@ -48,7 +48,7 @@ async function initializeConfig(options: InitOptions = {}) {
       ...(options.registryUrl ? { registryUrl: options.registryUrl } : {}),
       ...(options.registryPath ? { registryPath: options.registryPath } : {}),
       ...(options.targetDir ? { targetDir: options.targetDir } : {}),
-      ...(options.framework ? { framework: options.framework } : {})
+      ...(options.platform ? { platform: options.platform } : {})
     };
 
     // Determine the config file path
@@ -71,7 +71,7 @@ async function initializeConfig(options: InitOptions = {}) {
     console.log(`✅ Created configuration file at ${configFilePath}`);
 
     // Copy design tokens/styles
-    const targetDir = path.resolve(process.cwd(), config.targetDir);
+    const targetDir = path.resolve(process.cwd(), config.targetDir || 'src/components/ui');
     const stylesCopied = copyStyles(targetDir);
 
     if (stylesCopied) {
@@ -92,8 +92,8 @@ async function initializeConfig(options: InitOptions = {}) {
 export const initCommand = new Command('init')
   .description('Initialize Healthcare Chat UI configuration in your project')
   .option('-u, --registry-url <url>', 'URL to a remote component registry')
-  .option('-p, --registry-path <path>', 'Path to a local component registry')
+  .option('-r, --registry-path <path>', 'Path to a local component registry')
   .option('-t, --target-dir <dir>', `Target directory for components (default: "${defaultConfig.targetDir}")`)
-  .option('-f, --framework <framework>', `Framework to use (react, vue, svelte) (default: "${defaultConfig.framework}")`)
+  .option('-p, --platform <platform>', `Platform to use (react, react-native) (default: "${defaultConfig.framework}")`)
   .option('--force', 'Overwrite existing configuration if it exists')
   .action(initializeConfig);

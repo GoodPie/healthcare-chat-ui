@@ -1,14 +1,37 @@
-import { type MessageStatus } from '../message-status/types'
+import React from 'react';
 
-export interface MessageBubbleProps {
-  /** The message content to display */
-  message: string
-  /** The timestamp of the message */
-  timestamp: Date
-  /** Whether this message was sent by the current user */
-  isOwnMessage?: boolean
-  /** The delivery status of the message (only shown for own messages) */
-  status?: MessageStatus
-  /** Additional CSS classes to apply */
-  className?: string
-} 
+/**
+ * Props for the MessageBubble component
+ */
+export interface MessageBubbleProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * The content of the component
+   */
+  children?: React.ReactNode;
+
+  /**
+   * Additional CSS class names
+   */
+  className?: string;
+
+  /**
+   * Whether the message is from the user
+   */
+  isOwnMessage?: boolean;
+
+  /**
+   * Status of the message (e.g., 'sent', 'received', 'error')
+   */
+  status: 'pending' | 'sent' | 'received' | 'error';
+
+  /**
+   * Timestamp of the message
+   */
+  timestamp: Date;
+
+  /**
+   * The message text
+   */
+  message: string;
+
+}

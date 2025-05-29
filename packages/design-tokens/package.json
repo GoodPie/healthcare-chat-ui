@@ -19,8 +19,6 @@
   "scripts": {
     "build": "tsx build.ts"
   },
-  "dependencies": {
-  },
   "devDependencies": {
     "@types/node": "^22.15.21",
     "eslint": "^9.27.0",

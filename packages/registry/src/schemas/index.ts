@@ -18,5 +18,3 @@ export const ComponentMetadataSchema = z.object({
   license: z.string().optional(),
   tags: z.array(z.string()).optional()
 })
-
-export type ComponentMetadata = z.infer<typeof ComponentMetadataSchema>

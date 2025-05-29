@@ -1,38 +1,29 @@
 {
-  "name": "@healthcare-chat/cli",
+  "name": "@healthcare-chat/tools",
   "version": "0.1.0",
   "private": true,
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
-  "bin": {
-    "healthcare-chat-ui": "./dist/index.js"
-  },
+  "bin": "./dist/bin/tools.js",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "build": "tsup src/index.ts --format esm,cjs --dts && tsup bin/tools.ts --format cjs --no-dts --out-dir dist/bin",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
     "lint": "eslint .",
-    "test": "jest __tests__/unit/"
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
-    "@healthcare-chat/registry": "workspace:*",
+    "@healthcare-chat/core": "workspace:*",
     "commander": "^12.0.0",
     "fs-extra": "^11.2.0",
-    "jsonfile": "^6.1.0",
-    "punycode": "^2.3.1",
-    "util": "^0.12.5",
     "zod": "^3.25.28"
   },
   "devDependencies": {
+    "@types/commander": "^2.12.2",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.14",
-    "@types/mock-fs": "^4.13.4",
     "@types/node": "^22.15.21",
     "eslint": "^9.27.0",
-    "execa": "^5.1.1",
     "jest": "^29.7.0",
-    "jest-cli": "^30.0.0-beta.3",
-    "jest-environment-node": "^29.7.0",
-    "mock-fs": "^5.2.0",
     "ts-jest": "^29.3.4",
     "tsup": "^8.0.1",
     "typescript": "^5.8.3"

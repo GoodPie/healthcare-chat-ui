@@ -1,0 +1,32 @@
+{
+  "name": "avatar",
+  "type": "registry:ui",
+  "description": "Avatar component",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "name": "avatar.css",
+      "content": ".avatar {\n  /* Add your styles here */\n  display: block;\n  padding: 1rem;\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "name": "avatar.tsx",
+      "content": "import React from 'react';\nimport { cn } from '@sglara/cn';\nimport { AvatarProps } from './types';\nimport './avatar.css';\n\nexport const Avatar: React.FC<AvatarProps> = ({ \n  children, \n  className,\n  ...props\n}) => {\n  return (\n    <div \n      className={cn('avatar', className)}\n      {...props}\n    >\n      {children}\n    </div>\n  );\n};\n",
+      "type": "registry:ui"
+    },
+    {
+      "name": "index.ts",
+      "content": "export { Avatar } from './avatar';\n",
+      "type": "registry:ui"
+    },
+    {
+      "name": "types.ts",
+      "content": "import React from 'react';\n\n/**\n * Props for the Avatar component\n */\nexport interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {\n  /**\n   * The content of the component\n   */\n  children?: React.ReactNode;\n\n  /**\n   * Additional CSS class names\n   */\n  className?: string;\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "version": "1.0.0",
+  "tags": []
+}
