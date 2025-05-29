@@ -14,6 +14,12 @@ export {type RegistryConfig, defaultConfig, defaultPlatform} from "./types/regis
 
 // Export utilities
 export * from './utils/string-utils';
+export {
+  type Logger,
+  consoleLogger
+} from "./utils/logger";
+
+export * from './utils/validations';
 
 // Export hooks
 export * from './hooks/useMessageFormatter';
