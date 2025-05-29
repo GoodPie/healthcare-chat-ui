@@ -18,7 +18,7 @@ export interface DetectedDependencies {
 /**
  * Analyze dependencies in component files
  */
-export function analyzeDependencies(files: FileWithContent[]): DetectedDependencies {
+export function analyseDependencies(files: FileWithContent[]): DetectedDependencies {
   const dependencies = new Set<string>();
   const devDependencies = new Set<string>();
 
@@ -86,22 +86,23 @@ export function analyzeDependencies(files: FileWithContent[]): DetectedDependenc
 }
 
 /**
- * Analyze registry dependencies in component files
+ * Analyse registry dependencies in component files
  */
-export function analyzeRegistryDependencies(files: FileWithContent[]): string[] {
+export function analyseRegistrationDependencies(files: FileWithContent[]): string[] {
   const registryDependencies = new Set<string>();
 
   for (const file of files) {
     const content = file.content;
 
     // Match import statements for registry components
-    // This is a simplified approach - in a real implementation, you would need
-    // to analyze the imports more carefully to determine if they are registry components
+    // This is a simplified approach
+    // TODO: Improve this to handle different import styles and patterns
     const importMatches = content.matchAll(/^import.*from\s+['"]\.\.\/([^\/'"]+)['"]/gm);
     for (const match of importMatches) {
       const componentName = match[1];
       registryDependencies.add(componentName);
     }
+
   }
 
   return Array.from(registryDependencies);

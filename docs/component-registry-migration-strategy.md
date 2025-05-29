@@ -47,7 +47,7 @@ packages/
 │   │   ├── tools/        # Developer tooling
 │   │   │   ├── component-creator.ts
 │   │   │   ├── metadata-generator.ts
-│   │   │   └── dependency-analyzer.ts
+│   │   │   └── dependency-analyser.ts
 │   │   ├── schemas/      # Existing schemas
 │   │   └── utils/        # Utility functions
 │   └── bin/              # CLI entry point for developer tools

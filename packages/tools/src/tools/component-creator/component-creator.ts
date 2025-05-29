@@ -1,10 +1,8 @@
-#!/usr/bin/env node
-
 import * as nodeFs from 'node:fs';
 import * as nodePath from 'node:path';
-import {ComponentMetadata, consoleLogger, toKebabCase, validatePascalCase} from '@healthcare-chat/core';
-import {defaultFileContentGenerator} from "src/tools/component-creator";
-
+import {ComponentMetadata, consoleLogger} from '@healthcare-chat/core';
+import {defaultFileContentGenerator} from "@/tools/component-creator";
+import {toKebabCase, validatePascalCase} from "@/utils";
 /**
  * Options for creating a new component
  */

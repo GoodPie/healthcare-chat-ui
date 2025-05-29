@@ -1,7 +1,6 @@
 // Export component creation functionality
 export {
   createComponent,
-  type CreateComponentOptions
 } from "./tools/component-creator";
 
 // Export metadata generation functionality
@@ -12,10 +11,10 @@ export {
 
 // Export dependency analysis functionality
 export {
-  analyzeDependencies,
-  analyzeRegistryDependencies,
+  analyseDependencies,
+  analyseRegistrationDependencies,
   type DetectedDependencies
-} from "./tools/dependency-analyzer";
+} from "./tools/dependency-analyser";
 
 // Export commands
 export { createComponentCommand } from "./commands/create-component";

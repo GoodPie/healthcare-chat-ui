@@ -31,7 +31,6 @@ export const createComponentCommand = new Command('create-component')
         outputDir: options.outputDir,
         description: options.description || `${name} component`,
         type: options.type,
-        platform: options.platform,
         typescript: options.typescript !== false,
         css: options.css !== false,
         tests: options.tests || false,

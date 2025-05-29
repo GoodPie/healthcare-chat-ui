@@ -17,7 +17,7 @@ This document provides a comprehensive list of changes made to implement the new
 
 3. **Registry Package - Tools**
    - `packages/registry/src/tools/component-creator.ts` - Tool for creating component scaffolding
-   - `packages/registry/src/tools/dependency-analyzer.ts` - Tool for analyzing component dependencies
+   - `packages/registry/src/tools/dependency-analyser.ts` - Tool for analyzing component dependencies
    - `packages/registry/src/tools/metadata-generator.ts` - Tool for generating component metadata
    - `packages/registry/src/tools/client.ts` - Client for interacting with component registry
 

@@ -1,7 +1,7 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { ComponentMetadata, FileWithContent } from '@healthcare-chat/core';
-import { analyzeDependencies, DetectedDependencies } from './dependency-analyzer';
+import { analyseDependencies, DetectedDependencies } from './dependency-analyser';
 
 /**
  * Options for generating component metadata
@@ -57,7 +57,6 @@ export async function generateMetadata(options: GenerateMetadataOptions): Promis
     name,
     description,
     type = 'registry:ui',
-    platform = 'react',
     // Ensure file extensions have dots for consistency
     fileExtensions = (options.fileExtensions || ['tsx', 'jsx', 'ts', 'js', 'css']).map(ext =>
       ext.startsWith('.') ? ext : `.${ext}`
@@ -140,7 +139,7 @@ export async function generateMetadata(options: GenerateMetadataOptions): Promis
   // Auto-detect dependencies if enabled
   let detectedDeps: DetectedDependencies = { dependencies: [], devDependencies: [] };
   if (autoDetectDependencies) {
-    detectedDeps = analyzeDependencies(componentFiles);
+    detectedDeps = analyseDependencies(componentFiles);
     console.log(`🔍 Auto-detected ${detectedDeps.dependencies.length} dependencies`);
   }
 
