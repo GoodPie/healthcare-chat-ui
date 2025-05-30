@@ -24,6 +24,7 @@
     "@healthcare-chat/component-tools": "workspace:*",
     "@healthcare-chat/core": "workspace:*",
     "@healthcare-chat/design-tokens": "workspace:*",
+    "@sglara/cn": "^1.0.0",
     "@tailwindcss/vite": "^4.1.7",
     "@vitejs/plugin-react": "^4.5.0",
     "class-variance-authority": "^0.7.0",
