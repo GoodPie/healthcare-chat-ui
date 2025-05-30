@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
-import { validateComponentMetadata } from './validation';
-import { ComponentMetadata } from '@healthcare-chat/core';
+import {validateComponentMetadata} from './validation';
+import {ComponentMetadata} from '@healthcare-chat/core';
 
 /**
  * Fetches component metadata from a remote registry URL
@@ -16,16 +16,21 @@ export async function fetchComponentFromUrl(
   framework: 'react' | 'react-native'
 ): Promise<ComponentMetadata> {
   const fullUrl = `${url}/${framework}/${componentName}/${framework}.json`;
-  
+
   try {
     const response = await fetch(fullUrl);
-    
+
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
-    
+
     const data = await response.json();
-    return validateComponentMetadata(data);
+    const validatedResult = validateComponentMetadata(data);
+    if (validatedResult.isFailure) {
+      throw new Error(`Invalid component metadata from ${fullUrl}: ${validatedResult.error.message}`);
+    }
+
+    return validatedResult.value;
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     throw new Error(`Failed to fetch component from ${fullUrl}: ${errorMessage}`);
@@ -45,14 +50,19 @@ export function loadComponentFromLocal(
   framework: 'react' | 'react-native'
 ): ComponentMetadata {
   const componentPath = path.join(registryPath, componentName, `${framework}.json`);
-  
+
   if (!fs.existsSync(componentPath)) {
     throw new Error(`Component "${componentName}" not found at ${componentPath}`);
   }
-  
+
   try {
     const rawData = JSON.parse(fs.readFileSync(componentPath, 'utf8'));
-    return validateComponentMetadata(rawData);
+    const validatedResult = validateComponentMetadata(rawData);
+    if (validatedResult.isFailure) {
+      throw new Error(`Invalid component metadata in ${componentPath}: ${validatedResult.error.message}`);
+    }
+
+    return validatedResult.value;
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     throw new Error(`Failed to parse component metadata: ${errorMessage}`);

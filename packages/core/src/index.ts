@@ -19,7 +19,29 @@ export {
   consoleLogger
 } from "./utils/logger";
 
+// Export validation utilities
 export * from './utils/validations';
+
+// Export error classes
+export {
+  BaseError,
+  ValidationError,
+  ConfigurationError,
+  ComponentError,
+  NetworkError
+} from './utils/errors';
+
+// Export Result pattern
+export {
+  type Result,
+  Success,
+  Failure,
+  success,
+  failure,
+  parseWithZod,
+  tryCatch,
+  tryCatchSync
+} from './utils/result';
 
 // Export hooks
 export * from './hooks/useMessageFormatter';

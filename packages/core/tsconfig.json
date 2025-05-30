@@ -11,10 +11,9 @@
     "outDir": "dist",
     "rootDir": ".",
     "baseUrl": ".",
-    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
   },
   "include": ["src/**/*", "types/**/*", "hooks/**/*", "utils/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.tsx"]

@@ -1,33 +1,37 @@
-import { ComponentMetadataSchema } from '../schemas';
-import { ComponentMetadata } from '@healthcare-chat/core';
+import { ComponentMetadataSchema } from '@/schemas';
+import {
+  ComponentMetadata,
+  ValidationError,
+  Result,
+  success,
+  failure,
+  parseWithZod
+} from '@healthcare-chat/core';
 
 /**
  * Validate component metadata against the schema
+ * @returns A Result containing either the validated metadata or a ValidationError
  */
-export function validateComponentMetadata(data: any): ComponentMetadata {
+export function validateComponentMetadata(data: unknown): Result<ComponentMetadata, ValidationError> {
   try {
-    // Use the zod schema to validate the metadata
-    const parseResult = ComponentMetadataSchema.safeParse(data);
-    if (!parseResult.success) {
-      throw new Error(`Invalid component metadata: ${parseResult.error}`);
+    // Use the parseWithZod helper from core to validate with the schema
+    const parseResult = parseWithZod(ComponentMetadataSchema, data);
+    if (parseResult.isFailure) {
+      return failure(
+        new ValidationError(
+          `Invalid component metadata: ${parseResult.error.message}`,
+          {originalError: parseResult.error}
+        )
+      );
     }
-    return parseResult.data as ComponentMetadata;
+
+    return success(parseResult.value as ComponentMetadata);
   } catch (error) {
-    // Fallback to basic validation if zod schema validation fails
-    if (!data || typeof data !== 'object') {
-      throw new Error('Invalid component metadata: not an object');
-    }
-    if (!data.name || typeof data.name !== 'string') {
-      throw new Error('Invalid component metadata: missing or invalid name');
-    }
-    if (!Array.isArray(data.files)) {
-      throw new Error('Invalid component metadata: files must be an array');
-    }
-    for (const file of data.files) {
-      if (!file.name || !file.content) {
-        throw new Error('Invalid component metadata: each file must have name and content');
-      }
-    }
-    return data as ComponentMetadata;
+    return failure(
+      new ValidationError(
+        `Failed to validate component metadata: ${error instanceof Error ? error.message : String(error)}`,
+        {originalError: error}
+      )
+    );
   }
 }
