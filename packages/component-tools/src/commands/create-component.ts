@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { createComponent } from "../tools/component-creator";
+import { createComponent } from "@/tools";
 
 /**
  * Command to create a new component

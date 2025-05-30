@@ -1,10 +1,10 @@
 import { Command } from 'commander';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { loadConfig } from "../utils/config";
-import { validateComponentMetadata } from "../utils/validation";
-import { generateMetadata } from "../tools/metadata-generator";
-import { RegisterComponentOptions } from "../types/register-component-options";
+import { loadConfig } from "@/utils";
+import { validateComponentMetadata } from "@/utils";
+import { generateMetadata } from "@/tools";
+import { RegisterComponentOptions } from "@/types/register-component-options";
 import { 
   ComponentMetadata, 
   defaultConfig, 

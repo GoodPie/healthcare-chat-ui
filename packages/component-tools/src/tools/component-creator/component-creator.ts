@@ -1,8 +1,8 @@
 import * as nodeFs from 'node:fs';
 import * as nodePath from 'node:path';
 import { ComponentMetadata, consoleLogger } from '@healthcare-chat/core';
-import { defaultFileContentGenerator } from "./file-content-generator";
-import { toKebabCase, validatePascalCase } from "../../utils";
+import { defaultFileContentGenerator } from "@/tools";
+import { toKebabCase, validatePascalCase } from "@/utils";
 
 /**
  * Options for creating a new component

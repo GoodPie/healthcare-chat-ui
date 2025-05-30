@@ -1,8 +1,8 @@
 import { Command } from 'commander';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { generateMetadata } from '../tools/metadata-generator';
-import { validateComponentMetadata } from '../utils/validation';
+import { generateMetadata } from '@/tools';
+import { validateComponentMetadata } from '@/utils';
 import { 
   BaseError, 
   ValidationError, 

@@ -10,7 +10,7 @@
   "workspaces": [
     "packages/*",
     "apps/*",
-    "docs"
+    "docs/"
   ],
   "scripts": {
     "build": "yarn workspaces foreach --all -p run build",
@@ -66,7 +66,6 @@
     "events": "^3.3.0",
     "string_decoder": "^1.3.0",
     "tailwindcss": "^4.1.7",
-    "react": "^19.1.0",
     "@eslint/css": "^0.8.1",
     "@eslint/js": "^9.27.0",
     "@eslint/json": "^0.12.0"
