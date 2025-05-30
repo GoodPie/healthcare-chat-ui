@@ -1,19 +1,20 @@
-import { Command } from 'commander';
+import {Command} from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
-import { fileURLToPath } from 'url';
-import { 
-  type ComponentMetadata, 
-  fetchComponentFromUrl, 
+import {fileURLToPath} from 'url';
+import {
+  type ComponentMetadata,
+  fetchComponentFromUrl,
   loadComponentFromLocal,
-  validateComponentMetadata 
-} from '@healthcare-chat/registry';
-import { loadConfig } from '@/utils/config';
+  validateComponentMetadata
+} from '@healthcare-chat/component-tools';
+import {loadConfig} from '@/utils/config';
 
 interface AddComponentOptions {
   targetDir?: string;
   framework?: 'react' | 'react-native';
   force?: boolean;
+
   [key: string]: unknown;
 }
 
@@ -84,7 +85,7 @@ async function addComponent(componentName: string, options: AddComponentOptions 
 
     // Create the target directory if it doesn't exist
     if (!fs.existsSync(resolvedTargetDir)) {
-      fs.mkdirSync(resolvedTargetDir, { recursive: true });
+      fs.mkdirSync(resolvedTargetDir, {recursive: true});
     }
 
     // Create a directory for the component
@@ -100,7 +101,7 @@ async function addComponent(componentName: string, options: AddComponentOptions 
         console.log(`Overwriting existing component at ${componentTargetDir}`);
       }
     } else {
-      fs.mkdirSync(componentTargetDir, { recursive: true });
+      fs.mkdirSync(componentTargetDir, {recursive: true});
     }
 
     // Copy each file from the component
@@ -110,7 +111,7 @@ async function addComponent(componentName: string, options: AddComponentOptions 
       // Create subdirectories if needed
       const fileDir = path.dirname(filePath);
       if (!fs.existsSync(fileDir)) {
-        fs.mkdirSync(fileDir, { recursive: true });
+        fs.mkdirSync(fileDir, {recursive: true});
       }
 
       fs.writeFileSync(filePath, file.content);

@@ -9,10 +9,12 @@
   },
   "workspaces": [
     "packages/*",
-    "apps/*"
+    "apps/*",
+    "docs"
   ],
   "scripts": {
-    "build": "yarn workspace @healthcare-chat/design-tokens run build && yarn workspace @healthcare-chat/core run build && yarn workspace @healthcare-chat/ui run build && yarn workspace @healthcare-chat/tools run build && yarn workspace @healthcare-chat/registry run build && yarn workspace @healthcare-chat/cli run build",
+    "build": "yarn workspace @healthcare-chat/design-tokens run build && yarn workspace @healthcare-chat/core run build && yarn workspace @healthcare-chat/component-tools run build && yarn workspace @healthcare-chat/ui run build && yarn workspace @healthcare-chat/cli run build",
+    "build:docs": "yarn workspace docs run build",
     "dev": "yarn workspaces foreach --all -p run dev",
     "lint": "yarn workspaces foreach --all -p run lint",
     "test": "yarn workspaces foreach --all -p run test"

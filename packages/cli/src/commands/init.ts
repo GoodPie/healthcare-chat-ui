@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
-import {defaultConfig, RegistryConfig} from "@healthcare-chat/registry";
+import {defaultConfig, RegistryConfig} from "@healthcare-chat/component-tools";
 
 const copyStyles = (targetDir: string) => {
   try {

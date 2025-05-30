@@ -8,14 +8,14 @@ import {defineConfig} from "eslint/config";
 
 
 export default defineConfig([{
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-    plugins: {js},
-    extends: ["eslint:recommended", "plugin:react/recommended"],
-    rules: {
-        "react/react-in-jsx-scope": "off", // Not needed with React 17+
-    }
+  files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
+  plugins: {js},
+  extends: ["eslint:recommended", "plugin:react/recommended"],
+  rules: {
+    "react/react-in-jsx-scope": "off", // Not needed with React 17+
+  }
 }, {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], languageOptions: {globals: globals.browser}
+  files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"], languageOptions: {globals: globals.browser}
 }, tseslint.configs.recommended, pluginReact.configs.flat.recommended, {
-    files: ["**/*.json"], plugins: {json}, language: "json/json", extends: ["json/recommended"]
+  files: ["**/*.json"], plugins: {json}, language: "json/json", extends: ["json/recommended"]
 }, {files: ["**/*.css"], plugins: {css}, language: "css/css", extends: ["css/recommended"]},]);

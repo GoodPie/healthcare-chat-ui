@@ -17,13 +17,13 @@
     "test": "jest --passWithNoTests",
     "build": "tsup src/index.ts --format esm,cjs --dts --external react --external react-dom --inject-style",
     "dev": "tsup src/index.ts --format esm,cjs --dts --external react --external react-dom --inject-style --watch",
-    "dev-tools": "tools"
+    "dev-tools": "component-tools"
   },
   "dependencies": {
     "@healthcare-chat/cli": "workspace:*",
+    "@healthcare-chat/component-tools": "workspace:*",
     "@healthcare-chat/core": "workspace:*",
     "@healthcare-chat/design-tokens": "workspace:*",
-    "@healthcare-chat/tools": "workspace:*",
     "@tailwindcss/vite": "^4.1.7",
     "@vitejs/plugin-react": "^4.5.0",
     "class-variance-authority": "^0.7.0",

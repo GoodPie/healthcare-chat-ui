@@ -1,6 +1,6 @@
 import fs from 'fs-extra';
 import path from 'path';
-import {defaultConfig, RegistryConfig} from "@healthcare-chat/registry";
+import {defaultConfig, RegistryConfig} from "@healthcare-chat/component-tools";
 
 // Helper function to load config from package.json or config file
 export function loadConfig(): RegistryConfig {

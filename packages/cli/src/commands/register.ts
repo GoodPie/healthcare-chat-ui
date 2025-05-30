@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { registerComponentFromDir, RegisterComponentOptions } from '@healthcare-chat/registry';
+import { registerComponentFromDir, RegisterComponentOptions } from '@healthcare-chat/component-tools';
 
 // Define the register command
 export const registerCommand = new Command('register')

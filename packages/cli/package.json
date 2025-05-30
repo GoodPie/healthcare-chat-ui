@@ -14,7 +14,7 @@
     "test": "jest __tests__/unit/"
   },
   "dependencies": {
-    "@healthcare-chat/registry": "workspace:*",
+    "@healthcare-chat/component-tools": "workspace:*",
     "commander": "^12.0.0",
     "fs-extra": "^11.2.0",
     "jsonfile": "^6.1.0",
