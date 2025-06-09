@@ -1,23 +1,28 @@
 {
-  "name": "@healthcare-chat-ui/design-tokens",
+  "name": "@healthcare-chat/design-tokens",
   "version": "0.1.0",
   "private": true,
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "eslint .",
-    "clean": "rimraf .turbo node_modules dist"
+  "main": "index.js",
+  "exports": {
+    "./index.css": "./dist/index.css",
+    "./colors.css": "./dist/colors.css",
+    "./animations.css": "./dist/animations.css",
+    "./breakpoints.css": "./dist/breakpoints.css",
+    "./spacing.css": "./dist/spacing.css",
+    "./components.css": "./dist/components.css",
+    "./typography.css": "./dist/typography.css"
   },
-  "dependencies": {
-    "tailwindcss": "^3.4.1"
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "tsx build.ts"
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
-    "eslint": "^8.56.0",
-    "rimraf": "^5.0.5",
-    "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "@types/node": "^22.15.21",
+    "eslint": "^9.27.0",
+    "tailwindcss": "^4.1.7",
+    "tsx": "^4.19.4"
   }
 }

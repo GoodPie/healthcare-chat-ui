@@ -1,54 +1,155 @@
-# React + TypeScript + Vite
+# Healthcare Chat UI Storybook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Storybook application allows you to view and interact with the UI components from the `@healthcare-chat/ui` package.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Install dependencies:
+   ```bash
+   yarn install
+   ```
 
-## Expanding the ESLint configuration
+2. Start the Storybook development server:
+   ```bash
+   yarn storybook
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Open your browser to the URL shown in the terminal (usually http://localhost:6006)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Available Components
+
+The following components are available in the Storybook:
+
+- **MessageBubble**: Displays a chat message with optional status indicators
+- **MessageStatus**: Displays the delivery status of a message
+
+## Configuration
+
+This Storybook application is configured to use:
+
+- **Tailwind CSS 4**: For styling components
+- **Design Tokens**: From the `@healthcare-chat/design-tokens` package
+- **React 19**: For rendering components
+
+## Using the CLI to Add Components
+
+You can use the `@healthcare-chat/cli` to add components directly to your storybook project:
+
+### How to Call the CLI
+
+There are several ways to call the CLI from the storybook directory:
+
+#### 1. Using Yarn Workspace Commands
+
+Since this is a monorepo using Yarn workspaces, you can run the CLI using:
+
+```bash
+# From the repository root
+yarn workspace @healthcare-chat/storybook healthcare-chat-ui add message-bubble
+
+# Or if you're already in the storybook directory
+cd apps/storybook
+yarn healthcare-chat-ui add message-bubble
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### 2. Using npx
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+You can also use npx to run the CLI:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
+```bash
+# From the storybook directory
+cd apps/storybook
+npx healthcare-chat-ui add message-bubble
+```
+
+#### 3. Using the Built CLI Directly
+
+If you've built the CLI package, you can run it directly:
+
+```bash
+# From the storybook directory
+cd apps/storybook
+node ../../packages/cli/dist/index.js add message-bubble
+```
+
+### Where Components Are Created
+
+When you run the CLI, it will:
+
+1. Create a `src/components/ui` directory in your current working directory if it doesn't exist
+2. Create a subdirectory for the component (e.g., `src/components/ui/message-bubble`)
+3. Copy the component files into this directory
+
+For example, running the CLI from the storybook directory will create:
+- `apps/storybook/src/components/ui/message-bubble/message-bubble.tsx`
+- `apps/storybook/src/components/ui/message-bubble/message-bubble.css`
+- `apps/storybook/src/components/ui/message-bubble/types.ts`
+
+### Using CLI-Added Components in Storybook
+
+After adding a component with the CLI, you can create a story for it:
+
+1. Create a new story file in `src/stories/`
+2. Import the component from your local components directory:
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { MyComponent } from '../components/ui/my-component/my-component';
+
+const meta = {
+  title: 'UI/MyComponent',
+  component: MyComponent,
+  parameters: {
+    layout: 'centered',
   },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
+  tags: ['autodocs'],
+  argTypes: {
+    // Define the component's props
   },
-})
+} satisfies Meta<typeof MyComponent>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    // Define the default props
+  },
+};
+```
+
+## Adding Components from the UI Package
+
+Alternatively, you can add components from the `@healthcare-chat/ui` package:
+
+1. Create a new story file in the `src/stories` directory
+2. Import the component from the `@healthcare-chat/ui` package
+3. Define the component's props and examples
+
+Example:
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { YourComponent } from '@healthcare-chat/ui';
+
+const meta = {
+  title: 'UI/YourComponent',
+  component: YourComponent,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    // Define the component's props
+  },
+} satisfies Meta<typeof YourComponent>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    // Define the default props
+  },
+};
 ```

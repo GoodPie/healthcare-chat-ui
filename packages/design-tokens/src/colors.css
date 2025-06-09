@@ -1,0 +1,351 @@
+/**
+ * Healthcare Design Tokens - Colors
+ * Medical-grade color system with accessibility compliance
+ *
+ * @package @healthcare-chat-ui/design-tokens
+ * @version 1.0.0
+ */
+
+/* =============================================
+ * DARK MODE COLOR ADJUSTMENTS
+ * Optimized for dark healthcare interfaces
+ * ============================================= */
+@custom-variant dark {
+  &:where(.dark, .dark *) {
+    /* Adjusted color scales for dark backgrounds */
+    --color-medical-50: oklch(0.15 0.28 250);
+    --color-medical-100: oklch(0.2 0.26 250);
+    --color-medical-200: oklch(0.3 0.24 250);
+    --color-medical-300: oklch(0.4 0.22 250);
+    --color-medical-400: oklch(0.5 0.2 250);
+    --color-medical-500: oklch(0.65 0.18 250);
+    --color-medical-600: oklch(0.75 0.15 250);
+    --color-medical-700: oklch(0.82 0.12 250);
+    --color-medical-800: oklch(0.88 0.08 250);
+    --color-medical-900: oklch(0.95 0.05 250);
+
+    --color-urgent-50: oklch(0.2 0.28 25);
+    --color-urgent-100: oklch(0.25 0.26 25);
+    --color-urgent-200: oklch(0.35 0.24 25);
+    --color-urgent-300: oklch(0.45 0.22 25);
+    --color-urgent-400: oklch(0.55 0.2 25);
+    --color-urgent-500: oklch(0.68 0.18 25);
+    --color-urgent-600: oklch(0.78 0.15 25);
+    --color-urgent-700: oklch(0.85 0.12 25);
+    --color-urgent-800: oklch(0.9 0.08 25);
+    --color-urgent-900: oklch(0.95 0.05 25);
+
+    --color-success-50: oklch(0.15 0.28 142);
+    --color-success-100: oklch(0.2 0.26 142);
+    --color-success-200: oklch(0.3 0.24 142);
+    --color-success-300: oklch(0.4 0.22 142);
+    --color-success-400: oklch(0.5 0.2 142);
+    --color-success-500: oklch(0.7 0.18 142);
+    --color-success-600: oklch(0.8 0.15 142);
+    --color-success-700: oklch(0.85 0.12 142);
+    --color-success-800: oklch(0.9 0.08 142);
+    --color-success-900: oklch(0.95 0.05 142);
+
+    --color-warning-50: oklch(0.25 0.28 85);
+    --color-warning-100: oklch(0.3 0.26 85);
+    --color-warning-200: oklch(0.4 0.24 85);
+    --color-warning-300: oklch(0.5 0.22 85);
+    --color-warning-400: oklch(0.6 0.2 85);
+    --color-warning-500: oklch(0.75 0.18 85);
+    --color-warning-600: oklch(0.82 0.15 85);
+    --color-warning-700: oklch(0.87 0.12 85);
+    --color-warning-800: oklch(0.92 0.08 85);
+    --color-warning-900: oklch(0.96 0.05 85);
+
+    --color-neutral-50: oklch(0.15 0.02 0);
+    --color-neutral-100: oklch(0.2 0.04 0);
+    --color-neutral-200: oklch(0.3 0.08 0);
+    --color-neutral-300: oklch(0.4 0.12 0);
+    --color-neutral-400: oklch(0.5 0.15 0);
+    --color-neutral-500: oklch(0.6 0.18 0);
+    --color-neutral-600: oklch(0.7 0.2 0);
+    --color-neutral-700: oklch(0.8 0.22 0);
+    --color-neutral-800: oklch(0.9 0.24 0);
+    --color-neutral-900: oklch(0.95 0.26 0);
+
+    /* Dark mode surface adjustments */
+    --color-background: oklch(0.1 0.02 0);
+    --color-foreground: var(--color-neutral-900);
+    --color-card: oklch(0.12 0.02 0);
+    --color-card-foreground: var(--color-neutral-900);
+    --color-popover: oklch(0.12 0.02 0);
+    --color-popover-foreground: var(--color-neutral-900);
+    --color-muted: oklch(0.15 0.02 0);
+    --color-muted-foreground: var(--color-neutral-600);
+    --color-border: var(--color-neutral-200);
+    --color-input: oklch(0.15 0.02 0);
+  }
+}
+
+/* =============================================
+ * HIGH CONTRAST MODE
+ * Enhanced accessibility for medical environments
+ * ============================================= */
+@custom-variant highcontrast {
+  &:where(.high-contrast, .high-contrast *) {
+
+
+    /* Enhanced contrast for critical medical information */
+    --color-border: var(--color-neutral-900);
+    --color-muted-foreground: var(--color-neutral-700);
+
+    /* High contrast priority colors */
+    --color-priority-emergency: oklch(0.5 0.3 25);
+    --color-priority-critical: oklch(0.3 0.35 25);
+
+    /* High contrast role colors */
+    --color-role-doctor: oklch(0.4 0.25 250);
+    --color-role-nurse: oklch(0.4 0.25 142);
+
+  }
+
+  /* =============================================
+   * HEALTHCARE COLOR SYSTEM
+   * WCAG 2.1 AA compliant color scales
+   * ============================================= */
+  @theme {
+
+    /* Medical Blue Scale - Primary brand color for medical applications */
+    --color-medical-50: oklch(0.98 0.02 250);
+    --color-medical-100: oklch(0.95 0.05 250);
+    --color-medical-200: oklch(0.88 0.1 250);
+    --color-medical-300: oklch(0.78 0.15 250);
+    --color-medical-400: oklch(0.68 0.18 250);
+    --color-medical-500: oklch(0.6 0.2 250);      /* Primary medical blue */
+    --color-medical-600: oklch(0.5 0.22 250);
+    --color-medical-700: oklch(0.4 0.24 250);
+    --color-medical-800: oklch(0.3 0.26 250);
+    --color-medical-900: oklch(0.2 0.28 250);
+
+    /* Urgent Red Scale - For emergency and critical situations */
+    --color-urgent-50: oklch(0.98 0.02 25);
+    --color-urgent-100: oklch(0.95 0.05 25);
+    --color-urgent-200: oklch(0.88 0.1 25);
+    --color-urgent-300: oklch(0.78 0.15 25);
+    --color-urgent-400: oklch(0.68 0.18 25);
+    --color-urgent-500: oklch(0.63 0.2 25);       /* Primary urgent red */
+    --color-urgent-600: oklch(0.55 0.22 25);
+    --color-urgent-700: oklch(0.45 0.24 25);
+    --color-urgent-800: oklch(0.35 0.26 25);
+    --color-urgent-900: oklch(0.25 0.28 25);
+
+    /* Success Green Scale - For positive outcomes and confirmations */
+    --color-success-50: oklch(0.98 0.02 142);
+    --color-success-100: oklch(0.95 0.05 142);
+    --color-success-200: oklch(0.88 0.1 142);
+    --color-success-300: oklch(0.78 0.15 142);
+    --color-success-400: oklch(0.68 0.18 142);
+    --color-success-500: oklch(0.65 0.2 142);     /* Primary success green */
+    --color-success-600: oklch(0.55 0.22 142);
+    --color-success-700: oklch(0.45 0.24 142);
+    --color-success-800: oklch(0.35 0.26 142);
+    --color-success-900: oklch(0.25 0.28 142);
+
+    /* Warning Orange Scale - For caution and attention-needed states */
+    --color-warning-50: oklch(0.98 0.02 85);
+    --color-warning-100: oklch(0.95 0.05 85);
+    --color-warning-200: oklch(0.88 0.1 85);
+    --color-warning-300: oklch(0.78 0.15 85);
+    --color-warning-400: oklch(0.72 0.18 85);
+    --color-warning-500: oklch(0.68 0.2 85);      /* Primary warning orange */
+    --color-warning-600: oklch(0.6 0.22 85);
+    --color-warning-700: oklch(0.5 0.24 85);
+    --color-warning-800: oklch(0.4 0.26 85);
+    --color-warning-900: oklch(0.3 0.28 85);
+
+    /* Neutral Gray Scale - For text, borders, and neutral elements */
+    --color-neutral-50: oklch(0.98 0.02 0);
+    --color-neutral-100: oklch(0.95 0.04 0);
+    --color-neutral-200: oklch(0.88 0.08 0);
+    --color-neutral-300: oklch(0.78 0.12 0);
+    --color-neutral-400: oklch(0.68 0.15 0);
+    --color-neutral-500: oklch(0.6 0.18 0);       /* Primary neutral gray */
+    --color-neutral-600: oklch(0.5 0.2 0);
+    --color-neutral-700: oklch(0.4 0.22 0);
+    --color-neutral-800: oklch(0.3 0.24 0);
+    --color-neutral-900: oklch(0.2 0.26 0);
+
+    /* =============================================
+     * SEMANTIC COLOR ALIASES
+     * Healthcare-specific semantic meanings
+     * ============================================= */
+    /* Primary brand colors */
+    --color-primary: var(--color-medical-500);
+    --color-primary-foreground: #ffffff;
+    --color-primary-hover: var(--color-medical-600);
+    --color-primary-active: var(--color-medical-700);
+
+    --color-secondary: var(--color-neutral-600);
+    --color-secondary-foreground: #ffffff;
+    --color-secondary-hover: var(--color-neutral-700);
+
+    --color-accent: var(--color-medical-400);
+    --color-accent-foreground: #ffffff;
+
+    /* State colors for healthcare contexts */
+    --color-destructive: var(--color-urgent-500);
+    --color-destructive-foreground: #ffffff;
+
+    --color-safe: var(--color-success-500);
+    --color-safe-foreground: #ffffff;
+
+    --color-caution: var(--color-warning-500);
+    --color-caution-foreground: #ffffff;
+
+    --color-info: var(--color-medical-500);
+    --color-info-foreground: #ffffff;
+
+    /* UI surface colors */
+    --color-background: #ffffff;
+    --color-foreground: var(--color-neutral-900);
+
+    --color-card: var(--color-neutral-50);
+    --color-card-foreground: var(--color-neutral-900);
+
+    --color-popover: #ffffff;
+    --color-popover-foreground: var(--color-neutral-900);
+
+    --color-muted: var(--color-neutral-100);
+    --color-muted-foreground: var(--color-neutral-500);
+
+    --color-border: var(--color-neutral-200);
+    --color-input: var(--color-neutral-100);
+    --color-ring: var(--color-medical-500);
+
+    /* =============================================
+     * HEALTHCARE-SPECIFIC COLORS
+     * Medical workflow and priority colors
+     * ============================================= */
+    /* Priority levels for medical communication */
+    --color-priority-routine: var(--color-neutral-500);
+    --color-priority-urgent: var(--color-warning-500);
+    --color-priority-emergency: var(--color-urgent-500);
+    --color-priority-critical: var(--color-urgent-700);
+
+    /* Medical professional role colors */
+    --color-role-doctor: var(--color-medical-600);
+    --color-role-nurse: var(--color-success-500);
+    --color-role-admin: var(--color-warning-500);
+    --color-role-patient: var(--color-neutral-500);
+    --color-role-specialist: var(--color-medical-400);
+
+    /* Patient status indicators */
+    --color-status-stable: var(--color-success-500);
+    --color-status-monitoring: var(--color-warning-500);
+    --color-status-critical: var(--color-urgent-500);
+    --color-status-discharged: var(--color-neutral-400);
+
+    /* Message status colors */
+    --color-message-sending: var(--color-neutral-400);
+    --color-message-sent: var(--color-medical-400);
+    --color-message-delivered: var(--color-medical-500);
+    --color-message-read: var(--color-success-500);
+    --color-message-failed: var(--color-urgent-500);
+
+    /* Presence indicators */
+    --color-presence-online: var(--color-success-500);
+    --color-presence-away: var(--color-warning-500);
+    --color-presence-busy: var(--color-urgent-500);
+    --color-presence-offline: var(--color-neutral-400);
+
+
+  }
+
+  /* =============================================
+   * COLOR UTILITY CLASSES
+   * Healthcare-specific utility classes
+   * ============================================= */
+  @layer utilities {
+    /* Priority-based styling */
+    .priority-routine {
+      background-color: var(--color-priority-routine);
+      color: white;
+      border-color: var(--color-priority-routine);
+    }
+
+    .priority-urgent {
+      background-color: var(--color-priority-urgent);
+      color: white;
+      border-color: var(--color-priority-urgent);
+    }
+
+    .priority-emergency {
+      background-color: var(--color-priority-emergency);
+      color: white;
+      border-color: var(--color-priority-emergency);
+    }
+
+    .priority-critical {
+      background-color: var(--color-priority-critical);
+      color: white;
+      border-color: var(--color-priority-critical);
+    }
+
+    /* Role-based styling */
+    .role-doctor {
+      background-color: var(--color-role-doctor);
+      color: white;
+    }
+
+    .role-nurse {
+      background-color: var(--color-role-nurse);
+      color: white;
+    }
+
+    .role-admin {
+      background-color: var(--color-role-admin);
+      color: white;
+    }
+
+    .role-patient {
+      background-color: var(--color-role-patient);
+      color: white;
+    }
+
+    /* Status indicators */
+    .status-online {
+      background-color: var(--color-presence-online);
+    }
+
+    .status-away {
+      background-color: var(--color-presence-away);
+    }
+
+    .status-busy {
+      background-color: var(--color-presence-busy);
+    }
+
+    .status-offline {
+      background-color: var(--color-presence-offline);
+    }
+
+    /* Message status styling */
+    .message-sending {
+      color: var(--color-message-sending);
+    }
+
+    .message-sent {
+      color: var(--color-message-sent);
+    }
+
+    .message-delivered {
+      color: var(--color-message-delivered);
+    }
+
+    .message-read {
+      color: var(--color-message-read);
+    }
+
+    .message-failed {
+      color: var(--color-message-failed);
+    }
+
+  }
+
+}
+

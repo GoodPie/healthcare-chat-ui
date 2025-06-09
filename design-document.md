@@ -71,7 +71,7 @@ healthcare-chat-ui/
 │   │   └── hooks/               # Platform-agnostic logic
 │   │
 │   └── design-tokens/           # Healthcare design system
-│       ├── colors.ts            # Medical-grade color palette
+│       ├── index.ts            # Medical-grade color palette
 │       ├── typography.ts        # Accessible fonts & sizes
 │       ├── spacing.ts           # Consistent spacing scale
 │       └── themes/              # Light/dark/high-contrast
@@ -161,18 +161,7 @@ Each component follows this registry pattern:
       "content": "...",
       "type": "registry:ui"
     }
-  ],
-  "tailwind": {
-    "config": {
-      "theme": {
-        "extend": {
-          "colors": {
-            "medical-blue": "hsl(var(--medical-blue))"
-          }
-        }
-      }
-    }
-  }
+  ]
 }
 ```
 
@@ -275,7 +264,6 @@ npx healthcare-chat-ui@latest update message-bubble
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.js",
     "css": "app/globals.css",
     "baseColor": "medical-blue",
     "cssVariables": true

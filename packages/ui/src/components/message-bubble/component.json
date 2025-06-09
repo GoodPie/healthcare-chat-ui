@@ -1,0 +1,9 @@
+{
+  "name": "message-bubble",
+  "type": "registry:ui",
+  "description": "MessageBubble component",
+  "version": "1.0.0",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": []
+}

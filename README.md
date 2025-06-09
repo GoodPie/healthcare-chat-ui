@@ -46,17 +46,173 @@ Healthcare Chat UI Kit
 ├── React (Web)
 └── React Native (Mobile)
 
-## 🚀 Getting Started (For Users of the Library - Future)
+## 🚀 Getting Started
 
-Once the CLI and initial components are ready, you'll be able to integrate them into your project like this:
+We provide two main tools for working with the Healthcare Chat UI Kit:
+
+1. **CLI Tool**: For users who want to add components to their projects
+2. **Component Registration Tool**: For developers who want to create and register new components
+
+### How the CLI Works with the Registry
+
+The CLI interacts with the component registry to fetch and install components:
+
+1. **Component Registry**: The registry (`packages/registry`) contains:
+   - Component metadata (name, description, dependencies)
+   - Component file templates with the actual code
+   - Platform-specific implementations (React, React Native)
+
+2. **CLI Process**:
+   - When you run the `add` command, the CLI locates the component in the registry
+   - It reads the component's metadata and file templates from JSON files
+   - It copies the component files to your project's `src/components/ui` directory
+   - All dependencies and types are preserved
+
+This "components as code" approach gives you full ownership of the components in your project.
+
+### Component Registration Tool
+
+The Component Registration Tool is designed for developers who want to create and register new components for the Healthcare Chat UI Kit. It provides a streamlined workflow for component development:
+
+1. **Create Component**: Scaffold a new component with the necessary files and structure
+2. **Validate Component**: Check the component against best practices
+3. **Generate Documentation**: Create documentation for the component
+4. **Register Component**: Add the component to the registry
+
+For detailed documentation, see [Component Registration Tool Documentation](./docs/component-registration-tool.md).
+
+### Installation
+
+#### CLI Tool (for users)
+
+You can use the CLI directly with npx:
 
 ```bash
-# Initialize healthcare-chat-ui in your project
-npx healthcare-chat-ui@latest init
+npx @healthcare-chat/cli@latest <command>
+```
 
-# Add a specific component
-npx healthcare-chat-ui@latest add message-bubble
+Or install it globally:
 
-# Add a complete chat template
-npx healthcare-chat-ui@latest add chat-room
+```bash
+npm install -g @healthcare-chat/cli
+healthcare-chat-ui <command>
+```
 
+#### Component Registration Tool (for developers)
+
+The Component Registration Tool is included in the Healthcare Chat UI Kit repository:
+
+```bash
+# From the repository root
+yarn workspace @healthcare-chat/registry build
+
+# Use the tool
+yarn registry <command>
+```
+
+### Available Commands
+
+#### CLI Tool Commands
+
+```bash
+# Add a component to your project
+npx healthcare-chat-ui add <component-name>
+
+# Example: Add the message-bubble component
+npx healthcare-chat-ui add message-bubble
+```
+
+This will copy the component files to your project's `src/components/ui/<component-name>` directory.
+
+#### Component Registration Tool Commands
+
+```bash
+# Create a new component
+yarn registry create-component <name> [options]
+
+# Register an existing component
+yarn registry register <component-dir> [options]
+
+# Validate a component
+yarn registry validate <component-dir> [options]
+
+# Generate documentation for a component
+yarn registry docs <component-dir> [options]
+```
+
+For detailed documentation on these commands, see the [Component Registration Tool Documentation](./docs/component-registration-tool.md).
+
+### Available Components
+
+Currently, the following components are available:
+
+- `message-bubble`: A chat message bubble with status indicators
+- `message-status`: Status indicators for message delivery (sent, delivered, read)
+
+More components will be added in future releases.
+
+## 🤝 Contributing
+
+We welcome contributions to the Healthcare Chat UI Kit! Here's how you can help:
+
+### Development Setup
+
+For detailed development guidelines, please refer to our [Development Guidelines](./docs/development-guidelines.md) documentation.
+
+We also maintain specific guidelines for:
+- [TypeScript Configuration](./docs/typescript-configuration.md)
+- [Git Branching Strategy](./docs/git-branching-strategy.md)
+
+1. Clone the repository
+2. Install dependencies with `yarn install`
+3. Build the packages with `yarn build`
+
+### Project Structure
+
+- `packages/cli`: The CLI tool for users to add components to their projects
+- `packages/registry`: Component registry and developer tools for creating, validating, and registering components
+- `packages/ui`: React implementations of components
+- `packages/design-tokens`: Healthcare-specific design tokens
+- `packages/core`: Shared utilities, types, and hooks
+- `apps/storybook`: Component documentation and examples
+
+For more details on the registry package and its tools, see the [Component Registration Tool Documentation](./docs/component-registration-tool.md).
+
+### Adding New Components
+
+You can use the Component Registration Tool to create and register new components:
+
+1. Create a new component using the registration tool:
+   ```bash
+   yarn registry create-component MyComponent --tests --stories
+   ```
+
+2. Implement the component logic in the generated files
+
+3. Validate the component:
+   ```bash
+   yarn registry validate ./src/components/my-component
+   ```
+
+4. Generate documentation:
+   ```bash
+   yarn registry docs ./src/components/my-component
+   ```
+
+5. Register the component:
+   ```bash
+   yarn registry register ./src/components/my-component
+   ```
+
+6. Update the Storybook examples
+
+7. Submit a pull request
+
+For more detailed instructions, see the [Component Registration Tool Documentation](./docs/component-registration-tool.md).
+
+### Coding Standards
+
+- Follow TypeScript best practices
+- Ensure components are accessible (WCAG 2.1 AA)
+- Write tests for new components
+- Document your code with JSDoc comments

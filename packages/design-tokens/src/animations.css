@@ -1,0 +1,846 @@
+/**
+ * Healthcare Design Tokens - Animations & Transitions
+ * Professional animation system optimized for healthcare interfaces
+ *
+ * @package @healthcare-chat-ui/design-tokens
+ * @version 1.0.0
+ */
+
+@theme {
+
+  /* =============================================
+   * ANIMATION DURATIONS
+   * Healthcare-appropriate timing for professional interfaces
+   * ============================================= */
+  /* Base durations */
+  --duration-instant: 0ms;        /* Immediate changes */
+  --duration-fast: 150ms;         /* Quick interactions */
+  --duration-normal: 250ms;       /* Standard transitions */
+  --duration-slow: 350ms;         /* Deliberate animations */
+  --duration-slower: 500ms;       /* Emphasis animations */
+  --duration-slowest: 750ms;      /* Maximum duration */
+  /* Semantic durations */
+  --duration-micro: var(--duration-fast);     /* Micro-interactions */
+  --duration-interaction: var(--duration-normal); /* User interactions */
+  --duration-feedback: var(--duration-slow);  /* User feedback */
+  --duration-emphasis: var(--duration-slower); /* Emphasis animations */
+  --duration-loading: var(--duration-slowest); /* Loading states */
+  /* Healthcare-specific durations */
+  --duration-alert: 300ms;        /* Alert animations */
+  --duration-emergency: 1500ms;   /* Emergency pulse cycle */
+  --duration-status-change: 400ms; /* Status transitions */
+  --duration-notification: 350ms;  /* Notification slides */
+  /* =============================================
+   * EASING FUNCTIONS
+   * Professional curves for smooth healthcare interfaces
+   * ============================================= */
+  /* Standard easing */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Custom healthcare easing */
+  --ease-medical: cubic-bezier(0.25, 0.46, 0.45, 0.94);     /* Smooth, professional */
+  --ease-emergency: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Attention-grabbing */
+  --ease-gentle: cubic-bezier(0.25, 0.8, 0.25, 1);          /* Subtle, calming */
+  --ease-precise: cubic-bezier(0.4, 0, 0.6, 1);             /* Precise, controlled */
+  /* Semantic easing */
+  --ease-ui: var(--ease-out);              /* UI element animations */
+  --ease-interaction: var(--ease-in-out);  /* User interactions */
+  --ease-feedback: var(--ease-medical);    /* User feedback */
+  --ease-alert: var(--ease-emergency);     /* Alert animations */
+  --ease-status: var(--ease-gentle);       /* Status changes */
+  /* =============================================
+   * TRANSITION PRESETS
+   * Pre-configured transitions for common patterns
+   * ============================================= */
+  /* Base transitions */
+  --transition-none: none;
+  --transition-all: all var(--duration-normal) var(--ease-ui);
+  --transition-colors: color var(--duration-fast) var(--ease-ui),
+  background-color var(--duration-fast) var(--ease-ui),
+  border-color var(--duration-fast) var(--ease-ui);
+  --transition-opacity: opacity var(--duration-normal) var(--ease-ui);
+  --transition-shadow: box-shadow var(--duration-normal) var(--ease-ui);
+  --transition-transform: transform var(--duration-normal) var(--ease-ui);
+
+  /* Component-specific transitions */
+  --transition-button: background-color var(--duration-fast) var(--ease-ui),
+  border-color var(--duration-fast) var(--ease-ui),
+  color var(--duration-fast) var(--ease-ui),
+  box-shadow var(--duration-fast) var(--ease-ui),
+  transform var(--duration-fast) var(--ease-ui);
+
+  --transition-card: box-shadow var(--duration-normal) var(--ease-ui),
+  transform var(--duration-normal) var(--ease-ui);
+
+  --transition-modal: opacity var(--duration-normal) var(--ease-ui),
+  transform var(--duration-normal) var(--ease-ui);
+
+  --transition-alert: opacity var(--duration-alert) var(--ease-alert),
+  transform var(--duration-alert) var(--ease-alert);
+
+  /* Healthcare-specific transitions */
+  --transition-status: background-color var(--duration-status-change) var(--ease-status),
+  color var(--duration-status-change) var(--ease-status);
+
+  --transition-priority: background-color var(--duration-fast) var(--ease-emergency),
+  border-color var(--duration-fast) var(--ease-emergency),
+  box-shadow var(--duration-fast) var(--ease-emergency);
+
+  /* =============================================
+   * ANIMATION TIMING FUNCTIONS
+   * For keyframe animations
+   * ============================================= */
+  --animation-timing-linear: linear;
+  --animation-timing-ease: ease;
+  --animation-timing-ease-in: ease-in;
+  --animation-timing-ease-out: ease-out;
+  --animation-timing-ease-in-out: ease-in-out;
+  --animation-timing-medical: var(--ease-medical);
+  --animation-timing-emergency: var(--ease-emergency);
+
+  /* =============================================
+   * TRANSFORM VALUES
+   * Common transform values for animations
+   * ============================================= */
+  /* Scale transforms */
+  --scale-0: 0;
+  --scale-50: 0.5;
+  --scale-75: 0.75;
+  --scale-90: 0.9;
+  --scale-95: 0.95;
+  --scale-100: 1;
+  --scale-105: 1.05;
+  --scale-110: 1.1;
+  --scale-125: 1.25;
+  --scale-150: 1.5;
+
+  /* Translate transforms */
+  --translate-x-0: 0;
+  --translate-x-1: 4px;
+  --translate-x-2: 8px;
+  --translate-x-4: 16px;
+  --translate-x-full: 100%;
+  --translate-y-0: 0;
+  --translate-y-1: 4px;
+  --translate-y-2: 8px;
+  --translate-y-4: 16px;
+  --translate-y-full: 100%;
+
+  /* Rotate transforms */
+  --rotate-0: 0deg;
+  --rotate-1: 1deg;
+  --rotate-2: 2deg;
+  --rotate-3: 3deg;
+  --rotate-6: 6deg;
+  --rotate-12: 12deg;
+  --rotate-45: 45deg;
+  --rotate-90: 90deg;
+  --rotate-180: 180deg;
+  --rotate-360: 360deg;
+}
+
+
+/* =============================================
+ * KEYFRAME ANIMATIONS
+ * Healthcare-specific animation keyframes
+ * ============================================= */
+
+/* Loading and progress animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+/* Healthcare-specific animations */
+@keyframes emergency-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes urgent-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--color-warning-500);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-warning-500), 0 0 30px var(--color-warning-300);
+  }
+}
+
+@keyframes critical-flash {
+  0%, 50%, 100% {
+    background-color: var(--color-urgent-500);
+  }
+  25%, 75% {
+    background-color: var(--color-urgent-700);
+  }
+}
+
+@keyframes status-change {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Entrance animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--translate-y-4));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--translate-y-4) * -1));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(var(--translate-x-full));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--translate-x-full) * -1));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(var(--scale-95));
+  }
+  to {
+    opacity: 1;
+    transform: scale(var(--scale-100));
+  }
+}
+
+/* Loading states */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes dots-loading {
+  0%, 20% {
+    color: var(--color-neutral-400);
+    transform: scale(var(--scale-100));
+  }
+  50% {
+    color: var(--color-primary);
+    transform: scale(var(--scale-110));
+  }
+  80%, 100% {
+    color: var(--color-neutral-400);
+    transform: scale(var(--scale-100));
+  }
+}
+
+/* Notification animations */
+@keyframes notification-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(var(--translate-x-full));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes notification-slide-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(var(--translate-x-full));
+  }
+}
+
+/* Focus and interaction animations */
+@keyframes focus-ring {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-ring);
+  }
+  100% {
+    box-shadow: 0 0 0 4px var(--color-ring);
+  }
+}
+
+@keyframes button-press {
+  0% {
+    transform: scale(var(--scale-100));
+  }
+  50% {
+    transform: scale(var(--scale-95));
+  }
+  100% {
+    transform: scale(var(--scale-100));
+  }
+}
+
+/* =============================================
+ * REDUCED MOTION ADJUSTMENTS
+ * Respect user accessibility preferences
+ * ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    /* Reduce animation durations */
+    --duration-fast: 50ms;
+    --duration-normal: 100ms;
+    --duration-slow: 150ms;
+    --duration-slower: 200ms;
+    --duration-slowest: 250ms;
+    --duration-emergency: 500ms; /* Still visible but reduced */
+  }
+
+  /* Disable problematic animations */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep essential emergency animations but reduce them */
+  .animate-emergency-pulse,
+  .animate-critical-flash {
+    animation-duration: 1s !important;
+    animation-iteration-count: 3 !important;
+  }
+
+  /* Preserve focus indicators */
+  .focus-visible {
+    transition-duration: 0ms !important;
+  }
+}
+
+/* =============================================
+ * ANIMATION UTILITY CLASSES
+ * Pre-built animation utilities
+ * ============================================= */
+
+@layer utilities {
+  /* Animation control */
+  .animate-none {
+    animation: none;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  .animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .animate-pulse {
+    animation: pulse var(--duration-slower) var(--animation-timing-ease-in-out) infinite;
+  }
+
+  .animate-bounce {
+    animation: bounce 1s infinite;
+  }
+
+  /* Healthcare-specific animations */
+  .animate-emergency-pulse {
+    animation: emergency-pulse var(--duration-emergency) var(--animation-timing-emergency) infinite;
+  }
+
+  .animate-urgent-glow {
+    animation: urgent-glow 2s ease-in-out infinite;
+  }
+
+  .animate-critical-flash {
+    animation: critical-flash 1s ease-in-out infinite;
+  }
+
+  .animate-status-change {
+    animation: status-change var(--duration-status-change) var(--ease-status);
+  }
+
+  /* Entrance animations */
+  .animate-fade-in {
+    animation: fade-in var(--duration-normal) var(--ease-ui);
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up var(--duration-normal) var(--ease-ui);
+  }
+
+  .animate-fade-in-down {
+    animation: fade-in-down var(--duration-normal) var(--ease-ui);
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right var(--duration-normal) var(--ease-ui);
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left var(--duration-normal) var(--ease-ui);
+  }
+
+  .animate-scale-in {
+    animation: scale-in var(--duration-normal) var(--ease-ui);
+  }
+
+  /* Loading animations */
+  .animate-skeleton {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+  .animate-dots:nth-child(1) {
+    animation: dots-loading 1.4s ease-in-out infinite;
+  }
+
+  .animate-dots:nth-child(2) {
+    animation: dots-loading 1.4s ease-in-out 0.2s infinite;
+  }
+
+  .animate-dots:nth-child(3) {
+    animation: dots-loading 1.4s ease-in-out 0.4s infinite;
+  }
+
+  /* Transition utilities */
+  .transition-none {
+    transition: none;
+  }
+
+  .transition-all {
+    transition: var(--transition-all);
+  }
+
+  .transition-colors {
+    transition: var(--transition-colors);
+  }
+
+  .transition-opacity {
+    transition: var(--transition-opacity);
+  }
+
+  .transition-shadow {
+    transition: var(--transition-shadow);
+  }
+
+  .transition-transform {
+    transition: var(--transition-transform);
+  }
+
+  .transition-button {
+    transition: var(--transition-button);
+  }
+
+  .transition-card {
+    transition: var(--transition-card);
+  }
+
+  .transition-status {
+    transition: var(--transition-status);
+  }
+
+  .transition-priority {
+    transition: var(--transition-priority);
+  }
+
+  /* Duration utilities */
+  .duration-instant {
+    transition-duration: var(--duration-instant);
+  }
+
+  .duration-fast {
+    transition-duration: var(--duration-fast);
+  }
+
+  .duration-normal {
+    transition-duration: var(--duration-normal);
+  }
+
+  .duration-slow {
+    transition-duration: var(--duration-slow);
+  }
+
+  .duration-slower {
+    transition-duration: var(--duration-slower);
+  }
+
+  .duration-slowest {
+    transition-duration: var(--duration-slowest);
+  }
+
+  /* Easing utilities */
+  .ease-linear {
+    transition-timing-function: var(--ease-linear);
+  }
+
+  .ease-in {
+    transition-timing-function: var(--ease-in);
+  }
+
+  .ease-out {
+    transition-timing-function: var(--ease-out);
+  }
+
+  .ease-in-out {
+    transition-timing-function: var(--ease-in-out);
+  }
+
+  .ease-medical {
+    transition-timing-function: var(--ease-medical);
+  }
+
+  .ease-emergency {
+    transition-timing-function: var(--ease-emergency);
+  }
+
+  .ease-gentle {
+    transition-timing-function: var(--ease-gentle);
+  }
+
+  /* Transform utilities */
+  .scale-0 {
+    transform: scale(var(--scale-0));
+  }
+
+  .scale-50 {
+    transform: scale(var(--scale-50));
+  }
+
+  .scale-75 {
+    transform: scale(var(--scale-75));
+  }
+
+  .scale-90 {
+    transform: scale(var(--scale-90));
+  }
+
+  .scale-95 {
+    transform: scale(var(--scale-95));
+  }
+
+  .scale-100 {
+    transform: scale(var(--scale-100));
+  }
+
+  .scale-105 {
+    transform: scale(var(--scale-105));
+  }
+
+  .scale-110 {
+    transform: scale(var(--scale-110));
+  }
+
+  .scale-125 {
+    transform: scale(var(--scale-125));
+  }
+
+  .translate-x-0 {
+    transform: translateX(var(--translate-x-0));
+  }
+
+  .translate-x-1 {
+    transform: translateX(var(--translate-x-1));
+  }
+
+  .translate-x-2 {
+    transform: translateX(var(--translate-x-2));
+  }
+
+  .translate-x-4 {
+    transform: translateX(var(--translate-x-4));
+  }
+
+  .translate-y-0 {
+    transform: translateY(var(--translate-y-0));
+  }
+
+  .translate-y-1 {
+    transform: translateY(var(--translate-y-1));
+  }
+
+  .translate-y-2 {
+    transform: translateY(var(--translate-y-2));
+  }
+
+  .translate-y-4 {
+    transform: translateY(var(--translate-y-4));
+  }
+
+  .rotate-0 {
+    transform: rotate(var(--rotate-0));
+  }
+
+  .rotate-1 {
+    transform: rotate(var(--rotate-1));
+  }
+
+  .rotate-2 {
+    transform: rotate(var(--rotate-2));
+  }
+
+  .rotate-3 {
+    transform: rotate(var(--rotate-3));
+  }
+
+  .rotate-6 {
+    transform: rotate(var(--rotate-6));
+  }
+
+  .rotate-12 {
+    transform: rotate(var(--rotate-12));
+  }
+
+  .rotate-45 {
+    transform: rotate(var(--rotate-45));
+  }
+
+  .rotate-90 {
+    transform: rotate(var(--rotate-90));
+  }
+
+  .rotate-180 {
+    transform: rotate(var(--rotate-180));
+  }
+
+  /* Hover and interaction states */
+  .hover\:scale-105:hover {
+    transform: scale(var(--scale-105));
+  }
+
+  .hover\:scale-110:hover {
+    transform: scale(var(--scale-110));
+  }
+
+  .hover\:-translate-y-1:hover {
+    transform: translateY(calc(var(--translate-y-1) * -1));
+  }
+
+  .hover\:rotate-6:hover {
+    transform: rotate(var(--rotate-6));
+  }
+
+  .active\:scale-95:active {
+    transform: scale(var(--scale-95));
+  }
+
+  .active\:translate-y-0:active {
+    transform: translateY(var(--translate-y-0));
+  }
+
+  .focus\:scale-105:focus {
+    transform: scale(var(--scale-105));
+  }
+}
+
+/* =============================================
+ * HEALTHCARE COMPONENT ANIMATIONS
+ * Pre-built patterns for medical interfaces
+ * ============================================= */
+
+@layer components {
+  /* Emergency alert animation */
+  .emergency-alert {
+    animation: emergency-pulse var(--duration-emergency) var(--animation-timing-emergency) infinite;
+  }
+
+  .emergency-alert.critical {
+    animation: critical-flash 1s ease-in-out infinite;
+  }
+
+  /* Status change animation */
+  .status-indicator {
+    transition: var(--transition-status);
+  }
+
+  .status-indicator.changing {
+    animation: status-change var(--duration-status-change) var(--ease-status);
+  }
+
+  /* Loading states for medical data */
+  .medical-loading {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .medical-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+  /* Notification animations */
+  .notification-enter {
+    animation: notification-slide-in var(--duration-notification) var(--ease-ui);
+  }
+
+  .notification-exit {
+    animation: notification-slide-out var(--duration-notification) var(--ease-ui);
+  }
+
+  /* Button interactions */
+  .btn {
+    transition: var(--transition-button);
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+    animation: button-press var(--duration-fast) var(--ease-ui);
+  }
+
+  .btn.emergency {
+    animation: urgent-glow 2s ease-in-out infinite;
+  }
+
+  /* Card hover effects */
+  .card {
+    transition: var(--transition-card);
+  }
+
+  .card.interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Modal animations */
+  .modal {
+    transition: var(--transition-modal);
+  }
+
+  .modal.entering {
+    animation: scale-in var(--duration-normal) var(--ease-ui);
+  }
+
+  .modal.exiting {
+    animation: scale-in var(--duration-normal) var(--ease-ui) reverse;
+  }
+
+  /* Message animations */
+  .message.new {
+    animation: fade-in-up var(--duration-normal) var(--ease-ui);
+  }
+
+  .message.priority-emergency {
+    animation: emergency-pulse var(--duration-emergency) var(--animation-timing-emergency) infinite;
+  }
+
+  .message.priority-urgent {
+    animation: urgent-glow 3s ease-in-out infinite;
+  }
+
+  /* Focus management */
+  .focus-ring:focus-visible {
+    animation: focus-ring var(--duration-fast) var(--ease-ui);
+  }
+
+  /* Typing indicator */
+  .typing-indicator span {
+    animation: dots-loading 1.4s ease-in-out infinite;
+  }
+
+  .typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
